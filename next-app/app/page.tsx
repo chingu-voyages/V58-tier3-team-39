@@ -1,3 +1,7 @@
-export default function Home() {
-  return <div className="text-6xl">hello world! °˖✧◝(⁰▿⁰)◜✧˖°</div>;
-}
+import HomeLayout from './layout/HomeLayout';
+
+const App = () => {
+  return <HomeLayout />;
+};
+
+export default App;
