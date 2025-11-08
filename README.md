@@ -36,6 +36,7 @@ coding!
 
 - Val Lysenko: [GitHub](https://github.com/Valeriusdev) / [LinkedIn](https://linkedin.com/in/valeriylysenko)
 - Kevin Llanos: [GitHub](https://github.com/KevinLlano) / [LinkedIn](https://linkedin.com/in/kevinllanos7)
+- Ekaterina Kushnir: [GitHub](https://github.com/katiaku) / [LinkedIn](https://linkedin.com/in/kevinllanos7)
 
    ...
-- Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://www.linkedin.com/in/ekaterina-kushnir-mikhaylova/)
