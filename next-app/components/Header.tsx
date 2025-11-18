@@ -16,7 +16,11 @@ const Header = () => {
         className="flex h-14 md:h-24 w-full justify-between items-center fixed top-0 z-20 
    font-semibold text-base md:text-lg p-4 md:px-16 text-[#636363]"
       >
-        <Link href="/" className="font-bold md:text-xl text-[#4D77FF]">
+        <Link
+          href="/"
+          onClick={() => setIsActive(false)}
+          className="font-bold md:text-xl text-[#4D77FF]"
+        >
           Chingu Demographics
         </Link>
 
