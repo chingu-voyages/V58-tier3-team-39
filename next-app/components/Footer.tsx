@@ -1,3 +1,11 @@
+import { GitHub } from './icons/GitHub';
+import { Java } from './icons/Java';
+import { LinkedIn } from './icons/LinkedIn';
+import { Nextjs } from './icons/NextJs';
+import { TailwindCSS } from './icons/Tailwind';
+import { TypeScript } from './icons/TypeScript';
+import { Figma } from './icons/Figma';
+
 const Footer = () => {
   return (
     <footer className="w-full bg-emerald-50 text-emerald-900 py-12">
@@ -12,163 +20,197 @@ const Footer = () => {
               {/* Each item is a card-like row; icons will be added later */}
               <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
                 <div>
-                  <p className="text-lg font-semibold">Member Name</p>
-                  <p className="text-sm text-emerald-700">Role / Title</p>
+                  <p className="text-lg font-semibold">Valeriy Lysenko</p>
+                  <p className="text-sm text-emerald-700">
+                    Scrum Master / Web Developer
+                  </p>
                 </div>
                 <div className="flex items-center gap-3">
                   {/* icon placeholders */}
-                  <span
+                  <a
+                    href="linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <LinkedIn className="w-8 h-8" />
+                  </a>
+                  <a
+                    href="github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <GitHub className="w-8 h-8" />
+                  </a>
+                  {/* <span
                     className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
                     aria-hidden="true"
                   >
                     ●
-                  </span>
-                  <span
+                  </span> */}
+                  {/* <span
                     className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
                     aria-hidden="true"
                   >
                     ●
-                  </span>
+                  </span> */}
                 </div>
               </li>
               <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
                 <div>
-                  <p className="text-lg font-semibold">Member Name</p>
-                  <p className="text-sm text-emerald-700">Role / Title</p>
+                  <p className="text-lg font-semibold">Ekaterina Kushnir</p>
+                  <p className="text-sm text-emerald-700">Web Developer</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                  <a
+                    href="linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                    <LinkedIn className="w-8 h-8" />
+                  </a>
+                  <a
+                    href="github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
+                    <GitHub className="w-8 h-8" />
+                  </a>
                 </div>
               </li>
               <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
                 <div>
-                  <p className="text-lg font-semibold">Member Name</p>
-                  <p className="text-sm text-emerald-700">Role / Title</p>
+                  <p className="text-lg font-semibold">Rika Miyata</p>
+                  <p className="text-sm text-emerald-700">Web Developer</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                  <a
+                    href="linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                    <LinkedIn className="w-8 h-8" />
+                  </a>
+                  <a
+                    href="github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
+                    <GitHub className="w-8 h-8" />
+                  </a>
                 </div>
               </li>
               <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
                 <div>
-                  <p className="text-lg font-semibold">Member Name</p>
-                  <p className="text-sm text-emerald-700">Role / Title</p>
+                  <p className="text-lg font-semibold">Jazz Bullecer</p>
+                  <p className="text-sm text-emerald-700">Web Developer</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                  <a
+                    href="linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                    <LinkedIn className="w-8 h-8" />
+                  </a>
+                  <a
+                    href="github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
+                    <GitHub className="w-8 h-8" />
+                  </a>
                 </div>
               </li>
               <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
                 <div>
-                  <p className="text-lg font-semibold">Member Name</p>
-                  <p className="text-sm text-emerald-700">Role / Title</p>
+                  <p className="text-lg font-semibold">Mingshi</p>
+                  <p className="text-sm text-emerald-700">
+                    Web Developer / UI Designer
+                  </p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                  <a
+                    href="linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                    <LinkedIn className="w-8 h-8" />
+                  </a>
+                  <a
+                    href="github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
+                    <GitHub className="w-8 h-8" />
+                  </a>
                 </div>
               </li>
               <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
                 <div>
-                  <p className="text-lg font-semibold">Member Name</p>
-                  <p className="text-sm text-emerald-700">Role / Title</p>
+                  <p className="text-lg font-semibold">Kevin Llanos</p>
+                  <p className="text-sm text-emerald-700">Web Developer</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                  <a
+                    href="linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                    <LinkedIn className="w-8 h-8" />
+                  </a>
+                  <a
+                    href="github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
+                    <GitHub className="w-8 h-8" />
+                  </a>
                 </div>
               </li>
               <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
                 <div>
-                  <p className="text-lg font-semibold">Member Name</p>
-                  <p className="text-sm text-emerald-700">Role / Title</p>
+                  <p className="text-lg font-semibold">Jorge Alvarado</p>
+                  <p className="text-sm text-emerald-700">Web Developer</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                  <a
+                    href="linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                    <LinkedIn className="w-8 h-8" />
+                  </a>
+                  <a
+                    href="github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
+                    <GitHub className="w-8 h-8" />
+                  </a>
                 </div>
               </li>
               <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
                 <div>
-                  <p className="text-lg font-semibold">Member Name</p>
-                  <p className="text-sm text-emerald-700">Role / Title</p>
+                  <p className="text-lg font-semibold">Ruben Aguilar</p>
+                  <p className="text-sm text-emerald-700">
+                    Web Developer / UI Designer
+                  </p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                  <a
+                    href="linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
-                  <span
-                    className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center"
-                    aria-hidden="true"
+                    <LinkedIn className="w-8 h-8" />
+                  </a>
+                  <a
+                    href="github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    ●
-                  </span>
+                    <GitHub className="w-8 h-8" />
+                  </a>
                 </div>
               </li>
               {/* Duplicate / map as needed */}
@@ -193,9 +235,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow">
-                      GH
-                    </span>
+                    <GitHub className="w-8 h-8" />
                     <span className="text-sm">
                       Github Project Link - November 2025
                     </span>
@@ -207,23 +247,20 @@ const Footer = () => {
                 <h3 className="text-2xl font-semibold mb-4">Technologies</h3>
                 <ul className="flex flex-wrap items-center gap-3">
                   {/* placeholders for tech icons */}
-                  <li className="w-12 h-12 bg-white/90 rounded flex items-center justify-center">
-                    TS
+                  <li>
+                    <Nextjs className="w-12 h-12" />
                   </li>
-                  <li className="w-12 h-12 bg-white/90 rounded flex items-center justify-center">
-                    R
+                  <li>
+                    <TypeScript className="w-12 h-12" />
                   </li>
-                  <li className="w-12 h-12 bg-white/90 rounded flex items-center justify-center">
-                    T
+                  <li>
+                    <TailwindCSS className="w-12 h-12" />
                   </li>
-                  <li className="w-12 h-12 bg-white/90 rounded flex items-center justify-center">
-                    F
+                  <li>
+                    <Java className="w-12 h-12" />
                   </li>
-                  <li className="w-12 h-12 bg-white/90 rounded flex items-center justify-center">
-                    N
-                  </li>
-                  <li className="w-12 h-12 bg-white/90 rounded flex items-center justify-center">
-                    D
+                  <li>
+                    <Figma className="w-12 h-12" />
                   </li>
                 </ul>
               </div>
