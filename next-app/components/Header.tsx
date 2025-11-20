@@ -2,83 +2,92 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-
 import { Menu, Moon, X } from 'lucide-react';
+import { signOut } from 'next-auth/react';
 
-const Header = () => {
+interface HeaderProps {
+  session: {
+    user?: {
+      name?: string | null;
+    };
+  } | null;
+}
+
+const Header = ({ session }: HeaderProps) => {
   const [isActive, setIsActive] = useState(false);
-
-  const handleClick = () => setIsActive(!isActive);
 
   return (
     <>
-      <header
-        className="flex h-14 md:h-24 w-full justify-between items-center fixed top-0 z-20 
-   font-semibold text-base md:text-lg p-4 md:px-16 text-[#636363]"
-      >
-        <Link
-          href="/"
-          onClick={() => setIsActive(false)}
-          className="font-bold md:text-xl text-[#4D77FF]"
-        >
+      <header className="flex h-14 md:h-20 w-full items-center fixed top-0 z-20 font-semibold text-base md:text-lg px-4 md:px-8 text-[#636363] bg-white shadow-sm">
+        <Link href="/" className="font-bold md:text-xl text-[#4D77FF] mr-6">
           Chingu Demographics
         </Link>
 
-        {/* toggle mobile */}
-        <div onClick={handleClick} className="md:hidden">
-          {isActive ? <X /> : <Menu />}
-        </div>
-        {/* desktop nav */}
-        <nav className="hidden md:inline-flex items-center gap-5">
-          <ul className="flex items-center gap-10">
-            <li>
-              <div className="w-8 h-8 flex items-center justify-center rounded-full bg-[#BFCDD2] cursor-pointer">
-                <Moon className="text-sm text-black" />
-              </div>
-            </li>
-            <li>
-              <Link href="/map">map</Link>
-            </li>
-            <li>
-              <Link href="/list">list</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      {/* mobile full screen nav */}
-      {isActive && (
-        <nav>
-          <ul
-            className="
-            fixed inset-0 bg-white z-10
-            flex flex-col items-center justify-center
-            gap-10 text-4xl transition-transform duration-500 ease-out md:hidden
+        <nav className="hidden md:flex items-center gap-6 flex-1">
+          <Link href="/map">map</Link>
+          <Link href="/list">list</Link>
 
-          "
-          >
-            <li>
-              <Link href="/" onClick={() => setIsActive(false)}>
-                HOME
+          <div className="ml-auto flex items-center gap-6">
+            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-[#BFCDD2]">
+              <Moon className="w-4 h-4 text-black" />
+            </button>
+
+            {session?.user?.name && <span>Welcome {session.user.name}</span>}
+
+            {session ? (
+              <button onClick={() => signOut()} className="cursor-pointer">
+                sign out
+              </button>
+            ) : (
+              <Link href="/api/auth/signin" className="cursor-pointer">
+                sign in
               </Link>
-            </li>
-            <li>
-              <Link href="/map" onClick={() => setIsActive(false)}>
-                MAP
-              </Link>
-            </li>
-            <li>
-              <Link href="/list" onClick={() => setIsActive(false)}>
-                LIST
-              </Link>
-            </li>
-            <li>
-              <Link href="/" onClick={() => setIsActive(false)}>
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#BFCDD2] ">
-                  <Moon className="text-4xl" />
-                </div>
-              </Link>
-            </li>
-          </ul>
+            )}
+          </div>
+        </nav>
+
+        <button
+          onClick={() => setIsActive(!isActive)}
+          className="md:hidden ml-auto"
+        >
+          {isActive ? <X /> : <Menu />}
+        </button>
+      </header>
+
+      {isActive && (
+        <nav className="fixed inset-0 bg-white z-10 flex flex-col items-center justify-center gap-10 text-4xl md:hidden">
+          <Link href="/" onClick={() => setIsActive(false)}>
+            HOME
+          </Link>
+          <Link href="/map" onClick={() => setIsActive(false)}>
+            MAP
+          </Link>
+          <Link href="/list" onClick={() => setIsActive(false)}>
+            LIST
+          </Link>
+
+          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-[#BFCDD2]">
+            <Moon className="w-6 h-6" />
+          </button>
+
+          {session?.user?.name && (
+            <span className="text-2xl">Welcome {session.user.name}</span>
+          )}
+
+          {session ? (
+            <button
+              onClick={() => {
+                signOut();
+                setIsActive(false);
+              }}
+            >
+              SIGN OUT
+            </button>
+          ) : (
+            <Link href="/api/auth/signin" onClick={() => setIsActive(false)}>
+              SIGN IN
+            </Link>
+          )}
         </nav>
       )}
     </>
