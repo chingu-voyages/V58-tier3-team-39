@@ -2,10 +2,18 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-
 import { Menu, Moon, X } from 'lucide-react';
+import { signOut } from 'next-auth/react';
 
-const Header = () => {
+interface HeaderProps {
+  session: {
+    user?: {
+      name?: string | null;
+    };
+  } | null;
+}
+
+const Header = ({ session }: HeaderProps) => {
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = () => setIsActive(!isActive);
@@ -42,6 +50,18 @@ const Header = () => {
             <li>
               <Link href="/list">list</Link>
             </li>
+            {session?.user?.name && (
+              <li>
+                <span className="text-sm">Welcome {session.user.name}</span>
+              </li>
+            )}
+            <li>
+              {session ? (
+                <button onClick={() => signOut()}>sign out</button>
+              ) : (
+                <Link href="/api/auth/signin">sign in</Link>
+              )}
+            </li>
           </ul>
         </nav>
       </header>
@@ -70,6 +90,30 @@ const Header = () => {
               <Link href="/list" onClick={() => setIsActive(false)}>
                 LIST
               </Link>
+            </li>
+            {session?.user?.name && (
+              <li>
+                <span className="text-2xl">Welcome {session.user.name}</span>
+              </li>
+            )}
+            <li>
+              {session ? (
+                <button
+                  onClick={() => {
+                    signOut();
+                    setIsActive(false);
+                  }}
+                >
+                  SIGN OUT
+                </button>
+              ) : (
+                <Link
+                  href="/api/auth/signin"
+                  onClick={() => setIsActive(false)}
+                >
+                  SIGN IN
+                </Link>
+              )}
             </li>
             <li>
               <Link href="/" onClick={() => setIsActive(false)}>
