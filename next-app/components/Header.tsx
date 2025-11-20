@@ -32,18 +32,14 @@ const Header = ({ session }: HeaderProps) => {
               <Moon className="w-4 h-4 text-black" />
             </button>
 
-            {session?.user?.name && (
-              <span className="text-sm">Welcome {session.user.name}</span>
-            )}
+            {session?.user?.name && <span>Welcome {session.user.name}</span>}
 
             {session ? (
-              <button
-                onClick={() => signOut()}
-              >
+              <button onClick={() => signOut()} className="cursor-pointer">
                 sign out
               </button>
             ) : (
-              <Link href="/api/auth/signin">
+              <Link href="/api/auth/signin" className="cursor-pointer">
                 sign in
               </Link>
             )}
