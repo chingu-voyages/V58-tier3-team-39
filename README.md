@@ -38,3 +38,4 @@ coding!
 - Kevin Llanos: [GitHub](https://github.com/KevinLlano) / [LinkedIn](https://linkedin.com/in/kevinllanos7)
 - Ekaterina Kushnir: [GitHub](https://github.com/katiaku) / [LinkedIn](https://www.linkedin.com/in/ekaterina-kushnir-mikhaylova/)
 - Jorge Alvarado: [GitHub](https://github.com/alvarado08) / [LinkedIn](https://www.linkedin.com/in/jorgep-alvarado/)
+- Jazz Bullecer: [GitHub](https://github.com/jazxbx) / [LinkedIn](https://www.linkedin.com/in/jazz-bullecer-89780928a)

@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
     "@prisma/client": "^6.19.0",
+    "lucide-react": "^0.554.0",
     "next": "16.0.1",
     "next-auth": "^5.0.0-beta.30",
     "prisma": "^6.19.0",
