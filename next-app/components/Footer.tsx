@@ -28,14 +28,14 @@ const Footer = () => {
                 <div className="flex items-center gap-3">
                   {/* icon placeholders */}
                   <a
-                    href="linkedin.com"
+                    href="https://linkedin.com/in/valeriylysenko"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <LinkedIn className="w-8 h-8" />
                   </a>
                   <a
-                    href="github.com"
+                    href="https://github.com/Valeriusdev"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -62,14 +62,14 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="linkedin.com"
+                    href="https://www.linkedin.com/in/ekaterina-kushnir-mikhaylova/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <LinkedIn className="w-8 h-8" />
                   </a>
                   <a
-                    href="github.com"
+                    href="https://github.com/katiaku"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -84,14 +84,14 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="linkedin.com"
+                    href="https://www.linkedin.com/in/rika-miyata-4bab99243/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <LinkedIn className="w-8 h-8" />
                   </a>
                   <a
-                    href="github.com"
+                    href="https://github.com/Tayrika"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -106,14 +106,14 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="linkedin.com"
+                    href="https://www.linkedin.com/in/jazz-bullecer-89780928a"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <LinkedIn className="w-8 h-8" />
                   </a>
                   <a
-                    href="github.com"
+                    href="https://github.com/jazxbx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -123,21 +123,19 @@ const Footer = () => {
               </li>
               <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
                 <div>
-                  <p className="text-lg font-semibold">Mingshi</p>
-                  <p className="text-sm text-emerald-700">
-                    Web Developer / UI Designer
-                  </p>
+                  <p className="text-lg font-semibold">Mingshi Hui</p>
+                  <p className="text-sm text-emerald-700">UX / UI Designer</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="linkedin.com"
+                    href="https://www.linkedin.com/in/mingshi-hui/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <LinkedIn className="w-8 h-8" />
                   </a>
                   <a
-                    href="github.com"
+                    href="https://github.com/mingshi0821"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -152,14 +150,14 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="linkedin.com"
+                    href="https://linkedin.com/in/kevinllanos7"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <LinkedIn className="w-8 h-8" />
                   </a>
                   <a
-                    href="github.com"
+                    href="https://github.com/KevinLlano"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -174,14 +172,14 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="linkedin.com"
+                    href="https://www.linkedin.com/in/jorgep-alvarado/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <LinkedIn className="w-8 h-8" />
                   </a>
                   <a
-                    href="github.com"
+                    href="https://github.com/alvarado08"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -192,20 +190,18 @@ const Footer = () => {
               <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
                 <div>
                   <p className="text-lg font-semibold">Ruben Aguilar</p>
-                  <p className="text-sm text-emerald-700">
-                    Web Developer / UI Designer
-                  </p>
+                  <p className="text-sm text-emerald-700">UX / UI Designer</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="linkedin.com"
+                    href="https://www.linkedin.com/in/ruben-aguilar-/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <LinkedIn className="w-8 h-8" />
                   </a>
                   <a
-                    href="github.com"
+                    href="https://github.com/rubenaguilardev"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -230,7 +226,7 @@ const Footer = () => {
                 </h3>
                 <div className="flex items-center gap-4 mb-0">
                   <a
-                    href="#"
+                    href="https://github.com/chingu-voyages/V58-tier3-team-39"
                     className="flex items-center gap-3 text-emerald-900 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
