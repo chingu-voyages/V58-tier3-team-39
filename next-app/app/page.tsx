@@ -8,7 +8,7 @@ export default async function Home() {
   const session = await auth();
 
   return (
-    <div className="flex flex-col w-screen">
+    <div className="flex flex-col w-full">
       <section className="h-[70vh] w-full">
         <Header session={session} />
       </section>
