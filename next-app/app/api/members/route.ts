@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { mockMembers } from '../../mocks/members';
+import { getMembers } from '../../services/memberService';
 
-export async function GET() {
-  return NextResponse.json(mockMembers);
+export function GET() {
+  return NextResponse.json(getMembers());
 }

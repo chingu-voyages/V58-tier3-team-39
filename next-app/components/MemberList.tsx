@@ -26,14 +26,14 @@ export default async function MemberList() {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-purple-900 to-[#4c77fe] rounded-2xl shadow-lg w-full py-1">
-      <table className="w-full border-collapse border-spacing-y-4">
+    <div className="bg-linear-to-br from-purple-900 to-[#4c77fe] rounded-2xl shadow-lg py-1 w-full overflow-x-auto">
+      <table className="border-collapse w-full table-fixed min-w-[700px]">
         <thead className="border-b-2 border-white/50">
           <tr>
             {headers.map((header, i) => (
               <th
                 key={i}
-                className="text-left font-bold text-lg text-white px-6 py-4"
+                className="text-left font-bold text-lg text-white px-4 py-2 whitespace-nowrap truncate overflow-clip"
               >
                 {header}
               </th>
@@ -44,23 +44,32 @@ export default async function MemberList() {
         <tbody>
           {members.map((m, i) => (
             <tr
-              key={m.id}
+              key={i}
               className={
                 i < members.length - 1 ? 'border-b border-white/30' : ''
               }
             >
-              <td className="px-6 py-4 text-white">
-                <div className="font-medium">{m.role}</div>
-                <div className="text-sm text-white/80">ID: {m.id}</div>
+              <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                {m.roleType || 'N/A'}
               </td>
-              <td className="px-6 py-4 text-white">{m.gender}</td>
-              <td className="px-6 py-4 text-white">{m.country.abbr}</td>
-              <td className="px-6 py-4 text-white">{m.joinedAt}</td>
-              <td className="px-6 py-4 font-semibold text-white">
-                Voyage {m.voyageNumber}
+              <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                {m.gender || 'N/A'}
               </td>
-              <td className="px-6 py-4 text-white">{m.tier.solo}</td>
-              <td className="px-6 py-4 text-white">{m.tier.voyage}</td>
+              <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                {m.countryCode || 'N/A'}
+              </td>
+              <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                {m.timestamp || 'N/A'}
+              </td>
+              <td className="px-4 py-2 text-white font-semibold whitespace-nowrap truncate overflow-clip">
+                {m.voyage || 'N/A'}
+              </td>
+              <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                {m.soloProjectTier || 'N/A'}
+              </td>
+              <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                {m.voyageTier || 'N/A'}
+              </td>
             </tr>
           ))}
         </tbody>
