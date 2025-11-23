@@ -2,7 +2,7 @@ import { Member } from '../types/member';
 
 async function getMembers(): Promise<Member[]> {
   const res = await fetch('http://localhost:3000/api/members', {
-    next: { revalidate: 0 },
+    cache: 'force-cache',
   });
 
   if (!res.ok) {
