@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getMembers } from '../../services/memberService';
 
-export function GET() {
-  return NextResponse.json(getMembers());
+export async function GET() {
+  const members = getMembers();
+  return NextResponse.json(members);
 }
