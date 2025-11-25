@@ -8,19 +8,10 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * JPA Specification for dynamic member filtering
- * Builds queries based on non-null filter criteria
- */
+
 public class MemberSpecification {
 
-    /**
-     * Creates a dynamic specification based on the provided filter
-     * Only adds predicates for non-null filter fields
-     *
-     * @param filter the filter criteria
-     * @return Specification for querying members
-     */
+
     public static Specification<Member> filterMembers(MemberFilter filter) {
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();

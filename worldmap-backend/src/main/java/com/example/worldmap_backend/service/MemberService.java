@@ -20,7 +20,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    // Approximate coordinates for countries (for map visualization)
+    // Approximate coordinates for countries (for map visualization) dummy data
     private static final Map<String, double[]> COUNTRY_COORDINATES = new HashMap<>();
 
     static {

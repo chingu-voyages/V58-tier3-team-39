@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * DTO for filtering members based on various criteria
- */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

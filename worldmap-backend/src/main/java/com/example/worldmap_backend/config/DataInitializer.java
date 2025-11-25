@@ -52,13 +52,12 @@ public class DataInitializer implements CommandLineRunner {
         member.setGender(gender);
         member.setCountry(country);
         member.setRoleType(roleType);
-        member.setRole(role);
-        member.setSoloProjectTier(soloProjectTier);
-        member.setVoyageTier(voyageTier);
+        member.setVoyageRole(role);
+        member.setSoloProjectTier(soloProjectTier == null ? null : String.valueOf(soloProjectTier));
+        member.setVoyageTier(voyageTier == null ? null : String.valueOf(voyageTier));
         member.setVoyage(voyage);
         member.setTimestamp(timestamp);
         member.setJoinYear(timestamp.getYear());
         return member;
     }
 }
-

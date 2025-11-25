@@ -18,32 +18,51 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "timestamp")
+    private LocalDateTime timestamp;
+
     @Column(name = "gender")
     private String gender;
+
+    @Column(name = "country_code")
+    private String countryCode;
+
+    @Column(name = "timezone")
+    private String timezone;
+
+    @Column(name = "goal")
+    private String goal;
+
+    @Column(name = "goal_other")
+    private String goalOther;
+
+    @Column(name = "source")
+    private String source;
+
+    @Column(name = "source_other")
+    private String sourceOther;
 
     @Column(name = "country")
     private String country;
 
+    @Column(name = "solo_project_tier")
+    private String soloProjectTier;
+
     @Column(name = "role_type")
     private String roleType;
 
-    @Column(name = "role")
-    private String role;
-
-    @Column(name = "solo_project_tier")
-    private Integer soloProjectTier;
-
-    @Column(name = "voyage_tier")
-    private Integer voyageTier;
+    @Column(name = "voyage_role")
+    private String voyageRole;
 
     @Column(name = "voyage")
     private String voyage;
 
+    @Column(name = "voyage_tier")
+    private String voyageTier;
+
     @Column(name = "join_year")
     private Integer joinYear;
 
-    @Column(name = "timestamp")
-    private LocalDateTime timestamp;
 
     @PrePersist
     @PreUpdate

@@ -19,19 +19,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    /**
-     * Get all members or filtered members based on query parameters
-     *
-     * @param gender filter by gender
-     * @param country filter by country
-     * @param joinYear filter by join year
-     * @param roleType filter by role type
-     * @param role filter by role
-     * @param soloProjectTier filter by solo project tier
-     * @param voyageTier filter by voyage tier
-     * @param voyage filter by voyage
-     * @return list of members
-     */
+
     @GetMapping
     public ResponseEntity<List<Member>> getMembers(
             @RequestParam(required = false) String gender,
@@ -60,12 +48,7 @@ public class MemberController {
         return ResponseEntity.ok(members);
     }
 
-    /**
-     * Get a single member by ID
-     *
-     * @param id member ID
-     * @return member details
-     */
+
     @GetMapping("/{id}")
     public ResponseEntity<Member> getMemberById(@PathVariable Long id) {
         return memberService.getMemberById(id)
@@ -73,23 +56,14 @@ public class MemberController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    /**
-     * Create a new member
-     *
-     * @param member member to create
-     * @return created member
-     */
+
     @PostMapping
     public ResponseEntity<Member> createMember(@RequestBody Member member) {
         Member savedMember = memberService.saveMember(member);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMember);
     }
 
-    /**
-     * Get country statistics with member counts and coordinates
-     *
-     * @return list of country statistics
-     */
+
     @GetMapping("/stats/countries")
     public ResponseEntity<List<CountryStats>> getCountryStats() {
         List<CountryStats> stats = memberService.getCountryStats();

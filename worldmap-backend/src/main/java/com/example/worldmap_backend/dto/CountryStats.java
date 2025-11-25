@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * DTO for country statistics including member count and coordinates
- */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
