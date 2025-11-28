@@ -5,3 +5,10 @@ body {
   width: 100%;
   min-height: 100vh;
 }
+
+@theme {
+  --color-red: #b42263;
+  --color-green: #0cdf89;
+  --color-blue: #0593bc;
+  --color-purple: #b42263;
+}

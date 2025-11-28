@@ -1,6 +1,17 @@
+'use client';
+
+import Link from 'next/link';
 import Chingu from './icons/Chingu';
+import Button from './ui/Button';
 
 const Hero = () => {
+  const stats = [
+    { value: '250+', label: 'Total Members', color: 'text-red' },
+    { value: '20+', label: 'Countries', color: 'text-green' },
+    { value: '30', label: 'Active Teams', color: 'text-blue' },
+    { value: '3', label: 'Tier Levels', color: 'text-purple' },
+  ];
+
   return (
     <div className="h-screen bg-[#F1F5F9] flex flex-col justify-center items-center px-4 md:px-8 text-center gap-6 md:gap-7 lg:gap-10 mt-10 lg:mt-0">
       <Chingu />
@@ -8,35 +19,35 @@ const Hero = () => {
         Discover the Global <span className="text-[#4D77FF]">Chingu </span>
         Community
       </h1>
-      <h3 className="font-medium text-[#636363] md:max-w-2/4 md:text-xl">
+      <h3 className="font-medium text-[#636363] md:max-w-2/4 md:text-2xl">
         Learn more about where our members are located and the demographics of
         our members.
       </h3>
       <div className="flex gap-5">
-        <button className="p-1 rounded bg-[#4D77FF] text-white">
-          Map View
-        </button>
-        <button className="p-1 rounded border border-[#4D77FF] text-[#232925]">
-          List View
-        </button>
+        <Link href="/map">
+          <Button>Map View</Button>
+        </Link>
+        <Link href="/list">
+          <Button variant="secondary">List View</Button>
+        </Link>
       </div>
-      <div className="flex flex-col gap-4 md:gap-16 lg:gap-20 md:flex-row md:mt-3 lg:mt-5">
-        <div>
-          <p className="text-2xl md:text-3xl lg:text-5xl font-medium">250+</p>
-          <p className="text-[#636363] mt-1 md:mt-2 text-sm">Total Members</p>
-        </div>
-        <div>
-          <p className="text-2xl md:text-3xl lg:text-5xl font-medium">20+</p>
-          <p className="text-[#636363] mt-1 md:mt-2 text-sm">Countries</p>
-        </div>
-        <div>
-          <p className="text-2xl md:text-3xl lg:text-5xl font-medium">20+</p>
-          <p className="text-[#636363] mt-1 md:mt-2 text-sm">Active Teams</p>
-        </div>
-        <div>
-          <p className="text-2xl md:text-3xl lg:text-5xl font-medium">3</p>
-          <p className="text-[#636363] mt-1 md:mt-2 text-sm">Tier Levels</p>
-        </div>
+      {/* <div className="bg-white w-[600px] h-[300px] p-3">
+        <Button onClick={() => console.log('clicked')} variant="secondary">
+          Dashboard
+        </Button>
+      </div> */}
+
+      <div className="flex flex-col gap-4 md:gap-16 lg:gap-24 md:flex-row md:mt-3 lg:mt-10">
+        {stats.map((item, i) => (
+          <div key={i}>
+            <p className={`text-3xl lg:text-5xl font-medium ${item.color}`}>
+              {item.value}
+            </p>
+            <p className="text-[#636363] font-medium mt-1 md:mt-4 text-lg md:text-xl">
+              {item.label}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );
