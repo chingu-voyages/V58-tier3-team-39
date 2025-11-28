@@ -3,6 +3,7 @@ import { getCountryCoordinates } from './countryCoordinates';
 
 export interface CountryStats {
   countryName: string;
+  countryCode?: string;
   coordinates: [number, number] | null;
   count: number;
   topRole: string;
@@ -191,6 +192,9 @@ export function processMemberData(
 
   countryMap.forEach((membersInCountry, countryName) => {
     const coordinates = getCountryCoordinates(countryName);
+    const countryCode = membersInCountry
+      .map((member) => member['Country Code'] || member.countryCode)
+      .find((code) => !!code);
 
     const roleCounts = new Map<string, number>();
     membersInCountry.forEach((member) => {
@@ -214,6 +218,7 @@ export function processMemberData(
 
     countryStats.push({
       countryName,
+      countryCode: countryCode ? countryCode.toString() : undefined,
       coordinates,
       count: membersInCountry.length,
       topRole,

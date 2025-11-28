@@ -25,7 +25,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${roboto.variable} antialiased`}>
+      <body className={`${roboto.variable} antialiased`} suppressHydrationWarning>
         <SessionProvider session={session}>
           <Header session={session} />
           {children}

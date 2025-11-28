@@ -26,7 +26,6 @@ export default function MapPage() {
   const [memberCount, setMemberCount] = useState(0);
   const [countryCount, setCountryCount] = useState(0);
 
-  // Process member data with filters
   const countryStats = useMemo(() => {
     const stats = processMemberData(chinguData, filters);
     return stats;

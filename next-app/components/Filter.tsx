@@ -35,7 +35,7 @@ const DEFAULT_FILTERS: FilterState = {
 const PREDEFINED_ROLES = [
   'Product Owner',
   'Scrum Master',
-  'Web Developer',
+  'Developer',
   'UI/UX Designer',
   'Data Scientist',
   'Voyage Guide',
@@ -103,14 +103,23 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
       }
     });
 
+    const currentYear = new Date().getFullYear();
+    const explicitYears: string[] = [];
+    for (let year = currentYear; year >= 2017; year--) {
+      explicitYears.push(year.toString());
+    }
+
+    const derivedYears = Array.from(yearSet)
+      .map((year) => year.toString())
+      .filter((year) => !explicitYears.includes(year));
+
     return {
       countries: ['All Countries', ...Array.from(countrySet).sort()],
       genders: ['All Genders', ...Array.from(genderSet).sort()],
       years: [
         'All Years',
-        ...Array.from(yearSet)
-          .sort((a, b) => b - a)
-          .map((year) => year.toString()),
+        ...explicitYears,
+        ...derivedYears.sort((a, b) => Number(b) - Number(a)),
       ],
     };
   }, [members]);
@@ -172,7 +181,7 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                 <select
                   value={filters.country}
                   onChange={(e) => handleFilterChange('country', e.target.value)}
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {countries.map((country) => (
                     <option key={country} value={country}>
@@ -188,7 +197,7 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                 <select
                   value={filters.gender}
                   onChange={(e) => handleFilterChange('gender', e.target.value)}
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {genders.map((gender) => (
                     <option key={gender} value={gender}>
@@ -206,7 +215,7 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                   onChange={(e) =>
                     handleFilterChange('yearJoined', e.target.value)
                   }
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {years.map((year) => (
                     <option key={year} value={year}>
@@ -222,7 +231,7 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                 <select
                   value={filters.roleType}
                   onChange={(e) => handleFilterChange('roleType', e.target.value)}
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {ROLE_TYPE_OPTIONS.map((type) => (
                     <option key={type} value={type}>
@@ -238,7 +247,7 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                 <select
                   value={filters.role}
                   onChange={(e) => handleFilterChange('role', e.target.value)}
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {['All Roles', ...PREDEFINED_ROLES].map((role) => (
                     <option key={role} value={role}>
@@ -256,7 +265,7 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                   onChange={(e) =>
                     handleFilterChange('soloProjectTier', e.target.value)
                   }
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {TIER_OPTIONS.map((tier) => (
                     <option key={tier} value={tier}>
@@ -274,7 +283,7 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                   onChange={(e) =>
                     handleFilterChange('voyageTier', e.target.value)
                   }
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {TIER_OPTIONS.map((tier) => (
                     <option key={tier} value={tier}>
@@ -290,7 +299,7 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                 <select
                   value={filters.voyage}
                   onChange={(e) => handleFilterChange('voyage', e.target.value)}
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {VOYAGE_OPTIONS.map((voyage) => (
                     <option key={voyage} value={voyage}>
@@ -304,13 +313,13 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
             <div className="flex flex-col gap-3 md:flex-row md:items-center">
               <button
                 onClick={handleApplyFilters}
-                className="w-full rounded-lg bg-[#4D77FF] px-6 py-3 text-base font-semibold text-white hover:cursor-pointer md:w-auto"
+                className="w-full rounded-lg bg-[#4D77FF] px-6 py-2 text-base font-semibold text-white hover:cursor-pointer md:w-auto"
               >
                 Apply Filters
               </button>
               <button
                 onClick={handleClearAll}
-                className="w-full rounded-lg bg-white border border-[#4D77FF] px-6 py-3 text-base font-semibold text-[#4D77FF] hover:cursor-pointer md:w-auto"
+                className="w-full rounded-lg bg-white border border-[#4D77FF] px-6 py-2 text-base font-semibold text-[#4D77FF] hover:cursor-pointer md:w-auto"
               >
                 Clear All
               </button>
