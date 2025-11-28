@@ -14,27 +14,101 @@ export interface MemberData {
   [key: string]: any;
 }
 
+const normalize = (value: unknown) =>
+  typeof value === 'string' ? value.trim().toLowerCase() : '';
+
+const toDisplayLabel = (value: string) =>
+  value
+    .toLowerCase()
+    .split(/([\s/-])/)
+    .map((segment) =>
+      segment.match(/[\s/-]/)
+        ? segment
+        : segment.charAt(0).toUpperCase() + segment.slice(1)
+    )
+    .join('');
+
+const mapRoleTypeCategory = (value?: string) => {
+  const normalized = normalize(value);
+  if (!normalized) {
+    return 'unknown';
+  }
+
+  if (
+    normalized.includes('python') ||
+    normalized.includes('data') ||
+    normalized.includes('ml') ||
+    normalized.includes('ai')
+  ) {
+    return 'python';
+  }
+
+  return 'web';
+};
+
+const matchesSelection = (
+  filterValue: string,
+  candidate: string | undefined,
+  defaultLabel: string
+) => {
+  if (!filterValue || filterValue === defaultLabel) {
+    return true;
+  }
+  return normalize(candidate) === normalize(filterValue);
+};
+
+const matchesTier = (filterValue: string, candidate: string | undefined) => {
+  if (!filterValue || filterValue === 'All Tiers') {
+    return true;
+  }
+  const desiredTier = normalizeTierValue(filterValue);
+  if (!desiredTier) {
+    return true;
+  }
+  return normalizeTierValue(candidate) === desiredTier;
+};
+
+const matchesVoyage = (filterValue: string, candidate: string | undefined) => {
+  if (!filterValue || filterValue === 'All Voyages') {
+    return true;
+  }
+  return (candidate || '').trim().toUpperCase() === filterValue.toUpperCase();
+};
+
+const normalizeTierValue = (value?: string) => {
+  const normalized = normalize(value);
+  if (!normalized) return '';
+  const match = normalized.match(/(\d+)/);
+  if (match) {
+    return `tier ${match[1]}`;
+  }
+  if (normalized.startsWith('tier')) {
+    return normalized;
+  }
+  return normalized;
+};
+
 export function processMemberData(
   members: MemberData[],
   filters?: FilterState
 ): CountryStats[] {
-  // Apply filters if provided
   let filteredMembers = members;
 
   if (filters) {
     filteredMembers = members.filter((member) => {
-      // Search filter
-      if (filters.search) {
-        const searchLower = filters.search.toLowerCase();
-        const countryName =
-          member['Country name (from Country)'] || member.countryName || '';
-        const role = member['Voyage Role'] || member.voyageRole || '';
-        const roleType = member['Role Type'] || member.roleType || '';
-        const gender = member.Gender || member.gender || '';
-        const soloTier =
-          member['Solo Project Tier'] || member.soloProjectTier || '';
-        const voyageTier = member['Voyage Tier'] || member.voyageTier || '';
+      const countryName =
+        member['Country name (from Country)'] || member.countryName || '';
+      const role = member['Voyage Role'] || member.voyageRole || '';
+      const roleType = member['Role Type'] || member.roleType || '';
+      const gender = member.Gender || member.gender || '';
+      const soloTier = member['Solo Project Tier'] || member.soloProjectTier;
+      const voyageTier = member['Voyage Tier'] || member.voyageTier;
+      const voyage =
+        member['Voyage (from Voyage Signups)'] || member.voyage || '';
 
+      // Search filter
+      if (filters.search?.trim()) {
+        const searchLower = filters.search.trim().toLowerCase();
         const searchableText = [
           countryName,
           role,
@@ -42,7 +116,11 @@ export function processMemberData(
           gender,
           soloTier,
           voyageTier,
+          voyage,
+          member.goal || member.Goal || '',
+          member['Role Type'] || '',
         ]
+          .filter(Boolean)
           .join(' ')
           .toLowerCase();
 
@@ -51,86 +129,53 @@ export function processMemberData(
         }
       }
 
-      // Country filter
-      if (filters.country && filters.country !== 'All Countries') {
-        const countryName =
-          member['Country name (from Country)'] || member.countryName || '';
-        if (countryName !== filters.country) {
-          return false;
-        }
+      if (!matchesSelection(filters.country, countryName, 'All Countries')) {
+        return false;
       }
 
-      // Role filter
-      if (filters.role && filters.role !== 'All Roles') {
-        const role = member['Voyage Role'] || member.voyageRole || '';
-        if (role !== filters.role) {
-          return false;
-        }
+      if (!matchesSelection(filters.role, role, 'All Roles')) {
+        return false;
       }
 
-      // Gender filter
-      if (filters.gender && filters.gender !== 'All Genders') {
-        const gender = member.Gender || member.gender || '';
-        if (gender !== filters.gender) {
-          return false;
-        }
+      if (!matchesSelection(filters.gender, gender, 'All Genders')) {
+        return false;
       }
 
-      // Solo Project Tier filter
-      if (
-        filters.soloProjectTier &&
-        filters.soloProjectTier !== 'All Tiers'
-      ) {
-        const soloTier =
-          member['Solo Project Tier'] || member.soloProjectTier || '';
-        if (soloTier !== filters.soloProjectTier) {
-          return false;
-        }
+      if (!matchesTier(filters.soloProjectTier, soloTier)) {
+        return false;
       }
 
-      // Year Joined filter
+      if (!matchesTier(filters.voyageTier, voyageTier)) {
+        return false;
+      }
+
       if (filters.yearJoined && filters.yearJoined !== 'All Years') {
-        const timestamp = member.Timestamp || member.timestamp || '';
-        if (timestamp) {
-          const year = new Date(timestamp).getFullYear();
-          if (year.toString() !== filters.yearJoined) {
-            return false;
-          }
-        } else {
+        const timestamp = member.Timestamp || member.timestamp;
+        if (!timestamp) {
+          return false;
+        }
+        const year = new Date(timestamp).getFullYear();
+        if (Number.isNaN(year) || year.toString() !== filters.yearJoined) {
           return false;
         }
       }
 
-      // Voyage Tier filter
-      if (filters.voyageTier && filters.voyageTier !== 'All Tiers') {
-        const voyageTier = member['Voyage Tier'] || member.voyageTier || '';
-        if (voyageTier !== filters.voyageTier) {
-          return false;
-        }
-      }
-
-      // Role Type filter
       if (filters.roleType && filters.roleType !== 'All Role Types') {
-        const roleType = member['Role Type'] || member.roleType || '';
-        if (roleType !== filters.roleType) {
+        const desiredRoleType = normalize(filters.roleType);
+        const memberRoleCategory = mapRoleTypeCategory(roleType);
+        if (memberRoleCategory !== desiredRoleType) {
           return false;
         }
       }
 
-      // Voyage filter
-      if (filters.voyage && filters.voyage !== 'All Voyages') {
-        const voyage =
-          member['Voyage (from Voyage Signups)'] || member.voyage || '';
-        if (voyage !== filters.voyage) {
-          return false;
-        }
+      if (!matchesVoyage(filters.voyage, voyage)) {
+        return false;
       }
 
       return true;
     });
   }
 
-  // Group by country
   const countryMap = new Map<string, any[]>();
 
   filteredMembers.forEach((member) => {
@@ -142,28 +187,26 @@ export function processMemberData(
     countryMap.get(countryName)!.push(member);
   });
 
-  // Calculate statistics for each country
   const countryStats: CountryStats[] = [];
 
-  countryMap.forEach((members, countryName) => {
-    // Get coordinates
+  countryMap.forEach((membersInCountry, countryName) => {
     const coordinates = getCountryCoordinates(countryName);
 
-    // Calculate top role
     const roleCounts = new Map<string, number>();
-    members.forEach((member) => {
+    membersInCountry.forEach((member) => {
       const role = member['Voyage Role'] || member.voyageRole || 'Unknown';
-      roleCounts.set(role, (roleCounts.get(role) || 0) + 1);
+      const displayRole = role ? toDisplayLabel(role) : 'Unknown';
+      roleCounts.set(displayRole, (roleCounts.get(displayRole) || 0) + 1);
     });
     const topRole =
       Array.from(roleCounts.entries()).sort((a, b) => b[1] - a[1])[0]?.[0] ||
       'Unknown';
 
-    // Calculate common gender
     const genderCounts = new Map<string, number>();
-    members.forEach((member) => {
+    membersInCountry.forEach((member) => {
       const gender = member.Gender || member.gender || 'Unknown';
-      genderCounts.set(gender, (genderCounts.get(gender) || 0) + 1);
+      const displayGender = gender ? toDisplayLabel(gender) : 'Unknown';
+      genderCounts.set(displayGender, (genderCounts.get(displayGender) || 0) + 1);
     });
     const commonGender =
       Array.from(genderCounts.entries()).sort((a, b) => b[1] - a[1])[0]?.[0] ||
@@ -172,14 +215,13 @@ export function processMemberData(
     countryStats.push({
       countryName,
       coordinates,
-      count: members.length,
+      count: membersInCountry.length,
       topRole,
       commonGender,
-      members,
+      members: membersInCountry,
     });
   });
 
-  // Sort by count descending
   return countryStats.sort((a, b) => b.count - a.count);
 }
 

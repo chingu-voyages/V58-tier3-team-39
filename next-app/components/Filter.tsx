@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Search, Filter as FilterIcon } from 'lucide-react';
 
 export interface FilterState {
@@ -17,181 +17,162 @@ export interface FilterState {
 
 interface FilterProps {
   onFilterChange: (filters: FilterState) => void;
-  members: any[];
+  members: Array<Record<string, any>>;
 }
 
-export default function Filter({ onFilterChange, members }: FilterProps) {
-  const [showFilters, setShowFilters] = useState(false);
-  const [filters, setFilters] = useState<FilterState>({
-    search: '',
-    country: 'All Countries',
-    role: 'All Roles',
-    gender: 'All Genders',
-    soloProjectTier: 'All Tiers',
-    yearJoined: 'All Years',
-    voyageTier: 'All Tiers',
-    roleType: 'All Role Types',
-    voyage: 'All Voyages',
-  });
+const DEFAULT_FILTERS: FilterState = {
+  search: '',
+  country: 'All Countries',
+  role: 'All Roles',
+  gender: 'All Genders',
+  soloProjectTier: 'All Tiers',
+  yearJoined: 'All Years',
+  voyageTier: 'All Tiers',
+  roleType: 'All Role Types',
+  voyage: 'All Voyages',
+};
 
-  // Extract unique values for dropdowns
-  const countries = [
-    'All Countries',
-    ...Array.from(
-      new Set(
-        members
-          .map((m) => m['Country name (from Country)'] || m.countryName)
-          .filter(Boolean)
-      )
-    ).sort(),
-  ];
+const PREDEFINED_ROLES = [
+  'Product Owner',
+  'Scrum Master',
+  'Web Developer',
+  'UI/UX Designer',
+  'Data Scientist',
+  'Voyage Guide',
+];
 
-  const roles = [
-    'All Roles',
-    ...Array.from(
-      new Set(
-        members
-          .map((m) => m['Voyage Role'] || m.voyageRole)
-          .filter(Boolean)
-      )
-    ).sort(),
-  ];
+const ROLE_TYPE_OPTIONS = ['All Role Types', 'Python', 'Web'];
 
-  const genders = [
-    'All Genders',
-    ...Array.from(
-      new Set(
-        members.map((m) => m.Gender || m.gender).filter(Boolean)
-      )
-    ).sort(),
-  ];
+const VOYAGE_OPTIONS = [
+  'All Voyages',
+  ...Array.from({ length: 58 }, (_, index) => `V${58 - index}`),
+];
 
-  const soloTiers = [
-    'All Tiers',
-    ...Array.from(
-      new Set(
-        members
-          .map((m) => m['Solo Project Tier'] || m.soloProjectTier)
-          .filter(Boolean)
-      )
-    ).sort(),
-  ];
+const TIER_OPTIONS = ['All Tiers', 'Tier 1', 'Tier 2', 'Tier 3'];
 
-  const voyageTiers = [
-    'All Tiers',
-    ...Array.from(
-      new Set(
-        members.map((m) => m['Voyage Tier'] || m.voyageTier).filter(Boolean)
-      )
-    ).sort(),
-  ];
+const normalize = (value: unknown) =>
+  typeof value === 'string' ? value.trim().toLowerCase() : '';
 
-  const roleTypes = [
-    'All Role Types',
-    ...Array.from(
-      new Set(
-        members.map((m) => m['Role Type'] || m.roleType).filter(Boolean)
-      )
-    ).sort(),
-  ];
-
-  const voyages = [
-    'All Voyages',
-    ...Array.from(
-      new Set(
-        members
-          .map((m) => m['Voyage (from Voyage Signups)'] || m.voyage)
-          .filter(Boolean)
-      )
-    ).sort(),
-  ];
-
-  // Extract years from Timestamp
-  const years = [
-    'All Years',
-    ...Array.from(
-      new Set(
-        members
-          .map((m) => {
-            const timestamp = m.Timestamp || m.timestamp;
-            if (timestamp) {
-              const year = new Date(timestamp).getFullYear();
-              return isNaN(year) ? null : year.toString();
-            }
-            return null;
-          })
-          .filter((year): year is string => year !== null)
-      )
+const formatLabel = (value: string) =>
+  value
+    .toLowerCase()
+    .split(/([\s/-])/)
+    .map((segment) =>
+      segment.match(/[\s/-]/)
+        ? segment
+        : segment.charAt(0).toUpperCase() + segment.slice(1)
     )
-      .sort()
-      .reverse(),
-  ];
+    .join('');
+
+const createDefaultFilters = () => ({ ...DEFAULT_FILTERS });
+
+export default function Filter({ onFilterChange, members }: FilterProps) {
+  const [showFilters, setShowFilters] = useState(true);
+  const [filters, setFilters] = useState<FilterState>(createDefaultFilters);
+
+  const { countries, genders, years } = useMemo(() => {
+    const countrySet = new Set<string>();
+    const genderSet = new Set<string>();
+    const yearSet = new Set<number>();
+
+    members.forEach((member) => {
+      const countryName =
+        member['Country name (from Country)'] || member.countryName;
+      if (countryName) {
+        countrySet.add(countryName);
+      }
+
+      const gender = member.Gender || member.gender;
+      if (gender) {
+        const normalizedGender = gender.trim().toUpperCase();
+        if (
+          normalizedGender &&
+          normalizedGender !== 'TRANS' &&
+          normalizedGender !== 'TRANSGENDER'
+        ) {
+          genderSet.add(formatLabel(gender));
+        }
+      }
+
+      const timestamp = member.Timestamp || member.timestamp;
+      if (timestamp) {
+        const year = new Date(timestamp).getFullYear();
+        if (!Number.isNaN(year) && year >= 2017) {
+          yearSet.add(year);
+        }
+      }
+    });
+
+    return {
+      countries: ['All Countries', ...Array.from(countrySet).sort()],
+      genders: ['All Genders', ...Array.from(genderSet).sort()],
+      years: [
+        'All Years',
+        ...Array.from(yearSet)
+          .sort((a, b) => b - a)
+          .map((year) => year.toString()),
+      ],
+    };
+  }, [members]);
 
   const handleFilterChange = (key: keyof FilterState, value: string) => {
-    const newFilters = { ...filters, [key]: value };
-    setFilters(newFilters);
+    setFilters((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const applyFilters = (nextFilters: FilterState) => {
+    onFilterChange(nextFilters);
   };
 
   const handleApplyFilters = () => {
-    onFilterChange(filters);
+    applyFilters(filters);
   };
 
   const handleClearAll = () => {
-    const clearedFilters: FilterState = {
-      search: '',
-      country: 'All Countries',
-      role: 'All Roles',
-      gender: 'All Genders',
-      soloProjectTier: 'All Tiers',
-      yearJoined: 'All Years',
-      voyageTier: 'All Tiers',
-      roleType: 'All Role Types',
-      voyage: 'All Voyages',
-    };
+    const clearedFilters = createDefaultFilters();
     setFilters(clearedFilters);
-    onFilterChange(clearedFilters);
+    applyFilters(clearedFilters);
   };
 
   return (
     <div className="w-full mb-4">
-      <div className="bg-white border border-gray-300 rounded-lg p-4">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <FilterIcon className="w-5 h-5 text-gray-600" />
-            <span className="font-semibold text-gray-700">Filters</span>
-          </div>
+      <div
+        className={`rounded-2xl border border-[#D0D5DD] ${
+          showFilters ? 'bg-[#FAFAFA] p-6 md:p-8' : 'bg-[#FAFAFA] p-4'
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          {showFilters ? (
+            <div className="flex items-center gap-3 text-[#111322]">
+              <Search className="w-5 h-5" />
+              <span className="text-base font-medium">Enter country, role, tier, or gender</span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-3">
+              <FilterIcon className="w-5 h-5 text-[#111322]" />
+              <span className="text-base font-semibold text-[#111322]">
+                Filters
+              </span>
+            </div>
+          )}
           <button
-            onClick={() => setShowFilters(!showFilters)}
-            className="text-blue-600 hover:underline"
+            onClick={() => setShowFilters((prev) => !prev)}
+            className="text-sm font-semibold text-[#4D77FF] hover:cursor-pointer"
           >
             {showFilters ? 'Hide filters' : 'Show filters'}
           </button>
         </div>
 
         {showFilters && (
-          <div className="space-y-4">
-            {/* Search Bar */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Enter country, role, tier, or gender"
-                value={filters.search}
-                onChange={(e) => handleFilterChange('search', e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-
-            {/* Dropdown Filters */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mt-6 space-y-6">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="mb-1 block text-sm font-semibold text-[#111322]">
                   Country
                 </label>
                 <select
                   value={filters.country}
                   onChange={(e) => handleFilterChange('country', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {countries.map((country) => (
                     <option key={country} value={country}>
@@ -200,32 +181,14 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                   ))}
                 </select>
               </div>
-
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Role
-                </label>
-                <select
-                  value={filters.role}
-                  onChange={(e) => handleFilterChange('role', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  {roles.map((role) => (
-                    <option key={role} value={role}>
-                      {role}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="mb-1 block text-sm font-semibold text-[#111322]">
                   Gender
                 </label>
                 <select
                   value={filters.gender}
                   onChange={(e) => handleFilterChange('gender', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {genders.map((gender) => (
                     <option key={gender} value={gender}>
@@ -234,28 +197,8 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                   ))}
                 </select>
               </div>
-
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Solo Project Tier
-                </label>
-                <select
-                  value={filters.soloProjectTier}
-                  onChange={(e) =>
-                    handleFilterChange('soloProjectTier', e.target.value)
-                  }
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  {soloTiers.map((tier) => (
-                    <option key={tier} value={tier}>
-                      {tier}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="mb-1 block text-sm font-semibold text-[#111322]">
                   Year Joined
                 </label>
                 <select
@@ -263,7 +206,7 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                   onChange={(e) =>
                     handleFilterChange('yearJoined', e.target.value)
                   }
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {years.map((year) => (
                     <option key={year} value={year}>
@@ -272,9 +215,58 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                   ))}
                 </select>
               </div>
-
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="mb-1 block text-sm font-semibold text-[#111322]">
+                  Role Type
+                </label>
+                <select
+                  value={filters.roleType}
+                  onChange={(e) => handleFilterChange('roleType', e.target.value)}
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                >
+                  {ROLE_TYPE_OPTIONS.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="mb-1 block text-sm font-semibold text-[#111322]">
+                  Role
+                </label>
+                <select
+                  value={filters.role}
+                  onChange={(e) => handleFilterChange('role', e.target.value)}
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                >
+                  {['All Roles', ...PREDEFINED_ROLES].map((role) => (
+                    <option key={role} value={role}>
+                      {role}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="mb-1 block text-sm font-semibold text-[#111322]">
+                  Solo Project Tier
+                </label>
+                <select
+                  value={filters.soloProjectTier}
+                  onChange={(e) =>
+                    handleFilterChange('soloProjectTier', e.target.value)
+                  }
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                >
+                  {TIER_OPTIONS.map((tier) => (
+                    <option key={tier} value={tier}>
+                      {tier}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="mb-1 block text-sm font-semibold text-[#111322]">
                   Voyage Tier
                 </label>
                 <select
@@ -282,43 +274,25 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
                   onChange={(e) =>
                     handleFilterChange('voyageTier', e.target.value)
                   }
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
-                  {voyageTiers.map((tier) => (
+                  {TIER_OPTIONS.map((tier) => (
                     <option key={tier} value={tier}>
                       {tier}
                     </option>
                   ))}
                 </select>
               </div>
-
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Role Type
-                </label>
-                <select
-                  value={filters.roleType}
-                  onChange={(e) => handleFilterChange('roleType', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  {roleTypes.map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="mb-1 block text-sm font-semibold text-[#111322]">
                   Voyage
                 </label>
                 <select
                   value={filters.voyage}
                   onChange={(e) => handleFilterChange('voyage', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-3 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
-                  {voyages.map((voyage) => (
+                  {VOYAGE_OPTIONS.map((voyage) => (
                     <option key={voyage} value={voyage}>
                       {voyage}
                     </option>
@@ -327,17 +301,16 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex gap-4">
+            <div className="flex flex-col gap-3 md:flex-row md:items-center">
               <button
                 onClick={handleApplyFilters}
-                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="w-full rounded-lg bg-[#4D77FF] px-6 py-3 text-base font-semibold text-white hover:cursor-pointer md:w-auto"
               >
                 Apply Filters
               </button>
               <button
                 onClick={handleClearAll}
-                className="px-6 py-2 bg-white text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+                className="w-full rounded-lg bg-white border border-[#4D77FF] px-6 py-3 text-base font-semibold text-[#4D77FF] hover:cursor-pointer md:w-auto"
               >
                 Clear All
               </button>
