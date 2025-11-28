@@ -1,5 +1,7 @@
 # Chingu Member Demographics
 
+![Chingu Member Demograhpics Preview](chingu-member-demographics-preview.png)
+
 ## Table of Contents
 
 - [Live Demo](#live-demo)
@@ -8,7 +10,6 @@
 - [Technologies Used](#technologies-used)
 - [Required Services](#required-services)
 - [Contributing](#contributing)
-- [License](#license)
 - [Special Thanks](#special-thanks)
 - [Team Members](#team-members)
 
@@ -29,12 +30,6 @@ Discover your global Chingu tribe! Interactive Earth map pinning fellow develope
 - Pin-based visualization of Chingu locations worldwide​
 - Filter by role type, tier, country, gender, and timezone
 - Click pins to view profiles and initiate direct team connections
-
-### AI Chatbot
-
-- Aimed to replace traditional documentation with instant Q&A​
-- Users can chat about application features, getting code snippets and examples​
-- Provides step-by-step tutorials and troubleshooting based on app state
 
 ### Modern UI / UX
 
@@ -57,8 +52,14 @@ Discover your global Chingu tribe! Interactive Earth map pinning fellow develope
 
 - Java 21 + Spring Boot 3.3: REST APIs
 - Spring Data JPA: PostgreSQL ORM
-- PostgreSQL + Neon: Serverless DB
 - Spring Security: JWT auth
+- Prisma: Type-safe database ORM
+- PostgreSQL + Neon: Serverless DB
+
+### Tools
+
+- ESLint: Linting for code quality and consistency​
+- Prettier: Code formatting automation​
 
 ## Required Services
 
@@ -68,7 +69,7 @@ Discover your global Chingu tribe! Interactive Earth map pinning fellow develope
 
 ## Contributing
 
-We welcome contributions to Animal Shelter! Please follow these steps:
+We welcome contributions to Chingu Member Demographics! Please follow these steps:
 
 1. Fork the repository
 2. Create a feature branch (git checkout -b feature/AmazingFeature)
@@ -82,20 +83,16 @@ We welcome contributions to Animal Shelter! Please follow these steps:
 - Update documentation as needed
 - Include clear commit messages
 
-## License
-
-This project is licensed under the [MIT License](https://github.com/chingu-voyages/V54-tier3-team-36/blob/development/LICENSE).
-
 ## Special Thanks
 
-- **Chingu**: For organizing Voyage 54 and providing this amazing opportunity
+- **Chingu**: For organizing Voyage 58 and providing this amazing opportunity
 - **All Contributors**: For their dedication and hard work
 - **Open Source Community**: For the amazing tools and libraries
 - **Beta Testers**: For valuable feedback and bug reports
 
 ## Team Members
 
-This project was developed by an amazing team as part of Chingu Voyage 54:
+This project was developed by an amazing team as part of Chingu Voyage 58:
 
 - Val Lysenko: [GitHub](https://github.com/Valeriusdev) / [LinkedIn](https://linkedin.com/in/valeriylysenko)
 - Kevin Llanos: [GitHub](https://github.com/KevinLlano) / [LinkedIn](https://linkedin.com/in/kevinllanos7)
