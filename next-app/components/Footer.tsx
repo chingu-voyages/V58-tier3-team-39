@@ -5,20 +5,25 @@ import { Nextjs } from './icons/NextJs';
 import { TailwindCSS } from './icons/Tailwind';
 import { TypeScript } from './icons/TypeScript';
 import { Figma } from './icons/Figma';
+import Chingu from './icons/Chingu';
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#CBD5E1] text-[#232925] py-12">
+    <footer className="w-full bg-[#CBD5E1] text-[#232925] pt-22 pb-5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8">
           {/* Team: full-width section */}
           <section aria-labelledby="team-heading">
-            <h2 id="team-heading" className="text-4xl font-semibold mb-4 tracking-widest">
-              CHINGU DEMOGRAPHICS
-            </h2>
+            <div className='flex justify-center items-center gap-2 mb-10'>
+              <Chingu width={70} height={70} />
+              <h2 id="team-heading" className="text-2xl md:text-[2rem] font-semibold tracking-widest">
+                CHINGU DEMOGRAPHICS
+              </h2>
+            </div>
+            
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Each item is a card-like row; icons will be added later */}
-              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/15 hover:border-[#4D77FF]">
                 <div>
                   <p className="text-lg font-bold">Valeriy Lysenko</p>
                   <p className="text-sm font-bold">
@@ -55,7 +60,7 @@ const Footer = () => {
                   </span> */}
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/15 hover:border-[#4D77FF]">
                 <div>
                   <p className="text-lg font-bold">Ekaterina Kushnir</p>
                   <p className="text-sm font-bold">Web Developer</p>
@@ -77,7 +82,7 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/15 hover:border-[#4D77FF]">
                 <div>
                   <p className="text-lg font-bold">Rika Miyata</p>
                   <p className="text-sm font-bold">Web Developer</p>
@@ -99,7 +104,7 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/15 hover:border-[#4D77FF]">
                 <div>
                   <p className="text-lg font-bold">Jazz Bullecer</p>
                   <p className="text-sm font-bold">Web Developer</p>
@@ -121,7 +126,7 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/15 hover:border-[#4D77FF]">
                 <div>
                   <p className="text-lg font-bold">Mingshi Hui</p>
                   <p className="text-sm font-bold">UX / UI Designer</p>
@@ -143,7 +148,7 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/15 hover:border-[#4D77FF]">
                 <div>
                   <p className="text-lg font-bold">Kevin Llanos</p>
                   <p className="text-sm font-bold">Web Developer</p>
@@ -165,7 +170,7 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/15 hover:border-[#4D77FF]">
                 <div>
                   <p className="text-lg font-bold">Jorge Alvarado</p>
                   <p className="text-sm font-bold">Web Developer</p>
@@ -187,7 +192,7 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/15 hover:border-[#4D77FF]">
                 <div>
                   <p className="text-lg font-bold">Ruben Aguilar</p>
                   <p className="text-sm font-bold">Web Developer / UI Designer</p>
@@ -216,31 +221,25 @@ const Footer = () => {
           {/* Project + Technologies beneath team */}
           <section>
             {/* Layout: column on mobile, row on md+; each column has its own heading so headings align */}
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+            <div className="flex flex-col md:flex-row items-center justify-center mt-5 gap-6">
               <div className="md:basis-1/2">
-                <h3
-                  id="project-heading"
-                  className="text-2xl font-semibold mb-4"
-                >
-                  Project
-                </h3>
                 <div className="flex items-center gap-4 mb-0">
                   <a
                     href="https://github.com/chingu-voyages/V58-tier3-team-39"
-                    className="flex items-center gap-3 text-emerald-900 hover:underline"
+                    className="flex items-center gap-3 hover:scale-105 transition-transform duration-300"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <GitHub className="w-8 h-8" />
-                    <span className="text-sm">
+                    <GitHub className="w-12 h-12" />
+                    <span className="text-[1.375rem] font-bold">
                       Github Project Link - November 2025
                     </span>
                   </a>
                 </div>
               </div>
 
-              <div className="md:basis-1/2">
-                <h3 className="text-2xl font-semibold mb-4">Technologies</h3>
+              <div className="md:basis-1/2 md:text-start text-center">
+                <h3 className="text-2xl font-semibold mb-4 mt-4">Technologies</h3>
                 <ul className="flex flex-wrap items-center gap-3">
                   {/* placeholders for tech icons */}
                   <li>
@@ -253,19 +252,21 @@ const Footer = () => {
                     <TailwindCSS className="w-12 h-12" />
                   </li>
                   <li>
-                    <Java className="w-12 h-12" />
+                    <Figma className="w-12 h-12" />
                   </li>
                   <li>
-                    <Figma className="w-12 h-12" />
+                    <Java className="w-12 h-12" />
                   </li>
                 </ul>
               </div>
             </div>
-
-            <p className="mt-6 text-xs text-emerald-700/80">
-              Disclaimer: This website and its associated services are provided
-              for demonstrative and educational purposes only.
-            </p>
+            
+            <div className='mt-12 text-center'>
+              <p className="text-sm font-regular border-t border-white pt-8">
+                &copy; {new Date().getFullYear()} Chingu Demographics. All rights reserved.
+              </p>
+            </div>
+            
           </section>
         </div>
       </div>
