@@ -221,9 +221,9 @@ const Footer = () => {
           {/* Project + Technologies beneath team */}
           <section>
             {/* Layout: column on mobile, row on md+; each column has its own heading so headings align */}
-            <div className="flex flex-col md:flex-row justify-center mt-2 gap-6">
+            <div className="flex flex-col md:flex-row justify-center items-center text-center mt-2 gap-6">
               <div className="md:basis-1/2">
-                <div className="md:basis-1/2 md:text-start text-center">
+                <div className="md:basis-1/2 md:text-start">
                   <h3 className="text-2xl font-semibold mb-4 mt-4">Project</h3>
                   <a
                     href="https://github.com/chingu-voyages/V58-tier3-team-39"
@@ -233,13 +233,13 @@ const Footer = () => {
                   >
                     <GitHub className="w-12 h-12" />
                     <span className="text-xl font-semibold">
-                      Github Repository - November 2025
+                      Github Repository
                     </span>
                   </a>
                 </div>
               </div>
 
-              <div className="md:basis-1/2 md:text-start text-center">
+              <div className="md:basis-1/2 md:text-start">
                 <h3 className="text-2xl font-semibold mb-4 mt-4">Technologies</h3>
                 <ul className="flex flex-wrap items-center gap-3">
                   {/* placeholders for tech icons */}
