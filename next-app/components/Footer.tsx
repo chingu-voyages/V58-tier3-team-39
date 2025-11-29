@@ -221,7 +221,7 @@ const Footer = () => {
           {/* Project + Technologies beneath team */}
           <section>
             {/* Layout: column on mobile, row on md+; each column has its own heading so headings align */}
-            <div className="flex flex-col md:flex-row items-center justify-center mt-5 gap-6">
+            <div className="flex flex-col md:flex-row items-center justify-center mt-2 gap-6">
               <div className="md:basis-1/2">
                 <div className="flex items-center gap-4 mb-0">
                   <a
