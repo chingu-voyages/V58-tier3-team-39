@@ -40,3 +40,5 @@ coding!
 - Jorge Alvarado: [GitHub](https://github.com/alvarado08) / [LinkedIn](https://www.linkedin.com/in/jorgep-alvarado/)
 - Jazz Bullecer: [GitHub](https://github.com/jazxbx) / [LinkedIn](https://www.linkedin.com/in/jazz-bullecer-89780928a)
 - Rika Miyata: [GitHub](https://github.com/Tayrika) / [LinkedIn](https://www.linkedin.com/in/rika-miyata-4bab99243/)
+- Ruben Aguilar: [GitHub](https://github.com/rubenaguilardev) / [LinkedIn](https://www.linkedin.com/in/rubenaguilar-)
+
