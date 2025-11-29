@@ -92,12 +92,12 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
       // Create popup content matching the image design
       const popupContent = `
         <div style="
-          min-width: 280px;
-          padding: 16px 18px;
-          border: 1px solid #1F1F1F;
-          border-radius: 12px;
+          min-width: 230px;
+          padding: 6px 8px;
+          // border: 1px solid #1F1F1F;
+          // border-radius: 12px;
           background-color: #ffffff;
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+          // box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         ">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
             <h3 style="margin: 0; font-weight: 700; font-size: 18px; color: #111322;">
