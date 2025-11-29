@@ -262,7 +262,7 @@ const Footer = () => {
               </div>
             </div>
             
-            <div className='mt-12 text-center'>
+            <div className='mt-15 text-center'>
               <p className="text-sm font-regular border-t border-white/85 pt-8">
                 &copy; {new Date().getFullYear()} Chingu Demographics. All rights reserved.
               </p>
