@@ -233,7 +233,7 @@ const Footer = () => {
                   >
                     <GitHub className="w-12 h-12" />
                     <span className="text-xl font-semibold">
-                      Github Repository
+                      Github Repository - November 2025
                     </span>
                   </a>
                 </div>
