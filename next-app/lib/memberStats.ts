@@ -18,9 +18,15 @@ export interface MemberData {
 const normalize = (value: unknown) =>
   typeof value === 'string' ? value.trim().toLowerCase() : '';
 
-const toDisplayLabel = (value: string) =>
-  value
-    .toLowerCase()
+const toDisplayLabel = (value: string) => {
+  const normalized = value.toLowerCase();
+  
+  // Special cases for acronyms
+  if (normalized === 'ui/ux designer') {
+    return 'UI/UX Designer';
+  }
+  
+  return normalized
     .split(/([\s/-])/)
     .map((segment) =>
       segment.match(/[\s/-]/)
@@ -28,6 +34,7 @@ const toDisplayLabel = (value: string) =>
         : segment.charAt(0).toUpperCase() + segment.slice(1)
     )
     .join('');
+};
 
 const mapRoleTypeCategory = (value?: string) => {
   const normalized = normalize(value);
