@@ -9,7 +9,7 @@ import { Figma } from './icons/Figma';
 const Footer = () => {
   return (
     <footer className="w-full bg-[#CBD5E1] text-[#232925] py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8">
           {/* Team: full-width section */}
           <section aria-labelledby="team-heading">
@@ -18,10 +18,10 @@ const Footer = () => {
             </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Each item is a card-like row; icons will be added later */}
-              <li className="flex items-center justify-between p-4 rounded-lg border border-white/65">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
                 <div>
-                  <p className="text-lg font-semibold">Valeriy Lysenko</p>
-                  <p className="text-sm">
+                  <p className="text-lg font-bold">Valeriy Lysenko</p>
+                  <p className="text-sm font-bold">
                     Scrum Master / Web Developer
                   </p>
                 </div>
@@ -55,10 +55,10 @@ const Footer = () => {
                   </span> */}
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
                 <div>
-                  <p className="text-lg font-semibold">Ekaterina Kushnir</p>
-                  <p className="text-sm text-emerald-700">Web Developer</p>
+                  <p className="text-lg font-bold">Ekaterina Kushnir</p>
+                  <p className="text-sm font-bold">Web Developer</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a
@@ -77,10 +77,10 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
                 <div>
-                  <p className="text-lg font-semibold">Rika Miyata</p>
-                  <p className="text-sm text-emerald-700">Web Developer</p>
+                  <p className="text-lg font-bold">Rika Miyata</p>
+                  <p className="text-sm font-bold">Web Developer</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a
@@ -99,10 +99,10 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
                 <div>
-                  <p className="text-lg font-semibold">Jazz Bullecer</p>
-                  <p className="text-sm text-emerald-700">Web Developer</p>
+                  <p className="text-lg font-bold">Jazz Bullecer</p>
+                  <p className="text-sm font-bold">Web Developer</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a
@@ -121,10 +121,10 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
                 <div>
-                  <p className="text-lg font-semibold">Mingshi Hui</p>
-                  <p className="text-sm text-emerald-700">UX / UI Designer</p>
+                  <p className="text-lg font-bold">Mingshi Hui</p>
+                  <p className="text-sm font-bold">UX / UI Designer</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a
@@ -143,10 +143,10 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
                 <div>
-                  <p className="text-lg font-semibold">Kevin Llanos</p>
-                  <p className="text-sm text-emerald-700">Web Developer</p>
+                  <p className="text-lg font-bold">Kevin Llanos</p>
+                  <p className="text-sm font-bold">Web Developer</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a
@@ -165,10 +165,10 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
                 <div>
-                  <p className="text-lg font-semibold">Jorge Alvarado</p>
-                  <p className="text-sm text-emerald-700">Web Developer</p>
+                  <p className="text-lg font-bold">Jorge Alvarado</p>
+                  <p className="text-sm font-bold">Web Developer</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a
@@ -187,10 +187,10 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center justify-between p-4 bg-white/80 rounded-lg shadow-sm border">
+              <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/20 hover:border-[#4D77FF]">
                 <div>
-                  <p className="text-lg font-semibold">Ruben Aguilar</p>
-                  <p className="text-sm text-emerald-700">Web Developer / UI Designer</p>
+                  <p className="text-lg font-bold">Ruben Aguilar</p>
+                  <p className="text-sm font-bold">Web Developer / UI Designer</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a
