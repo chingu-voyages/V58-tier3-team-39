@@ -1,38 +1,97 @@
-# voyage-tasks
+# Chingu Member Demographics
 
-Your project's `readme` is as important to success as your code. For
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+![Chingu Member Demograhpics Preview](chingu-member-demographics-preview.png)
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point -
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+## Table of Contents
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+- [Live Demo](#live-demo)
+- [Description](#description)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Required Services](#required-services)
+- [Contributing](#contributing)
+- [Special Thanks](#special-thanks)
+- [Team Members](#team-members)
 
-> Own it & Make it your Own!
+## Live Demo
 
-## Team Documents
+[Live Application](https://v58-tier3-team-39.onrender.com/)
 
-You may find these helpful as you work together to organize your project.
+## Description
 
-- [Team Project Ideas](./docs/team_project_ideas.md)
-- [Team Decision Log](./docs/team_decision_log.md)
+Wouldn't it be interesting and fun to learn more about where Chingu's live and a little more about their Chingu attributes? 🚀
 
-Meeting Agenda templates (located in the `/docs` directory in this repo):
+Discover your global Chingu tribe! Interactive Earth map pinning fellow developers, designers, and PMs worldwide—filter by role, tier, country, timezone, or gender to find your next collab partner or timezone buddy.
 
-- Meeting - Voyage Kickoff --> ./docs/meeting-voyage_kickoff.docx
-- Meeting - App Vision & Feature Planning --> ./docs/meeting-vision_and_feature_planning.docx
-- Meeting - Sprint Retrospective, Review, and Planning --> ./docs/meeting-sprint_retrospective_review_and_planning.docx
-- Meeting - Sprint Open Topic Session --> ./docs/meeting-sprint_open_topic_session.docx
+## Features
 
-## Our Team
+### Interactive Map
 
-Everyone on your team should add their name along with a link to their GitHub
-& optionally their LinkedIn profiles below. Do this in Sprint #1 to validate
-your repo access and to practice PR'ing with your team *before* you start
-coding!
+- Pin-based visualization of Chingu locations worldwide​
+- Filter by role type, tier, country, gender, and timezone
+- Click pins to view profiles and initiate direct team connections
+
+### Modern UI / UX
+
+- Responsive design optimized for all devices
+- Tailwind CSS for modern, consistent styling
+- Dark mode support
+
+## Technologies Used
+
+### Frontend
+
+- TypeScript: Type safety
+- Next.js: React + SSR
+- NextAuth.js: Secure authentication
+- Tailwind CSS: Utility-first styling
+- Lucide React: Icon library
+
+### Backend
+
+- Java + Spring Boot: REST APIs
+- Spring Data JPA: PostgreSQL ORM
+- Spring Security: JWT auth
+- Prisma: Type-safe database ORM
+- PostgreSQL + Neon: Serverless DB
+
+### Tools
+
+- ESLint: Linting for code quality and consistency​
+- Prettier: Code formatting automation​
+
+## Required Services
+
+- Node.js (v20.0.0 or higher)
+- npm package manager
+- Git version control
+
+## Contributing
+
+We welcome contributions to Chingu Member Demographics! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (git checkout -b feature/AmazingFeature)
+3. Commit your changes (git commit -m 'Add some AmazingFeature')
+4. Push to the branch (git push origin feature/AmazingFeature)
+5. Open a Pull Request
+
+### Guidelines
+
+- Follow existing code style and conventions
+- Update documentation as needed
+- Include clear commit messages
+
+## Special Thanks
+
+- **Chingu**: For organizing Voyage 58 and providing this amazing opportunity
+- **All Contributors**: For their dedication and hard work
+- **Open Source Community**: For the amazing tools and libraries
+- **Beta Testers**: For valuable feedback and bug reports
+
+## Team Members
+
+This project was developed by an amazing team as part of Chingu Voyage 58:
 
 - Val Lysenko: [GitHub](https://github.com/Valeriusdev) / [LinkedIn](https://linkedin.com/in/valeriylysenko)
 - Kevin Llanos: [GitHub](https://github.com/KevinLlano) / [LinkedIn](https://linkedin.com/in/kevinllanos7)
@@ -40,5 +99,7 @@ coding!
 - Jorge Alvarado: [GitHub](https://github.com/alvarado08) / [LinkedIn](https://www.linkedin.com/in/jorgep-alvarado/)
 - Jazz Bullecer: [GitHub](https://github.com/jazxbx) / [LinkedIn](https://www.linkedin.com/in/jazz-bullecer-89780928a)
 - Rika Miyata: [GitHub](https://github.com/Tayrika) / [LinkedIn](https://www.linkedin.com/in/rika-miyata-4bab99243/)
-- Ruben Aguilar: [GitHub](https://github.com/rubenaguilardev) / [LinkedIn](https://www.linkedin.com/in/rubenaguilar-)
+- Mingshi Hui: [GitHub](https://github.com/mingshi0821) / [LinkedIn](https://www.linkedin.com/in/mingshi-hui/)
+- Ruben Aguilar: [GitHub](https://github.com/rubenaguilardev) / [LinkedIn](https://www.linkedin.com/in/ruben-aguilar-/)
 
+Go back to [Table of Contents](#table-of-contents)
