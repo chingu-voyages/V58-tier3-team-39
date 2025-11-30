@@ -35,7 +35,6 @@ Discover your global Chingu tribe! Interactive Earth map pinning fellow develope
 
 - Responsive design optimized for all devices
 - Tailwind CSS for modern, consistent styling
-- Interactive animations and transitions
 - Dark mode support
 
 ## Technologies Used
@@ -43,14 +42,14 @@ Discover your global Chingu tribe! Interactive Earth map pinning fellow develope
 ### Frontend
 
 - TypeScript: Type safety
-- Next.js 15: React + SSR
+- Next.js: React + SSR
 - NextAuth.js: Secure authentication
 - Tailwind CSS: Utility-first styling
 - Lucide React: Icon library
 
 ### Backend
 
-- Java 21 + Spring Boot 3.3: REST APIs
+- Java + Spring Boot: REST APIs
 - Spring Data JPA: PostgreSQL ORM
 - Spring Security: JWT auth
 - Prisma: Type-safe database ORM
