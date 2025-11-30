@@ -2,9 +2,11 @@ import { Member } from '../../types/member';
 import MembersContainer from '../../components/MembersContainer';
 
 async function getMembers(): Promise<Member[]> {
-  const res = await fetch('http://localhost:3000/api/members', {
-    cache: 'force-cache',
-  });
+  // const res = await fetch('http://localhost:3000/api/members', {
+  //   cache: 'force-cache',
+  // });
+
+  const res = await fetch('http://localhost:3000/api/members');
 
   if (!res.ok) {
     throw new Error('There was an error');

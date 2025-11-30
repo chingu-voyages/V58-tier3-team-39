@@ -25,16 +25,34 @@ export default function MemberList({
     'Tier (Voyage)',
   ];
 
+  const badgeStyles: Record<string, string> = {
+    Web: 'bg-green-100 text-green-700',
+    Python: 'bg-gray-200 text-gray-700',
+    'Tier 1': 'bg-gray-200 text-gray-700',
+    'Tier 2': 'bg-green-100 text-green-700',
+    'Tier 3': 'bg-pink-100 text-pink-700',
+  };
+
+  const badge = (value: string | null | undefined) => {
+    if (!value) return 'N/A';
+    const style = badgeStyles[value] || 'bg-gray-100 text-gray-600';
+    return (
+      <span className={`px-3 py-1 rounded-full text-xs font-medium ${style}`}>
+        {value}
+      </span>
+    );
+  };
+
   return (
     <>
-      <div className="bg-linear-to-br from-purple-900 to-[#4c77fe] rounded-2xl shadow-lg py-1 w-full overflow-x-auto">
+      <div className="border border-gray-200 rounded-2xl shadow-lg py-1 w-full overflow-x-auto">
         <table className="border-collapse w-full table-fixed min-w-[700px]">
-          <thead className="border-b-2 border-white/50">
+          <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               {headers.map((header, i) => (
                 <th
                   key={i}
-                  className="text-left font-semibold text-white px-4 py-2 whitespace-nowrap truncate overflow-clip"
+                  className="text-left font-normal text-gray-600 px-4 py-2 whitespace-nowrap truncate overflow-clip"
                 >
                   {header}
                 </th>
@@ -46,32 +64,32 @@ export default function MemberList({
               <tr
                 key={i}
                 className={
-                  i < members.length - 1 ? 'border-b border-white/30' : ''
+                  i < members.length - 1 ? 'border-b border-gray-200' : ''
                 }
               >
-                <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
-                  {m.roleType || 'N/A'}
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                  {badge(m.roleType)}
                 </td>
-                <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
                   {m.gender || 'N/A'}
                 </td>
-                <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
                   {m.countryCode || 'N/A'}
                 </td>
-                <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
                   {m.timestamp || 'N/A'}
                 </td>
-                <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
                   {m.voyage || 'N/A'}
                 </td>
-                <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
                   {m.voyageRole || 'N/A'}
                 </td>
-                <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
                   {m.soloProjectTier || 'N/A'}
                 </td>
-                <td className="px-4 py-2 text-white whitespace-nowrap truncate overflow-clip">
-                  {m.voyageTier || 'N/A'}
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                  {badge(m.voyageTier)}
                 </td>
               </tr>
             ))}
