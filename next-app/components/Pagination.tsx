@@ -14,19 +14,19 @@ export function Pagination({
       <button
         disabled={currentPage === 1}
         onClick={() => onChangePage(currentPage - 1)}
-        className="cursor-pointer px-3 py-1 bg-white/20 rounded disabled:opacity-0 disabled:cursor-auto"
+        className="cursor-pointer px-3 py-1 text-sm bg-white/20 rounded disabled:opacity-0 disabled:cursor-auto"
       >
         Prev
       </button>
 
-      <span className="font-semibold">
+      <span className="font-semibold text-sm">
         Page {currentPage} / {totalPages}
       </span>
 
       <button
         disabled={currentPage === totalPages}
         onClick={() => onChangePage(currentPage + 1)}
-        className="cursor-pointer px-3 py-1 bg-white/20 rounded disabled:opacity-0 disabled:cursor-auto"
+        className="cursor-pointer px-3 py-1 text-sm bg-white/20 rounded disabled:opacity-0 disabled:cursor-auto"
       >
         Next
       </button>

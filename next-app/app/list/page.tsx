@@ -1,5 +1,5 @@
 import { Member } from '../../types/member';
-import MemberList from '../../components/MemberList';
+import MembersContainer from '../../components/MembersContainer';
 
 async function getMembers(): Promise<Member[]> {
   const res = await fetch('http://localhost:3000/api/members', {
@@ -18,7 +18,7 @@ export default async function ListPage() {
 
   return (
     <div className="w-full p-6 mt-14 md:mt-20 overflow-x-auto">
-      <MemberList members={members} />
+      <MembersContainer members={members} />
     </div>
   );
 }
