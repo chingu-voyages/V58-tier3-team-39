@@ -26,6 +26,7 @@ const Header = ({ session }: HeaderProps) => {
         <nav className="hidden md:flex items-center gap-6 flex-1">
           <Link href="/map">map</Link>
           <Link href="/list">list</Link>
+          <Link href="/dashboard">dashboard</Link>
 
           <div className="ml-auto flex items-center gap-6">
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-[#BFCDD2]">
@@ -64,6 +65,9 @@ const Header = ({ session }: HeaderProps) => {
           </Link>
           <Link href="/list" onClick={() => setIsActive(false)}>
             LIST
+          </Link>
+          <Link href="/dashboard" onClick={() => setIsActive(false)}>
+            DASSHBOARD
           </Link>
 
           <button className="w-10 h-10 flex items-center justify-center rounded-full bg-[#BFCDD2]">
