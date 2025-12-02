@@ -19,6 +19,7 @@ export interface PieChartData {
 interface PieChartComponentProps {
   data: PieChartData[];
   title?: string;
+  isAnimationActive?: boolean;
 }
 
 const COLORS = [
@@ -33,35 +34,35 @@ const renderCustomizedLabel = ({
   cx,
   cy,
   midAngle,
-  innerRadius,
   outerRadius,
   percent,
 }: PieLabelRenderProps) => {
-  if (cx == null || cy == null || innerRadius == null || outerRadius == null) {
-    return null;
-  }
+  if (!cx || !cy || !outerRadius) return null;
 
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = Number(cx) + radius * Math.cos(-(midAngle ?? 0) * RADIAN);
-  const y = Number(cy) + radius * Math.sin(-(midAngle ?? 0) * RADIAN);
+  const offset = 18;
+  const radius = outerRadius + offset;
+  const angle = (midAngle ?? 0) * RADIAN;
+
+  const x = cx + radius * Math.cos(-angle);
+  const y = cy + radius * Math.sin(-angle);
+
+  const w = typeof window !== 'undefined' ? window.innerWidth : 1024;
+  const fontSize = w < 640 ? 10 : w < 1024 ? 12 : 14;
 
   return (
     <text
       x={x}
       y={y}
-      fill="white"
-      textAnchor={x > cx! ? 'start' : 'end'}
+      fill="#333"
+      fontSize={fontSize}
+      fontWeight="600"
+      textAnchor={x > cx ? 'start' : 'end'}
       dominantBaseline="central"
-      fontSize={10}
     >
-      {`${((percent ?? 1) * 100).toFixed(0)}%`}
+      {`${((percent ?? 0) * 100).toFixed(0)}%`}
     </text>
   );
 };
-
-interface PieChartComponentProps {
-  isAnimationActive?: boolean;
-}
 
 const PieChartComponent = ({
   data,
@@ -69,28 +70,42 @@ const PieChartComponent = ({
   isAnimationActive = true,
 }: PieChartComponentProps) => {
   return (
-    <div className="flex flex-col items-center w-full gap-4">
-      {title && <h3 className="font-semibold text-lg">{title}</h3>}
-      <ResponsiveContainer width="100%" height={300}>
-        <RePieChart>
-          <Pie
-            data={data}
-            dataKey="value"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            isAnimationActive={isAnimationActive}
-          >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${entry.name}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-        </RePieChart>
-      </ResponsiveContainer>
+    <div className="bg-white p-5 rounded-2xl flex flex-col items-center">
+      {title && (
+        <h3 className="font-semibold text-xl md:text-2xl text-center">
+          {title}
+        </h3>
+      )}
 
-      <div className="flex flex-wrap gap-4 justify-center mt-4">
+      {/* Chart Wrapper */}
+      <div
+        className="w-full 
+          h-[260px] sm:h-[300px] md:h-[360px] 
+          lg:h-[420px] xl:h-[480px] mt-4 pointer-events-none"
+      >
+        <ResponsiveContainer width="100%" height="100%">
+          <RePieChart>
+            <Pie
+              data={data}
+              dataKey="value"
+              nameKey="name"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              isAnimationActive={isAnimationActive}
+            >
+              {data.map((entry, i) => (
+                <Cell
+                  key={`cell-${entry.name}`}
+                  fill={COLORS[i % COLORS.length]}
+                />
+              ))}
+            </Pie>
+          </RePieChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* legend */}
+      <div className="flex flex-wrap gap-4 justify-center mt-2">
         {data.map((item, index) => (
           <div key={item.name} className="flex items-center gap-2">
             <span
