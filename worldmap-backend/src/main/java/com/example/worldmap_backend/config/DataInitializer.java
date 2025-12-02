@@ -1,15 +1,17 @@
 package com.example.worldmap_backend.config;
 
-import com.example.worldmap_backend.entity.Member;
-import com.example.worldmap_backend.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
-
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import com.example.worldmap_backend.entity.Member;
+import com.example.worldmap_backend.repository.MemberRepository;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @RequiredArgsConstructor
@@ -20,7 +22,7 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Only initialize if database is empty
+        // Only initializes if database is empty aka dummy data
         if (memberRepository.count() == 0) {
             log.info("Initializing database with sample member data...");
 

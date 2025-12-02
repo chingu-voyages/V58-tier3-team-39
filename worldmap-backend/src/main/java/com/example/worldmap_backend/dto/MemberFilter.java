@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class MemberFilter {
     private String gender;
     private String country;
-    private Integer joinYear;
+    private Integer yearJoined;
     private String roleType;
     private String role;
     private Integer soloProjectTier;

@@ -33,19 +33,19 @@ public class Member {
     @Column(name = "goal")
     private String goal;
 
-    @Column(name = "goal_other")
+    @Column(name = "goal_other", columnDefinition = "TEXT")
     private String goalOther;
 
     @Column(name = "source")
     private String source;
 
-    @Column(name = "source_other")
+    @Column(name = "source_other", columnDefinition = "TEXT")
     private String sourceOther;
 
     @Column(name = "country")
     private String country;
 
-    @Column(name = "solo_project_tier")
+    @Column(name = "solo_project_tier", columnDefinition = "TEXT")
     private String soloProjectTier;
 
     @Column(name = "role_type")
@@ -54,10 +54,10 @@ public class Member {
     @Column(name = "voyage_role")
     private String voyageRole;
 
-    @Column(name = "voyage")
+    @Column(name = "voyage", columnDefinition = "TEXT")
     private String voyage;
 
-    @Column(name = "voyage_tier")
+    @Column(name = "voyage_tier", columnDefinition = "TEXT")
     private String voyageTier;
 
     @Column(name = "join_year")
@@ -72,4 +72,3 @@ public class Member {
         }
     }
 }
-

@@ -1,18 +1,20 @@
 package com.example.worldmap_backend.service;
 
-import com.example.worldmap_backend.dto.CountryStats;
-import com.example.worldmap_backend.dto.MemberFilter;
-import com.example.worldmap_backend.entity.Member;
-import com.example.worldmap_backend.repository.MemberRepository;
-import com.example.worldmap_backend.specification.MemberSpecification;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.example.worldmap_backend.dto.CountryStats;
+import com.example.worldmap_backend.dto.MemberFilter;
+import com.example.worldmap_backend.entity.Member;
+import com.example.worldmap_backend.repository.MemberRepository;
+import com.example.worldmap_backend.specification.MemberSpecification;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +22,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    // Approximate coordinates for countries (for map visualization) dummy data
+    // dummy data
     private static final Map<String, double[]> COUNTRY_COORDINATES = new HashMap<>();
 
     static {
@@ -69,5 +71,9 @@ public class MemberService {
                 })
                 .collect(Collectors.toList());
     }
+
+        public void deleteMember(Long id) {
+            memberRepository.deleteById(id);
+        }
 }
 

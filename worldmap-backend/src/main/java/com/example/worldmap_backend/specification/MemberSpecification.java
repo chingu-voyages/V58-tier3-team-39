@@ -24,8 +24,8 @@ public class MemberSpecification {
                 predicates.add(criteriaBuilder.equal(root.get("country"), filter.getCountry()));
             }
 
-            if (filter.getJoinYear() != null) {
-                predicates.add(criteriaBuilder.equal(root.get("joinYear"), filter.getJoinYear()));
+                if (filter.getYearJoined() != null) {
+                    predicates.add(criteriaBuilder.equal(root.get("joinYear"), filter.getYearJoined()));
             }
 
             if (filter.getRoleType() != null && !filter.getRoleType().isEmpty()) {
