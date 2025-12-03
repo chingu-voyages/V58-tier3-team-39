@@ -8,7 +8,7 @@ import DonutChartComponent from '@/components/DonutChart';
 import PieChartComponent from '@/components/PieChart';
 import StatCard from '@/components/StatCard';
 import { Briefcase, MapPin, User } from 'lucide-react';
-import Map from '@/components/Map';
+import dynamic from 'next/dynamic';
 
 const Dashboard = () => {
   const stats = getDemographipcsStats(members);
@@ -22,6 +22,10 @@ const Dashboard = () => {
     setMemberCount(count);
     setCountryCount(countries);
   };
+
+  const Map = dynamic(() => import('@/components/Map'), {
+    ssr: false,
+  });
 
   return (
     <main
