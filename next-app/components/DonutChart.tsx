@@ -81,7 +81,7 @@ export default function DonutChartComponent({ title, data }: DonutChartProps) {
       {title && <h2 className="font-semibold text-xl md:text-2xl">{title}</h2>}
       <div
         className="w-full 
-                      h-[260px] sm:h-[300px] md:h-[360px] 
+                       min-h-[260px] sm:h-[300px] md:h-[360px] 
                       lg:h-[420px] xl:h-[480px] mt-4 pointer-events-none"
       >
         <ResponsiveContainer width="100%" height="100%">
