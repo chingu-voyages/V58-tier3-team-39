@@ -80,8 +80,8 @@ const PieChartComponent = ({
       {/* Chart Wrapper */}
       <div
         className="w-full 
-          min-h-[260px] sm:h-[300px] md:h-[360px] 
-          lg:h-[420px] xl:h-[480px] mt-4 pointer-events-none"
+                       min-h-[260px] sm:h-[300px] md:h-[360px] 
+                      lg:h-[420px] xl:h-[480px] mt-4 pointer-events-none"
       >
         <ResponsiveContainer width="100%" height="100%">
           <RePieChart>
