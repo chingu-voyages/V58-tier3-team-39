@@ -56,7 +56,7 @@ const Header = ({ session }: HeaderProps) => {
       </header>
 
       {isActive && (
-        <nav className="fixed inset-0 bg-white z-10 flex flex-col items-center justify-center gap-10 text-4xl md:hidden">
+        <nav className="fixed inset-0 bg-white z-2000 flex flex-col items-center justify-center gap-10 text-4xl md:hidden">
           <Link href="/" onClick={() => setIsActive(false)}>
             HOME
           </Link>
