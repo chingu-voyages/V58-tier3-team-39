@@ -26,13 +26,15 @@ const Dashboard = () => {
   return (
     <main
       className="
-  w-full min-h-screen px-4 md:px-8 pt-20 md:py-30 
+  w-full min-h-screen px-4 md:px-8 py-20 md:py-30 
   overflow-x-auto bg-[#F1F5F9]
 
-  md:grid 
-  md:grid-cols-[1fr_2fr]  
-  md:grid-rows-2 auto
-  md:gap-6
+  md:gap-4
+
+  lg:grid 
+  lg:grid-cols-[1fr_2fr]  
+  lg:grid-rows-2 auto
+  lg:gap-6
 "
     >
       {/* LEFT COL — STAT CARDS */}
@@ -66,7 +68,7 @@ const Dashboard = () => {
       </div>
 
       {/* RIGHT COL — Charts */}
-      <div className="flex flex-col md:flex-row gap-4 w-full min-h-[300px]">
+      <div className="flex flex-col md:flex-row gap-4 w-full min-h-[300px] mt-30 md:mt-10 lg:mt-0">
         <div className="flex-1 flex">
           <PieChartComponent title="Voyage Roles" data={stats.roleChart} />
         </div>
