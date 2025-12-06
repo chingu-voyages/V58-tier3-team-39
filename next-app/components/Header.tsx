@@ -51,48 +51,89 @@ const Header = ({ session }: HeaderProps) => {
           onClick={() => setIsActive(!isActive)}
           className="md:hidden ml-auto"
         >
-          {isActive ? <X /> : <Menu />}
+          {!isActive && <Menu />}
         </button>
       </header>
 
       {isActive && (
-        <nav className="fixed inset-0 bg-white z-2000 flex flex-col items-center justify-center gap-10 text-4xl md:hidden">
-          <Link href="/" onClick={() => setIsActive(false)}>
-            HOME
-          </Link>
-          <Link href="/map" onClick={() => setIsActive(false)}>
-            MAP
-          </Link>
-          <Link href="/list" onClick={() => setIsActive(false)}>
-            LIST
-          </Link>
-          <Link href="/dashboard" onClick={() => setIsActive(false)}>
-            DASSHBOARD
-          </Link>
+        <>
+          <div
+            onClick={() => setIsActive(false)}
+            className={`fixed inset-0 bg-black/40 z-20 md:hidden transition-opacity duration-300 ${
+              isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
+          />
 
-          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-[#BFCDD2]">
-            <Moon className="w-6 h-6" />
-          </button>
-
-          {session?.user?.name && (
-            <span className="text-2xl">Welcome {session.user.name}</span>
-          )}
-
-          {session ? (
+          <nav
+            className={`fixed top-0 right-0 h-full w-2/3 bg-white text-[#636363] z-30 shadow-xl p-6 pt-14 flex flex-col gap-8 md:hidden transform transition-transform duration-300 ${isActive ? 'translate-x-0' : 'translate-x-full'}`}
+          >
             <button
-              onClick={() => {
-                signOut();
-                setIsActive(false);
-              }}
+              onClick={() => setIsActive(false)}
+              className="absolute top-4 right-4"
             >
-              SIGN OUT
+              <X className="w-6 h-6 " />
             </button>
-          ) : (
-            <Link href="/api/auth/signin" onClick={() => setIsActive(false)}>
-              SIGN IN
+
+            <Link
+              href="/"
+              onClick={() => setIsActive(false)}
+              className="text-xl font-semibold"
+            >
+              HOME
             </Link>
-          )}
-        </nav>
+            <Link
+              href="/map"
+              onClick={() => setIsActive(false)}
+              className="text-xl font-semibold"
+            >
+              MAP
+            </Link>
+            <Link
+              href="/list"
+              onClick={() => setIsActive(false)}
+              className="text-xl font-semibold"
+            >
+              LIST
+            </Link>
+            <Link
+              href="/dashboard"
+              onClick={() => setIsActive(false)}
+              className="text-xl font-semibold"
+            >
+              DASHBOARD
+            </Link>
+
+            <button className="w-10 h-10 flex items-center justify-center rounded-full bg-[#BFCDD2] mt-6">
+              <Moon className="w-6 h-6" />
+            </button>
+
+            {session?.user?.name && (
+              <span className="text-xl font-semibold mt-4">
+                Welcome {session.user.name}
+              </span>
+            )}
+
+            {session ? (
+              <button
+                onClick={() => {
+                  signOut();
+                  setIsActive(false);
+                }}
+                className="text-xl font-semibold"
+              >
+                SIGN OUT
+              </button>
+            ) : (
+              <Link
+                href="/api/auth/signin"
+                onClick={() => setIsActive(false)}
+                className="text-xl font-semibold"
+              >
+                SIGN IN
+              </Link>
+            )}
+          </nav>
+        </>
       )}
     </>
   );
