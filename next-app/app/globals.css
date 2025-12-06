@@ -13,7 +13,3 @@ body {
   --color-purple: #87499c;
   --color-blue-brand: #4d77ff;
 }
-
-.table-col {
-  @apply min-w-[200px] px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip;
-}
