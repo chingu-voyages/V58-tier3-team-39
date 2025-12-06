@@ -7,7 +7,7 @@ import { DEFAULT_FILTERS } from '@/lib/filters';
 import { FilterState } from '@/types/filterState';
 import { FilterList } from './FilterList';
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 10;
 
 const normalize = (value: unknown) =>
   typeof value === 'string' ? value.trim().toLowerCase() : '';

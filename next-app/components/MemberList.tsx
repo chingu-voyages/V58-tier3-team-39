@@ -46,8 +46,8 @@ export default function MemberList({
   return (
     <>
       <div className="border border-gray-200 rounded-2xl shadow-lg py-1 w-full overflow-x-auto">
-        <table className="border-collapse table-fixed ">
-          <thead className="bg-gray-50 min-w-[200px] border-b border-gray-200">
+        <table className="border-collapse w-full table-fixed min-w-[700px]">
+          <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               {headers.map((header, i) => (
                 <th
@@ -67,16 +67,30 @@ export default function MemberList({
                   i < members.length - 1 ? 'border-b border-gray-200' : ''
                 }
               >
-                <td className="table-col">{badge(m.roleType)}</td>
-                <td className="table-col">{m.gender || 'N/A'}</td>
-                <td className="table-col">{m.countryCode || 'N/A'}</td>
-                <td className="table-col">
-                  {m.timestamp ? new Date(m.timestamp).getFullYear() : 'N/A'}
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                  {badge(m.roleType)}
                 </td>
-                <td className="table-col">{m.voyage || 'N/A'}</td>
-                <td className="table-col">{m.voyageRole || 'N/A'}</td>
-                <td className="table-col">{m.soloProjectTier || 'N/A'}</td>
-                <td className="table-col">{badge(m.voyageTier)}</td>
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                  {m.gender || 'N/A'}
+                </td>
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                  {m.countryCode || 'N/A'}
+                </td>
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                  {m.timestamp || 'N/A'}
+                </td>
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                  {m.voyage || 'N/A'}
+                </td>
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                  {m.voyageRole || 'N/A'}
+                </td>
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                  {m.soloProjectTier || 'N/A'}
+                </td>
+                <td className="px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                  {badge(m.voyageTier)}
+                </td>
               </tr>
             ))}
           </tbody>
