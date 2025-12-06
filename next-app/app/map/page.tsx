@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import Filter, { type FilterState } from '../../components/Filter';
 import { processMemberData } from '../../lib/memberStats';
 import chinguData from '../data/chingu_info.json';
+import ChatBot from '../../components/ChatBot';
 
 const Map = dynamic(() => import('../../components/Map'), {
   ssr: false,
@@ -55,6 +56,8 @@ export default function MapPage() {
         <div className="mt-4 text-gray-600 text-sm">
           Showing {memberCount} members across {countryCount} countries
         </div>
+
+        <ChatBot />
       </div>
     </div>
   );
