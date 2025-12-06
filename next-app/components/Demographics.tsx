@@ -1,13 +1,15 @@
-import PieChartComponent from './PieChart';
-import data from '../app/data/chingu_info.json';
-import { getDemographipcsStats } from '@/lib/dataHelpers';
-import DonutChartComponent from './DonutChart';
+// import PieChartComponent from './PieChart';
+// import data from '../app/data/chingu_info.json';
+// import { getDemographipcsStats } from '@/lib/dataHelpers';
+// import DonutChartComponent from './DonutChart';
 
 const Demographics = () => {
-  const stats = getDemographipcsStats(data);
+  // const stats = getDemographipcsStats(data);
 
   return (
     <main className="space-y-12 p-10">
+      <div className="text-2xl text-gray-500">Demographics disabled</div>
+      {/*
       <PieChartComponent title="Voyage Role" data={stats.roleChart} />
       <DonutChartComponent
         title="Gender Distribution"
@@ -23,6 +25,7 @@ const Demographics = () => {
 
         <div className="text-2xl">Most Common Role: {stats.commonRole}</div>
       </div>
+      */}
     </main>
   );
 };
