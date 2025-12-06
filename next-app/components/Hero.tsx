@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Chingu from './icons/Chingu';
 import Button from './ui/Button';
+import Stats from './Stats';
 
 const Hero = () => {
   const stats = [
@@ -37,18 +38,7 @@ const Hero = () => {
         </Button>
       </div> */}
 
-      <div className="flex flex-col gap-4 md:gap-16 lg:gap-24 md:flex-row md:mt-3 lg:mt-10">
-        {stats.map((item, i) => (
-          <div key={i}>
-            <p className={`text-3xl lg:text-5xl font-medium ${item.color}`}>
-              {item.value}
-            </p>
-            <p className="text-[#636363] font-medium mt-1 md:mt-4 text-lg md:text-xl">
-              {item.label}
-            </p>
-          </div>
-        ))}
-      </div>
+      <Stats stats={stats} />
     </div>
   );
 };
