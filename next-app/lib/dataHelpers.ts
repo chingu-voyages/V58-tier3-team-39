@@ -34,6 +34,8 @@ export function getMostCommonValue<K extends keyof Member>(
   if (counts.length === 0) return null;
 
   const mostCommon = counts.sort((a, b) => b.value - a.value)[0];
+  
+  if (!mostCommon) return null;
 
   return {
     name: mostCommon.name,

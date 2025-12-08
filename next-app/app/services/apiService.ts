@@ -21,8 +21,8 @@ function buildQueryParams(filters?: FilterParams): string {
   const params = new URLSearchParams();
   
   if (filters.gender && filters.gender !== 'All Genders') {
-    // uppercase for backend enum matching otherwise I get database errors because unmatch
-    params.append('gender', filters.gender.toUpperCase());
+    // uppercase for backend matching
+    params.append('gender', filters.gender?.toUpperCase() ?? '');
   }
   if (filters.country && filters.country !== 'All Countries') {
     console.log('🌍 Filtering by country:', filters.country);
