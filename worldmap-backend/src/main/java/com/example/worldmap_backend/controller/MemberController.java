@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.worldmap_backend.dto.CountryStats;
+import com.example.worldmap_backend.dto.DemographicsStatsDTO;
+import com.example.worldmap_backend.dto.EnhancedCountryStatsDTO;
 import com.example.worldmap_backend.dto.MemberFilter;
+import com.example.worldmap_backend.dto.SummaryStatsDTO;
 import com.example.worldmap_backend.entity.Member;
 import com.example.worldmap_backend.service.MemberService;
 
@@ -100,6 +103,60 @@ public class MemberController {
     @GetMapping("/stats/countries")
     public ResponseEntity<List<CountryStats>> getCountryStats() {
         List<CountryStats> stats = memberService.getCountryStats();
+        return ResponseEntity.ok(stats);
+    }
+
+    @GetMapping("/stats/demographics")
+    public ResponseEntity<DemographicsStatsDTO> getDemographicsStats(
+            @RequestParam(required = false) String gender,
+            @RequestParam(required = false) String country,
+            @RequestParam(required = false) Integer yearJoined,
+            @RequestParam(required = false) String roleType,
+            @RequestParam(required = false) String role,
+            @RequestParam(required = false) Integer soloProjectTier,
+            @RequestParam(required = false) Integer voyageTier,
+            @RequestParam(required = false) String voyage) {
+
+        MemberFilter filter = new MemberFilter(
+            gender, country, yearJoined, roleType, role,
+            soloProjectTier, voyageTier, voyage
+        );
+
+        boolean hasFilters = gender != null || country != null || yearJoined != null
+            || roleType != null || role != null || soloProjectTier != null
+            || voyageTier != null || voyage != null;
+
+        DemographicsStatsDTO stats = memberService.getDemographicsStats(hasFilters ? filter : null);
+        return ResponseEntity.ok(stats);
+    }
+
+    @GetMapping("/stats/countries-enhanced")
+    public ResponseEntity<List<EnhancedCountryStatsDTO>> getEnhancedCountryStats(
+            @RequestParam(required = false) String gender,
+            @RequestParam(required = false) String country,
+            @RequestParam(required = false) Integer yearJoined,
+            @RequestParam(required = false) String roleType,
+            @RequestParam(required = false) String role,
+            @RequestParam(required = false) Integer soloProjectTier,
+            @RequestParam(required = false) Integer voyageTier,
+            @RequestParam(required = false) String voyage) {
+
+        MemberFilter filter = new MemberFilter(
+            gender, country, yearJoined, roleType, role,
+            soloProjectTier, voyageTier, voyage
+        );
+
+        boolean hasFilters = gender != null || country != null || yearJoined != null
+            || roleType != null || role != null || soloProjectTier != null
+            || voyageTier != null || voyage != null;
+
+        List<EnhancedCountryStatsDTO> stats = memberService.getEnhancedCountryStats(hasFilters ? filter : null);
+        return ResponseEntity.ok(stats);
+    }
+
+    @GetMapping("/stats/summary")
+    public ResponseEntity<SummaryStatsDTO> getSummaryStats() {
+        SummaryStatsDTO stats = memberService.getSummaryStats();
         return ResponseEntity.ok(stats);
     }
 }

@@ -35,3 +35,9 @@ build/
 # Spring Boot application properties
 src/main/resources/application.properties
 src/main/resources/application-dev.properties
+
+# Ignore JetBrains IDE settings
+.idea/
+
+# Ignore sensitive Spring Boot config
+src/main/resources/application.properties
