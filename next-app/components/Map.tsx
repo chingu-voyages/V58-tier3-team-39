@@ -27,10 +27,15 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    console.log('🗺️ Map component useEffect triggered');
+    console.log('🗺️ Received countryStats:', countryStats.length, 'countries');
+    console.log('🗺️ Sample stats:', countryStats.slice(0, 2));
+    
     if (!mapContainerRef.current) return;
 
     // Initialize map
     if (!mapRef.current) {
+      console.log('🗺️ Initializing map for the first time');
       mapRef.current = L.map(mapContainerRef.current, {
         center: [20, 0],
         zoom: 2,
@@ -53,10 +58,15 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
 
     // Add markers for each country
     let totalMembers = 0;
+    let markersAdded = 0;
     countryStats.forEach((stat) => {
-      if (!stat.coordinates) return;
+      if (!stat.coordinates) {
+        console.log('⚠️ Skipping country (no coordinates):', stat.countryName);
+        return;
+      }
 
       totalMembers += stat.count;
+      markersAdded++;
 
       // Create custom marker with number
       const markerHtml = `
@@ -123,6 +133,8 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
 
       markersRef.current.push(marker);
     });
+
+    console.log('✅ Map markers added:', markersAdded, 'Total members:', totalMembers);
 
     // Notify parent of member count changes
     if (onMemberCountChange) {

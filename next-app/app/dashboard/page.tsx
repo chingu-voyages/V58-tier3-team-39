@@ -1,9 +1,6 @@
 'use client';
-import { useState } from 'react';
-import { getDemographipcsStats, members } from '@/lib/dataHelpers';
-import { processMemberData } from '@/lib/memberStats';
-import chinguData from '@/app/data/chingu_info.json';
-
+import { useState, useEffect } from 'react';
+import { getDemographicsStats, getCountryStats } from '../services/statsService';
 import DonutChartComponent from '@/components/DonutChart';
 import PieChartComponent from '@/components/PieChart';
 import StatCard from '@/components/StatCard';
@@ -11,12 +8,20 @@ import { Briefcase, MapPin, User } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const Dashboard = () => {
-  const stats = getDemographipcsStats(members);
-
-  const countryStats = processMemberData(chinguData as any);
-
+  const [stats, setStats] = useState<any>(null);
+  const [countryStats, setCountryStats] = useState<any[]>([]);
   const [memberCount, setMemberCount] = useState(0);
   const [countryCount, setCountryCount] = useState(0);
+
+  useEffect(() => {
+    Promise.all([
+      getDemographicsStats(),
+      getCountryStats()
+    ]).then(([demographics, countries]) => {
+      setStats(demographics);
+      setCountryStats(countries);
+    }).catch(console.error);
+  }, []);
 
   const handleMemberCountChange = (count: number, countries: number) => {
     setMemberCount(count);
