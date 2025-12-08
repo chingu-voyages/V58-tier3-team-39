@@ -141,6 +141,8 @@ public class MemberController {
             @RequestParam(required = false) Integer voyageTier,
             @RequestParam(required = false) String voyage) {
 
+        System.out.println("🌍 Received country filter: " + country);
+        
         MemberFilter filter = new MemberFilter(
             gender, country, yearJoined, roleType, role,
             soloProjectTier, voyageTier, voyage
@@ -151,6 +153,7 @@ public class MemberController {
             || voyageTier != null || voyage != null;
 
         List<EnhancedCountryStatsDTO> stats = memberService.getEnhancedCountryStats(hasFilters ? filter : null);
+        System.out.println("✅ Returning " + stats.size() + " countries");
         return ResponseEntity.ok(stats);
     }
 
