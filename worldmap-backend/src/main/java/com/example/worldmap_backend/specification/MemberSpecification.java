@@ -33,7 +33,7 @@ public class MemberSpecification {
             }
 
             if (filter.getRole() != null && !filter.getRole().isEmpty()) {
-                predicates.add(criteriaBuilder.equal(root.get("role"), filter.getRole()));
+                predicates.add(criteriaBuilder.equal(root.get("voyageRole"), filter.getRole()));
             }
 
             if (filter.getSoloProjectTier() != null) {

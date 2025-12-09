@@ -151,7 +151,7 @@ const Footer = () => {
               <li className="flex items-center justify-between p-4 rounded-lg border border-white/85 hover:bg-[#4D77FF]/15 hover:border-[#4D77FF]">
                 <div>
                   <p className="text-lg font-bold">Kevin Llanos</p>
-                  <p className="text-sm font-bold">Web Developer</p>
+                  <p className="text-sm font-bold">Software Engineer</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a

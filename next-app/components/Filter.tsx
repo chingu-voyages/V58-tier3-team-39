@@ -18,6 +18,7 @@ export interface FilterState {
 interface FilterProps {
   onFilterChange: (filters: FilterState) => void;
   members: Array<Record<string, any>>;
+  countryStats?: Array<{ countryName: string }>;
 }
 
 const DEFAULT_FILTERS: FilterState = {
@@ -66,7 +67,7 @@ const formatLabel = (value: string) =>
 
 const createDefaultFilters = () => ({ ...DEFAULT_FILTERS });
 
-export default function Filter({ onFilterChange, members }: FilterProps) {
+export default function Filter({ onFilterChange, members, countryStats }: FilterProps) {
   const [showFilters, setShowFilters] = useState(true);
   const [filters, setFilters] = useState<FilterState>(createDefaultFilters);
 
@@ -75,13 +76,26 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
     const genderSet = new Set<string>();
     const yearSet = new Set<number>();
 
-    members.forEach((member) => {
-      const countryName =
-        member['Country name (from Country)'] || member.countryName;
-      if (countryName) {
-        countrySet.add(countryName);
-      }
+    
+    if (countryStats && countryStats.length > 0) {
+      countryStats.forEach((stat) => {
+        if (stat.countryName) {
+          countrySet.add(stat.countryName);
+        }
+      });
+    } else {
+      
+      members.forEach((member) => {
+        const countryName =
+          member['Country name (from Country)'] || member.countryName || member.country;
+        if (countryName) {
+          countrySet.add(countryName);
+        }
+      });
+    }
 
+    
+    members.forEach((member) => {
       const gender = member.Gender || member.gender;
       if (gender) {
         const normalizedGender = gender.trim().toUpperCase();
@@ -122,7 +136,7 @@ export default function Filter({ onFilterChange, members }: FilterProps) {
         ...derivedYears.sort((a, b) => Number(b) - Number(a)),
       ],
     };
-  }, [members]);
+  }, [members, countryStats]);
 
   const handleFilterChange = (key: keyof FilterState, value: string) => {
     setFilters((prev) => ({ ...prev, [key]: value }));

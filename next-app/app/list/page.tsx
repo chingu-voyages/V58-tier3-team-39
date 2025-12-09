@@ -1,18 +1,9 @@
 import { Member } from '../../types/member';
 import MembersContainer from '../../components/MembersContainer';
-
-async function getMembers(): Promise<Member[]> {
-  const res = await fetch('http://localhost:3000/api/members');
-
-  if (!res.ok) {
-    throw new Error('There was an error');
-  }
-
-  return res.json();
-}
+import { getMembers } from '../services/memberService';
 
 export default async function ListPage() {
-  const members = await getMembers();
+  const members = await getMembers() as Member[];
 
   return (
     <div className="w-full p-6 mt-14 md:mt-20 overflow-x-auto">

@@ -1,0 +1,186 @@
+// worldmap-backend/src/main/java/com/example/worldmap_backend/util/CountryCoordinates.java
+// placeholder for CountryCoordinate
+package com.example.worldmap_backend.util;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class CountryCoordinates {
+    
+    private static final Map<String, double[]> COORDINATES_BY_CODE = new HashMap<>();
+    
+    static {
+        // ISO 3166-1 alpha-2 country codes with coordinates
+        COORDINATES_BY_CODE.put("US", new double[]{37.0902, -95.7129});
+        COORDINATES_BY_CODE.put("GB", new double[]{55.3781, -3.4360});
+        COORDINATES_BY_CODE.put("CA", new double[]{56.1304, -106.3468});
+        COORDINATES_BY_CODE.put("DE", new double[]{51.1657, 10.4515});
+        COORDINATES_BY_CODE.put("IN", new double[]{20.5937, 78.9629});
+        COORDINATES_BY_CODE.put("AU", new double[]{-25.2744, 133.7751});
+        COORDINATES_BY_CODE.put("BR", new double[]{-14.2350, -51.9253});
+        COORDINATES_BY_CODE.put("NG", new double[]{9.0820, 8.6753});
+        COORDINATES_BY_CODE.put("FR", new double[]{46.2276, 2.2137});
+        COORDINATES_BY_CODE.put("ES", new double[]{40.4637, -3.7492});
+        COORDINATES_BY_CODE.put("EG", new double[]{26.8206, 30.8025});
+        COORDINATES_BY_CODE.put("PH", new double[]{12.8797, 121.7740});
+        COORDINATES_BY_CODE.put("PK", new double[]{30.3753, 69.3451});
+        COORDINATES_BY_CODE.put("CZ", new double[]{49.8175, 15.4730});
+        COORDINATES_BY_CODE.put("KE", new double[]{-0.0236, 37.9062});
+        COORDINATES_BY_CODE.put("JP", new double[]{36.2048, 138.2529});
+        COORDINATES_BY_CODE.put("MA", new double[]{31.7917, -7.0926});
+        COORDINATES_BY_CODE.put("SK", new double[]{48.6690, 19.6990});
+        COORDINATES_BY_CODE.put("TN", new double[]{33.8869, 9.5375});
+        COORDINATES_BY_CODE.put("IR", new double[]{32.4279, 53.6880});
+        COORDINATES_BY_CODE.put("KR", new double[]{35.9078, 127.7669});
+        COORDINATES_BY_CODE.put("GH", new double[]{7.9465, -1.0232});
+        COORDINATES_BY_CODE.put("DZ", new double[]{28.0339, 1.6596});
+        COORDINATES_BY_CODE.put("ZA", new double[]{-30.5595, 22.9375});
+        COORDINATES_BY_CODE.put("ET", new double[]{9.1450, 40.4897});
+        COORDINATES_BY_CODE.put("PS", new double[]{31.9522, 35.2332});
+        COORDINATES_BY_CODE.put("BD", new double[]{23.6850, 90.3563});
+        COORDINATES_BY_CODE.put("MY", new double[]{4.2105, 101.9758});
+        COORDINATES_BY_CODE.put("MG", new double[]{-18.7669, 46.8691});
+        COORDINATES_BY_CODE.put("ID", new double[]{-0.7893, 113.9213});
+        COORDINATES_BY_CODE.put("RS", new double[]{44.0165, 21.0059});
+        COORDINATES_BY_CODE.put("RO", new double[]{45.9432, 24.9668});
+        COORDINATES_BY_CODE.put("TR", new double[]{38.9637, 35.2433});
+        COORDINATES_BY_CODE.put("AE", new double[]{23.4241, 53.8478});
+        COORDINATES_BY_CODE.put("UA", new double[]{48.3794, 31.1656});
+        COORDINATES_BY_CODE.put("TW", new double[]{23.6978, 120.9605});
+        COORDINATES_BY_CODE.put("IT", new double[]{41.8719, 12.5674});
+        COORDINATES_BY_CODE.put("SA", new double[]{23.8859, 45.0792});
+        COORDINATES_BY_CODE.put("PL", new double[]{51.9194, 19.1451});
+        COORDINATES_BY_CODE.put("CN", new double[]{35.8617, 104.1954});
+        COORDINATES_BY_CODE.put("NL", new double[]{52.1326, 5.2913});
+        COORDINATES_BY_CODE.put("CO", new double[]{4.5709, -74.2973});
+        COORDINATES_BY_CODE.put("SE", new double[]{60.1282, 18.6435});
+        COORDINATES_BY_CODE.put("MX", new double[]{23.6345, -102.5528});
+        COORDINATES_BY_CODE.put("IQ", new double[]{33.2232, 43.6793});
+        COORDINATES_BY_CODE.put("RU", new double[]{61.5240, 105.3188});
+        COORDINATES_BY_CODE.put("UG", new double[]{1.3733, 32.2903});
+        COORDINATES_BY_CODE.put("VN", new double[]{14.0583, 108.2772});
+        COORDINATES_BY_CODE.put("AR", new double[]{-38.4161, -63.6167});
+        COORDINATES_BY_CODE.put("PT", new double[]{39.3999, -8.2245});
+        COORDINATES_BY_CODE.put("NP", new double[]{28.3949, 84.1240});
+        COORDINATES_BY_CODE.put("SG", new double[]{1.3521, 103.8198});
+        COORDINATES_BY_CODE.put("LK", new double[]{7.8731, 80.7718});
+        COORDINATES_BY_CODE.put("IE", new double[]{53.4129, -8.2439});
+        COORDINATES_BY_CODE.put("NZ", new double[]{-40.9006, 174.8860});
+        COORDINATES_BY_CODE.put("AF", new double[]{33.9391, 67.7100});
+        COORDINATES_BY_CODE.put("CH", new double[]{46.8182, 8.2275});
+        COORDINATES_BY_CODE.put("LY", new double[]{26.3351, 17.2283});
+        COORDINATES_BY_CODE.put("DO", new double[]{18.7357, -70.1627});
+        COORDINATES_BY_CODE.put("GR", new double[]{39.0742, 21.8243});
+        COORDINATES_BY_CODE.put("PE", new double[]{-9.1900, -75.0152});
+        COORDINATES_BY_CODE.put("HK", new double[]{22.3193, 114.1694});
+        COORDINATES_BY_CODE.put("BG", new double[]{42.7339, 25.4858});
+        COORDINATES_BY_CODE.put("HU", new double[]{47.1625, 19.5033});
+        COORDINATES_BY_CODE.put("UZ", new double[]{41.3775, 64.5853});
+        COORDINATES_BY_CODE.put("NO", new double[]{60.4720, 8.4689});
+        COORDINATES_BY_CODE.put("IL", new double[]{31.0461, 34.8516});
+        COORDINATES_BY_CODE.put("LT", new double[]{55.1694, 23.8813});
+        COORDINATES_BY_CODE.put("BA", new double[]{43.9159, 17.6791});
+        COORDINATES_BY_CODE.put("TZ", new double[]{-6.3690, 34.8888});
+        COORDINATES_BY_CODE.put("BE", new double[]{50.5039, 4.4699});
+        COORDINATES_BY_CODE.put("CM", new double[]{7.3697, 12.3547});
+        COORDINATES_BY_CODE.put("RW", new double[]{-1.9403, 29.8739});
+        COORDINATES_BY_CODE.put("DK", new double[]{56.2639, 9.5018});
+        COORDINATES_BY_CODE.put("LB", new double[]{33.8547, 35.8623});
+        COORDINATES_BY_CODE.put("ZW", new double[]{-19.0154, 29.1549});
+        COORDINATES_BY_CODE.put("KH", new double[]{12.5657, 104.9910});
+        COORDINATES_BY_CODE.put("GE", new double[]{42.3154, 43.3569});
+        COORDINATES_BY_CODE.put("YE", new double[]{15.5527, 48.5164});
+        COORDINATES_BY_CODE.put("TH", new double[]{15.8700, 100.9925});
+        COORDINATES_BY_CODE.put("JO", new double[]{30.5852, 36.2384});
+        COORDINATES_BY_CODE.put("AT", new double[]{47.5162, 14.5501});
+        COORDINATES_BY_CODE.put("SY", new double[]{34.8021, 38.9968});
+        COORDINATES_BY_CODE.put("KZ", new double[]{48.0196, 66.9237});
+        COORDINATES_BY_CODE.put("EC", new double[]{-1.8312, -78.1834});
+        COORDINATES_BY_CODE.put("CL", new double[]{-35.6751, -71.5430});
+        COORDINATES_BY_CODE.put("ZM", new double[]{-13.1339, 27.8493});
+        COORDINATES_BY_CODE.put("FI", new double[]{61.9241, 25.7482});
+        COORDINATES_BY_CODE.put("HR", new double[]{45.1000, 15.2000});
+        COORDINATES_BY_CODE.put("VE", new double[]{6.4238, -66.5897});
+        COORDINATES_BY_CODE.put("CD", new double[]{-4.0383, 21.7587});
+        COORDINATES_BY_CODE.put("AQ", new double[]{-75.2509, -0.0714});
+        COORDINATES_BY_CODE.put("MW", new double[]{-13.2543, 34.3015});
+        COORDINATES_BY_CODE.put("AZ", new double[]{40.1431, 47.5769});
+        COORDINATES_BY_CODE.put("EE", new double[]{58.5953, 25.0136});
+        COORDINATES_BY_CODE.put("BO", new double[]{-16.2902, -63.5887});
+        COORDINATES_BY_CODE.put("KG", new double[]{41.2044, 74.7661});
+        COORDINATES_BY_CODE.put("NI", new double[]{12.8654, -85.2072});
+        COORDINATES_BY_CODE.put("AO", new double[]{-11.2027, 17.8739});
+        COORDINATES_BY_CODE.put("SD", new double[]{12.8628, 30.2176});
+        COORDINATES_BY_CODE.put("LV", new double[]{56.8796, 24.6032});
+        COORDINATES_BY_CODE.put("BH", new double[]{26.0667, 50.5577});
+        COORDINATES_BY_CODE.put("JM", new double[]{18.1096, -77.2975});
+        COORDINATES_BY_CODE.put("MR", new double[]{21.0079, -10.9408});
+        COORDINATES_BY_CODE.put("MM", new double[]{21.9162, 95.9560});
+        COORDINATES_BY_CODE.put("CY", new double[]{35.1264, 33.4299});
+        COORDINATES_BY_CODE.put("AM", new double[]{40.0691, 45.0382});
+        COORDINATES_BY_CODE.put("AL", new double[]{41.1533, 20.1683});
+        COORDINATES_BY_CODE.put("QA", new double[]{25.3548, 51.1839});
+        COORDINATES_BY_CODE.put("PY", new double[]{-23.4425, -58.4438});
+        COORDINATES_BY_CODE.put("BN", new double[]{4.5353, 114.7277});
+        COORDINATES_BY_CODE.put("AI", new double[]{18.2206, -63.0686});
+        COORDINATES_BY_CODE.put("NA", new double[]{-22.9576, 18.4904});
+        COORDINATES_BY_CODE.put("KW", new double[]{29.3117, 47.4818});
+        COORDINATES_BY_CODE.put("OM", new double[]{21.4735, 55.9754});
+        COORDINATES_BY_CODE.put("LA", new double[]{19.8563, 102.4955});
+        COORDINATES_BY_CODE.put("BY", new double[]{53.7098, 27.9534});
+        COORDINATES_BY_CODE.put("MU", new double[]{-20.3484, 57.5522});
+        COORDINATES_BY_CODE.put("MD", new double[]{47.4116, 28.3699});
+        COORDINATES_BY_CODE.put("HT", new double[]{18.9712, -72.2852});
+        COORDINATES_BY_CODE.put("AS", new double[]{-14.2710, -170.1322});
+        COORDINATES_BY_CODE.put("SL", new double[]{8.4606, -11.7799});
+        COORDINATES_BY_CODE.put("BT", new double[]{27.5142, 90.4336});
+        COORDINATES_BY_CODE.put("BJ", new double[]{9.3077, 2.3158});
+        COORDINATES_BY_CODE.put("XK", new double[]{42.6026, 20.9030});
+        COORDINATES_BY_CODE.put("GT", new double[]{15.7835, -90.2308});
+        COORDINATES_BY_CODE.put("MV", new double[]{3.2028, 73.2207});
+        COORDINATES_BY_CODE.put("TT", new double[]{10.6918, -61.2225});
+        COORDINATES_BY_CODE.put("PR", new double[]{18.2208, -66.5901});
+        COORDINATES_BY_CODE.put("GN", new double[]{9.9456, -9.6966});
+        COORDINATES_BY_CODE.put("SO", new double[]{5.1521, 46.1996});
+        COORDINATES_BY_CODE.put("UY", new double[]{-32.5228, -55.7658});
+        COORDINATES_BY_CODE.put("DJ", new double[]{11.8251, 42.5903});
+        COORDINATES_BY_CODE.put("SV", new double[]{13.7942, -88.8965});
+        COORDINATES_BY_CODE.put("TG", new double[]{8.6195, 0.8248});
+        COORDINATES_BY_CODE.put("BW", new double[]{-22.3285, 24.6849});
+        COORDINATES_BY_CODE.put("PG", new double[]{-6.3150, 143.9555});
+        COORDINATES_BY_CODE.put("BS", new double[]{25.0343, -77.3963});
+        COORDINATES_BY_CODE.put("MN", new double[]{46.8625, 103.8467});
+        COORDINATES_BY_CODE.put("PA", new double[]{8.5380, -80.7821});
+        COORDINATES_BY_CODE.put("GY", new double[]{4.8604, -58.9302});
+        COORDINATES_BY_CODE.put("SC", new double[]{-4.6796, 55.4920});
+        COORDINATES_BY_CODE.put("BZ", new double[]{17.1899, -88.4976});
+        COORDINATES_BY_CODE.put("FO", new double[]{61.8926, -6.9118});
+        COORDINATES_BY_CODE.put("CF", new double[]{6.6111, 20.9394});
+        COORDINATES_BY_CODE.put("TM", new double[]{38.9697, 59.5563});
+        COORDINATES_BY_CODE.put("KI", new double[]{-3.3704, -168.7340});
+        COORDINATES_BY_CODE.put("CR", new double[]{9.7489, -83.7534});
+        COORDINATES_BY_CODE.put("VI", new double[]{18.3358, -64.8963});
+        COORDINATES_BY_CODE.put("TJ", new double[]{38.8610, 71.2761});
+        COORDINATES_BY_CODE.put("GI", new double[]{36.1408, -5.3536});
+        COORDINATES_BY_CODE.put("MP", new double[]{15.0979, 145.6739});
+        COORDINATES_BY_CODE.put("MZ", new double[]{-18.6657, 35.5296});
+        COORDINATES_BY_CODE.put("LU", new double[]{49.8153, 6.1296});
+        COORDINATES_BY_CODE.put("LS", new double[]{-29.6100, 28.2336});
+        COORDINATES_BY_CODE.put("AG", new double[]{17.0608, -61.7964});
+        COORDINATES_BY_CODE.put("SN", new double[]{14.4974, -14.4524});
+        COORDINATES_BY_CODE.put("MK", new double[]{41.6086, 21.7453});
+        COORDINATES_BY_CODE.put("BI", new double[]{-3.3731, 29.9189});
+        COORDINATES_BY_CODE.put("CX", new double[]{-10.4475, 105.6904});
+        COORDINATES_BY_CODE.put("CV", new double[]{16.5388, -23.0418});
+        COORDINATES_BY_CODE.put("VC", new double[]{12.9843, -61.2872});
+        COORDINATES_BY_CODE.put("SR", new double[]{3.9193, -56.0278});
+    }
+    
+    
+    public static double[] getCoordinatesByCode(String countryCode) {
+        if (countryCode == null || countryCode.isEmpty()) {
+            return null;
+        }
+        return COORDINATES_BY_CODE.get(countryCode.toUpperCase());
+    }
+}
