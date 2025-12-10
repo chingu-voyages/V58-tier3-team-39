@@ -1,4 +1,3 @@
-// worldmap-backend/src/main/java/com/example/worldmap_backend/util/CountryCoordinates.java
 // placeholder for CountryCoordinate
 package com.example.worldmap_backend.util;
 
