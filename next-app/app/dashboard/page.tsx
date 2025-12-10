@@ -36,7 +36,7 @@ const Dashboard = () => {
     <main
       className="
   w-full min-h-screen px-4 md:px-8 py-20 md:py-30 
-  overflow-x-auto bg-[#F1F5F9]
+  overflow-x-auto
 
   md:gap-4
 

@@ -4,6 +4,7 @@ body {
   margin: 0;
   width: 100%;
   min-height: 100vh;
+  @apply bg-background;
 }
 
 @theme {
@@ -12,4 +13,19 @@ body {
   --color-blue: #0593bc;
   --color-purple: #87499c;
   --color-blue-brand: #4d77ff;
+
+  --color-background: var(--background);
 }
+
+@layer base {
+  :root {
+    --background: #F1F5F9;
+  }
+
+  .dark {
+    --background: #0F172A;
+  }
+}
+
+
+

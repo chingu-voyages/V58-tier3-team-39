@@ -24,7 +24,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="h-screen bg-[#F1F5F9] flex flex-col justify-center items-center px-4 md:px-8 text-center gap-6 md:gap-7 lg:gap-10 mt-10 lg:mt-0">
+    <div className="h-screen flex flex-col justify-center items-center px-4 md:px-8 text-center gap-6 md:gap-7 lg:gap-10 mt-10 lg:mt-0">
       <Chingu />
       <h1 className="text-3xl lg:text-5xl font-semibold text-[#232925]">
         Discover the Global <span className="text-[#4D77FF]">Chingu </span>

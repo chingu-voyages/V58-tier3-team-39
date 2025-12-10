@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, Moon, X } from 'lucide-react';
 import { signOut } from 'next-auth/react';
+import { ThemeToggle } from './ThemeToggle';
 
 interface HeaderProps {
   session: {
@@ -29,9 +30,9 @@ const Header = ({ session }: HeaderProps) => {
           <Link href="/dashboard">dashboard</Link>
 
           <div className="ml-auto flex items-center gap-6">
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-[#BFCDD2]">
-              <Moon className="w-4 h-4 text-black" />
-            </button>
+            
+              <ThemeToggle />
+            
 
             {session?.user?.name && <span>Welcome {session.user.name}</span>}
 
