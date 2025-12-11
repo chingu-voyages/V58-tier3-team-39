@@ -101,7 +101,7 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
         ">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
             <h3 style="margin: 0; font-weight: 700; font-size: 18px; color: #111322;">
-              ${stat.countryName}
+              ${stat.countryName ?? 'Unknown'}
             </h3>
             ${
               flagUrl
@@ -110,9 +110,9 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
             }
           </div>
           <div style="font-size: 14px; color: #111322; line-height: 1.6;">
-            <p style="margin: 4px 0;"><strong>Top Role:</strong> ${stat.topRole}</p>
-            <p style="margin: 4px 0;"><strong>Common Gender:</strong> ${stat.commonGender}</p>
-            <p style="margin: 4px 0;"><strong>Number of Chingus:</strong> ${stat.count}</p>
+            <p style="margin: 4px 0;"><strong>Top Role:</strong> ${stat.topRole ?? 'N/A'}</p>
+            <p style="margin: 4px 0;"><strong>Common Gender:</strong> ${stat.commonGender ?? 'N/A'}</p>
+            <p style="margin: 4px 0;"><strong>Number of Chingus:</strong> ${stat.count ?? 0}</p>
           </div>
         </div>
       `;

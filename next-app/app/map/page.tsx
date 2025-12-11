@@ -51,7 +51,11 @@ export default function MapPage() {
   return (
     <div className="w-full min-h-screen bg-white pt-14 md:pt-20">
       <div className="w-full p-6">
-        <Filter onFilterChange={handleFilterChange} members={members} />
+        <Filter 
+          onFilterChange={handleFilterChange} 
+          members={members} 
+          countryStats={countryStats}
+        />
 
         <div className="mt-4 rounded-lg overflow-hidden" style={{ height: '600px', backgroundColor: '#E6F3FF' }}>
           <Map
