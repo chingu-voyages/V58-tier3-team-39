@@ -30,14 +30,8 @@ export default function MapPage() {
   const [members, setMembers] = useState<any[]>([]);
 
   useEffect(() => {
-    console.log('🗺️ Map page fetching data with filters:', filters);
-    
     getCountryStats(filters)
-      .then((stats) => {
-        console.log('🗺️ Map page received country stats:', stats.length, 'countries');
-        console.log('🗺️ First 3 countries:', stats.slice(0, 3));
-        setCountryStats(stats);
-      })
+      .then(setCountryStats)
       .catch(console.error);
     
     getMembers(filters)
@@ -57,11 +51,7 @@ export default function MapPage() {
   return (
     <div className="w-full min-h-screen bg-white pt-14 md:pt-20">
       <div className="w-full p-6">
-        <Filter 
-          onFilterChange={handleFilterChange} 
-          members={members} 
-          countryStats={countryStats}
-        />
+        <Filter onFilterChange={handleFilterChange} members={members} />
 
         <div className="mt-4 rounded-lg overflow-hidden" style={{ height: '600px', backgroundColor: '#E6F3FF' }}>
           <Map

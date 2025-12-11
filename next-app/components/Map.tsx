@@ -27,15 +27,10 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log('🗺️ Map component useEffect triggered');
-    console.log('🗺️ Received countryStats:', countryStats.length, 'countries');
-    console.log('🗺️ Sample stats:', countryStats.slice(0, 2));
-    
     if (!mapContainerRef.current) return;
 
     // Initialize map
     if (!mapRef.current) {
-      console.log('🗺️ Initializing map for the first time');
       mapRef.current = L.map(mapContainerRef.current, {
         center: [20, 0],
         zoom: 2,
@@ -58,15 +53,10 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
 
     // Add markers for each country
     let totalMembers = 0;
-    let markersAdded = 0;
     countryStats.forEach((stat) => {
-      if (!stat.coordinates) {
-        console.log('⚠️ Skipping country (no coordinates):', stat.countryName);
-        return;
-      }
+      if (!stat.coordinates) return;
 
       totalMembers += stat.count;
-      markersAdded++;
 
       // Create custom marker with number
       const markerHtml = `
@@ -111,7 +101,7 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
         ">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
             <h3 style="margin: 0; font-weight: 700; font-size: 18px; color: #111322;">
-              ${stat.countryName ?? 'Unknown'}
+              ${stat.countryName}
             </h3>
             ${
               flagUrl
@@ -120,9 +110,9 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
             }
           </div>
           <div style="font-size: 14px; color: #111322; line-height: 1.6;">
-            <p style="margin: 4px 0;"><strong>Top Role:</strong> ${stat.topRole ?? 'N/A'}</p>
-            <p style="margin: 4px 0;"><strong>Common Gender:</strong> ${stat.commonGender ?? 'N/A'}</p>
-            <p style="margin: 4px 0;"><strong>Number of Chingus:</strong> ${stat.count ?? 0}</p>
+            <p style="margin: 4px 0;"><strong>Top Role:</strong> ${stat.topRole}</p>
+            <p style="margin: 4px 0;"><strong>Common Gender:</strong> ${stat.commonGender}</p>
+            <p style="margin: 4px 0;"><strong>Number of Chingus:</strong> ${stat.count}</p>
           </div>
         </div>
       `;
@@ -133,8 +123,6 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
 
       markersRef.current.push(marker);
     });
-
-    console.log('✅ Map markers added:', markersAdded, 'Total members:', totalMembers);
 
     // Notify parent of member count changes
     if (onMemberCountChange) {

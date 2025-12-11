@@ -22,10 +22,9 @@ function buildQueryParams(filters?: FilterParams): string {
   
   if (filters.gender && filters.gender !== 'All Genders') {
     // uppercase for backend matching
-    params.append('gender', filters.gender?.toUpperCase() ?? '');
+    params.append('gender', filters.gender.toUpperCase());
   }
   if (filters.country && filters.country !== 'All Countries') {
-    console.log('🌍 Filtering by country:', filters.country);
     params.append('country', filters.country);
   }
   if (filters.yearJoined && filters.yearJoined !== 'All Years') {
@@ -53,12 +52,10 @@ function buildQueryParams(filters?: FilterParams): string {
   return queryString ? `?${queryString}` : '';
 }
 
-// fetch testing function. Refactoring code later.
+
 async function fetchFromBackend<T>(endpoint: string): Promise<T> {
   const url = `${BACKEND_API_URL}${endpoint}`;
-  console.log('🌐 Fetching from:', url);
-  console.log('📋 BACKEND_API_URL:', BACKEND_API_URL);
-  console.log('🔧 USE_BACKEND_API:', USE_BACKEND_API);
+  
   
   const response = await fetch(url);
   

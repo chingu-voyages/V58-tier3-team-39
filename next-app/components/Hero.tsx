@@ -43,7 +43,7 @@ const Hero = () => {
         </Link>
       </div>
       {/* <div className="bg-white w-[600px] h-[300px] p-3">
-        <Button onClick={() => console.log('clicked')} variant="secondary">
+        <Button onClick={() => {}} variant="secondary">
           Dashboard
         </Button>
       </div> */}
