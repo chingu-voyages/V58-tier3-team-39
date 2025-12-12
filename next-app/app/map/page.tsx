@@ -29,6 +29,11 @@ export default function MapPage() {
   const [countryStats, setCountryStats] = useState<any[]>([]);
   const [members, setMembers] = useState<any[]>([]);
 
+  // Scroll to top when page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     console.log('🗺️ Map page fetching data with filters:', filters);
     

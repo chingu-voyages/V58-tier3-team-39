@@ -35,7 +35,7 @@ const MemberDemographics = () => {
           <Link
             key={index}
             href={card.href}
-            className="bg-[#1A2535] rounded-xl shadow-lg flex flex-col p-4 md:p-5 hover:bg-[#212d3f] hover:shadow-2xl transition-shadow cursor-pointer"
+            className="bg-[#1E293B] rounded-xl shadow-lg flex flex-col p-4 md:p-5 hover:bg-[#27374d] hover:transition hover:shadow-2xl transition-shadow cursor-pointer"
           >
             <div className="relative w-full h-48 md:h-56 mb-4 md:mb-6 rounded-lg overflow-hidden">
               <Image
