@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-regular-svg-icons": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.1",
     "@prisma/client": "^6.19.0",
     "@react-spring/web": "^10.0.3",
     "@types/leaflet": "^1.9.21",
