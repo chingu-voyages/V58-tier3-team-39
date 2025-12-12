@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/lib/auth-helpers';
 import './globals.css';
 
 import Header from '@/components/Header';
 
-const roboto = Roboto({
-  variable: '--font-roboto',
+const poppins = Poppins({
   subsets: ['latin'],
-});
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-poppins',
+})
 
 export const metadata: Metadata = {
   title: 'Chingu Demographics',
@@ -25,7 +26,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${roboto.variable} antialiased`} suppressHydrationWarning>
+      <body className={`${poppins.variable} antialiased`} suppressHydrationWarning>
         <SessionProvider session={session}>
           <Header session={session} />
           {children}

@@ -8,7 +8,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen flex flex-col">
       <Hero />
-      <Demographics />
+      {/* <Demographics /> */}
       <div className="w-full h-[40vh]">
         <Footer />
       </div>

@@ -24,17 +24,20 @@ const Hero = () => {
   ];
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center px-4 md:px-8 text-center gap-6 md:gap-7 lg:gap-10 mt-10 lg:mt-0">
-      <Chingu />
-      <h1 className="text-3xl lg:text-5xl font-semibold text-[#232925]">
+    <div className="h-screen flex flex-col justify-center items-center px-4 md:px-8 text-center gap-6 md:gap-7 lg:gap-10">
+      <Chingu className='w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24'/>
+      <h1 className="text-[2.125rem] lg:text-[2.75rem] font-semibold">
         Discover the Global <span className="text-[#4D77FF]">Chingu </span>
         Community
       </h1>
-      <h3 className="font-medium text-[#636363] md:max-w-2/4 md:text-2xl">
+      
+      <h3 className="w-2/3 lg:w-1/2 text-xl lg:text-[1.375rem] font-medium text-secondary-text">
         Learn more about where our members are located and the demographics of
         our members.
       </h3>
-      <div className="flex gap-5">
+  
+      
+      <div className="flex gap-5 mb-25">
         <Link href="/map">
           <Button>Map View</Button>
         </Link>

@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Menu, Moon, X } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 import { ThemeToggle } from './ThemeToggle';
+import Chingu from './icons/Chingu';
+import { usePathname } from 'next/navigation'
 
 interface HeaderProps {
   session: {
@@ -16,28 +18,37 @@ interface HeaderProps {
 
 const Header = ({ session }: HeaderProps) => {
   const [isActive, setIsActive] = useState(false);
+  const pathname = usePathname()
+
+
+const linkTextStyle = (href: string) => 
+  pathname === href ?
+    'text-blue-brand' : 
+    'text-secondary-text hover:text-blue-brand/50'
 
   return (
     <>
-      <header className="flex h-14 md:h-20 w-full items-center fixed top-0 z-20 font-semibold text-base md:text-lg px-4 md:px-8 text-[#636363] bg-white shadow-sm">
-        <Link href="/" className="font-bold md:text-xl text-[#4D77FF] mr-6">
-          Chingu Demographics
+      <header className="flex h-14 md:h-20 w-full bg-background items-center fixed top-0 z-20 font-semibold px-4 md:px-8 gap-10">
+        <Link href="/" className="font-bold mr-6">
+          <div className='flex gap-2 items-center'>
+            <Chingu className='h-11 w-11'/>
+            <div className={`flex flex-col leading-5 tracking-widest' ${pathname !== '/' ? 'hover:text-blue-brand/50' : ''}`}>
+              <span>CHINGU</span>
+              <span>DEMOGRAPHICS</span>
+            </div>
+          </div>
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 flex-1">
-          <Link href="/map">map</Link>
-          <Link href="/list">list</Link>
-          <Link href="/dashboard">dashboard</Link>
-
+          <Link href="/map" className={linkTextStyle('/map')}>Map</Link>
+          <Link href="/list" className={linkTextStyle('/list')}>List</Link>
+          <Link href="/dashboard" className={linkTextStyle('/dashboard')}>Dashboard</Link>
+          
           <div className="ml-auto flex items-center gap-6">
-            
-              <ThemeToggle />
-            
-
+            <ThemeToggle />
             {session?.user?.name && <span>Welcome {session.user.name}</span>}
-
             {session ? (
-              <button onClick={() => signOut()} className="cursor-pointer">
+              <button onClick={() => signOut()} className="cursor-pointer ">
                 sign out
               </button>
             ) : (

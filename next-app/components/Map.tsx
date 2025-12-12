@@ -155,7 +155,7 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
       className="w-full h-full z-0"
       style={{
         minHeight: '500px',
-        
+        backgroundColor: '#E6F3FF',
       }}
     />
   );

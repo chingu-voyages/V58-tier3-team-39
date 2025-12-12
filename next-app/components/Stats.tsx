@@ -2,6 +2,7 @@
 
 import AnimatedNumber from './AnimatedNumber';
 import useInView from '../hooks/useInView';
+import { CircleUserRound, Globe, ShieldHalf, CircleStar } from 'lucide-react';
 
 interface StatItem {
   value: string;
@@ -18,10 +19,18 @@ const Stats = ({ stats }: StatsProps) => {
     threshold: 0.3,
   });
 
+const iconClasses = "w-11 h-11 mr-2 text-blue-brand"
+const icons = [
+  <CircleUserRound className={iconClasses} />, 
+  <Globe className={iconClasses} />, 
+  <ShieldHalf className={iconClasses} />, 
+  <CircleStar className={iconClasses} />
+]
+
   return (
     <div
       ref={ref}
-      className="flex flex-col gap-4 md:gap-16 lg:gap-24 md:flex-row md:mt-3 lg:mt-10"
+      className="flex flex-col gap-4 md:gap-12 lg:gap-16 md:flex-row"
     >
       {stats.map((item, i) => {
         const numericValue = parseInt(item.value);
@@ -30,28 +39,30 @@ const Stats = ({ stats }: StatsProps) => {
         return (
           <div key={i}>
             {isInView ? (
-              <>
+              <div className='flex justify-center items-center'>
+                {icons[i]}
                 <AnimatedNumber
                   n={numericValue}
-                  className={`text-3xl lg:text-5xl font-medium ${item.color}`}
+                  className={`text-[1.625rem] lg:text-4xl font-medium `}
                 />
                 {hasPlus && (
                   <span
-                    className={`text-3xl lg:text-5xl font-medium ${item.color}`}
+                    className={`text-[1.625rem] lg:text-4xl font-medium`}
                   >
                     +
                   </span>
                 )}
-              </>
+              </div>
+             
             ) : (
               <span
-                className={`text-3xl lg:text-5xl font-medium ${item.color}`}
+                className={`text-[1.625rem] lg:text-4xl font-medium text-secondary-text`}
               >
                 0{hasPlus && '+'}
               </span>
             )}
 
-            <p className="text-[#636363] font-medium mt-1 md:mt-4 text-lg md:text-xl">
+            <p className={`${item.color} font-semibold mt-1 md:mt-2 text-lg md:text-lg lg:text-xl`}>
               {item.label}
             </p>
           </div>

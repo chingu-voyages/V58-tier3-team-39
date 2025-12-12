@@ -14,11 +14,11 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   const base =
-    'font-bold rounded-lg transition-all duration-200 px-3 py-2  text-sm md:px-6 md:py-2.5 md:text-base lg:px-8 lg:py-4 lg:text-xl';
+    'font-bold rounded-lg transition-all duration-200 px-3 py-2  text-sm md:px-6 md:py-2.5 md:text-base lg:px-6 lg:py-3 lg:text-xl';
   const variants = {
     primary: 'bg-[#4D77FF] text-white  hover:bg-[#456be5]',
     secondary:
-      'border border-[#4D77FF] text-[#4D77FF] hover:border-[#9bafff] hover:text-[#9bafff]',
+      'border border-[#4D77FF] text-[#4D77FF] hover:bg-[#4D77FF]/20',
   };
 
   const disabledClass = disabled

@@ -28,7 +28,7 @@ export const ThemeToggle = () => {
     }
 
     return (
-        <button onClick={toggleTheme} className="w-8 h-8 flex items-center justify-center rounded-full bg-[#BFCDD2] cursor-pointer">
+        <button onClick={toggleTheme} className="w-10 h-10 flex items-center justify-center rounded-full bg-footer-bg cursor-pointer">
             {isDarkMode ? <Sun className="text-yellow-300"/> : <Moon className="text-blue-900"/>}
         </button>
     )
