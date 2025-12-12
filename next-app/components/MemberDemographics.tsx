@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 const MemberDemographics = () => {
   const cards = [
@@ -8,16 +9,19 @@ const MemberDemographics = () => {
       title: 'Interactive World Map View',
       description: 'Visualize Chingu members across the globe with an interactive map showing member counts by country',
       image: '/images/image1.png',
+      href: '/map',
     },
     {
       title: 'Advanced Filtering',
       description: 'Filter members by gender, country, year joined, role type, tier, and voyage participation',
       image: '/images/image2.png',
+      href: '/dashboard',
     },
     {
       title: 'Detailed Analytics',
       description: 'View comprehensive member data including roles, tiers, and voyage history in a sortable list',
       image: '/images/image3.png',
+      href: '/list',
     },
   ];
 
@@ -28,9 +32,10 @@ const MemberDemographics = () => {
       </h2>
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {cards.map((card, index) => (
-          <div
+          <Link
             key={index}
-            className="bg-[#1A2535] rounded-xl shadow-lg flex flex-col p-4 md:p-5"
+            href={card.href}
+            className="bg-[#1A2535] rounded-xl shadow-lg flex flex-col p-4 md:p-5 hover:shadow-xl transition-shadow cursor-pointer"
           >
             <div className="relative w-full h-48 md:h-56 mb-4 md:mb-6 rounded-lg overflow-hidden">
               <Image
@@ -57,7 +62,7 @@ const MemberDemographics = () => {
                 />
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
