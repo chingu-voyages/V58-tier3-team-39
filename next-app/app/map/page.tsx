@@ -35,14 +35,8 @@ export default function MapPage() {
   }, []);
 
   useEffect(() => {
-    console.log('🗺️ Map page fetching data with filters:', filters);
-    
     getCountryStats(filters)
-      .then((stats) => {
-        console.log('🗺️ Map page received country stats:', stats.length, 'countries');
-        console.log('🗺️ First 3 countries:', stats.slice(0, 3));
-        setCountryStats(stats);
-      })
+      .then(setCountryStats)
       .catch(console.error);
     
     getMembers(filters)

@@ -76,7 +76,6 @@ export default function Filter({ onFilterChange, members, countryStats }: Filter
     const genderSet = new Set<string>();
     const yearSet = new Set<number>();
 
-    
     if (countryStats && countryStats.length > 0) {
       countryStats.forEach((stat) => {
         if (stat.countryName) {
@@ -84,7 +83,6 @@ export default function Filter({ onFilterChange, members, countryStats }: Filter
         }
       });
     } else {
-      
       members.forEach((member) => {
         const countryName =
           member['Country name (from Country)'] || member.countryName || member.country;
@@ -94,7 +92,6 @@ export default function Filter({ onFilterChange, members, countryStats }: Filter
       });
     }
 
-    
     members.forEach((member) => {
       const gender = member.Gender || member.gender;
       if (gender) {

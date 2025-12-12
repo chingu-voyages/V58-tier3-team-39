@@ -33,13 +33,9 @@ export async function getDemographicsStats(filters?: any) {
 
 // Fetch country statistics with fallback to local computation
 export async function getCountryStats(filters?: any) {
-  console.log('🔍 getCountryStats called, backend enabled:', apiService.isBackendEnabled());
-  
   if (apiService.isBackendEnabled()) {
     try {
-      console.log('📡 Fetching country stats from backend...');
       const backendStats = await apiService.getCountryStats(filters) as BackendCountryStats[];
-      console.log('✅ Backend returned', backendStats.length, 'countries');
       
       // Transform backend format to frontend format
       // Backend returns: { latitude, longitude, ... }
@@ -55,7 +51,6 @@ export async function getCountryStats(filters?: any) {
         commonGender: stat.commonGender,
         members: [] 
       }));
-      console.log('✅ Transformed to frontend format:', transformed.length, 'countries');
       return transformed;
     } catch (error) {
       console.warn('⚠️ Backend country stats fetch failed, processing locally:', error);
@@ -65,7 +60,6 @@ export async function getCountryStats(filters?: any) {
   }
   
   // Fallback
-  console.log('📦 Using local data (backend disabled)');
   const members = getMembersFromLocal();
   return processMemberData(members, filters);
 }
