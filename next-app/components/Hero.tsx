@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Chingu from './icons/Chingu';
 import Button from './ui/Button';
 import Stats from './Stats';
+import MemberDemographics from './MemberDemographics';
 import { getSummaryStats } from '../app/services/statsService';
 
 const Hero = () => {
@@ -24,8 +25,10 @@ const Hero = () => {
   ];
 
   return (
-    <div className="h-screen bg-[#F1F5F9] flex flex-col justify-center items-center px-4 md:px-8 text-center gap-6 md:gap-7 lg:gap-10 mt-10 lg:mt-0">
-      <Chingu />
+    <div className="min-h-screen bg-[#F1F5F9] flex flex-col items-center px-4 md:px-8 text-center gap-6 md:gap-7 lg:gap-10 py-10 lg:py-20">
+      <div className="pt-8 lg:pt-12">
+        <Chingu />
+      </div>
       <h1 className="text-3xl lg:text-5xl font-semibold text-[#232925]">
         Discover the Global <span className="text-[#4D77FF]">Chingu </span>
         Community
@@ -48,7 +51,8 @@ const Hero = () => {
         </Button>
       </div> */}
 
-      <Stats stats={stats} />
+        <Stats stats={stats} />
+      <MemberDemographics />
     </div>
   );
 };
