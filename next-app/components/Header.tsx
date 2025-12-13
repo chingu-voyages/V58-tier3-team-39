@@ -7,6 +7,9 @@ import { signOut } from 'next-auth/react';
 import { ThemeToggle } from './ThemeToggle';
 import Chingu from './icons/Chingu';
 import { usePathname } from 'next/navigation'
+import Button from './ui/Button';
+import Google from './icons/Google';
+
 
 interface HeaderProps {
   session: {
@@ -28,11 +31,11 @@ const linkTextStyle = (href: string) =>
 
   return (
     <>
-      <header className="flex h-14 md:h-20 w-full bg-background items-center fixed top-0 z-20 font-semibold px-4 md:px-8 gap-10">
+      <header className="flex mx-auto h-14 md:h-20 w-full bg-background items-center fixed top-0 z-20 font-semibold px-4 md:px-8 gap-10">
         <Link href="/" className="font-bold mr-6">
           <div className='flex gap-2 items-center'>
             <Chingu className='h-11 w-11'/>
-            <div className={`flex flex-col leading-5 tracking-widest' ${pathname !== '/' ? 'hover:text-blue-brand/50' : ''}`}>
+            <div className={`flex flex-col leading-5 tracking-widest text-sm md:text-base lg:text-lg ${pathname !== '/' ? 'hover:text-blue-brand/50' : ''}`}>
               <span>CHINGU</span>
               <span>DEMOGRAPHICS</span>
             </div>
@@ -48,9 +51,9 @@ const linkTextStyle = (href: string) =>
             <ThemeToggle />
             {session?.user?.name && <span>Welcome {session.user.name}</span>}
             {session ? (
-              <button onClick={() => signOut()} className="cursor-pointer ">
-                sign out
-              </button>
+              <Button variant="secondary" className="flex gap-1 px-4! py-2! text-sm!" onClick={() => signOut()}>
+                <Google/> Sign Out
+              </Button>
             ) : (
               <Link href="/api/auth/signin" className="cursor-pointer">
                 sign in

@@ -15,11 +15,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-8">
           {/* Team: full-width section */}
           <section aria-labelledby="team-heading">
-            <div className='flex justify-center items-center gap-2 mb-10'>
+            <div className='flex items-center justify-center gap-2 mb-10'>
               <Chingu width={70} height={70} />
-              <h2 id="team-heading" className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-widest">
-                CHINGU DEMOGRAPHICS
-              </h2>
+              <div id="team-heading" className="text-xl align-center md:text-2xl lg:text-3xl font-semibold tracking-widest">
+                  CHINGU DEMOGRAPHICS
+              </div>
             </div>
             
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">

@@ -52,8 +52,6 @@ public class MemberService {
                 .map(result -> {
                     String country = (String) result[0];
                     Long count = (Long) result[1];
-                    // Note: This method doesn't have access to countryCode, so coords will be null
-                    // Use getEnhancedCountryStats() instead for coordinates
                     return new CountryStats(country, count, null, null);
                 })
                 .collect(Collectors.toList());

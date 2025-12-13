@@ -19,7 +19,7 @@ const Stats = ({ stats }: StatsProps) => {
     threshold: 0.3,
   });
 
-const iconClasses = "w-11 h-11 mr-2 text-blue-brand"
+const iconClasses ="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 mr-2 text-blue-brand"
 const icons = [
   <CircleUserRound className={iconClasses} />, 
   <Globe className={iconClasses} />, 
@@ -30,7 +30,7 @@ const icons = [
   return (
     <div
       ref={ref}
-      className="flex flex-col gap-4 md:gap-12 lg:gap-16 md:flex-row"
+      className="grid grid-cols-2 md:flex gap-10 md:-gap-4 md:gap-12 lg:gap-16 md:flex-row"
     >
       {stats.map((item, i) => {
         const numericValue = parseInt(item.value);

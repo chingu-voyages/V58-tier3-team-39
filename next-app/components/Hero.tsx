@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Chingu from './icons/Chingu';
 import Button from './ui/Button';
 import Stats from './Stats';
+import MemberDemographics from './MemberDemographics';
 import { getSummaryStats } from '../app/services/statsService';
 
 const Hero = () => {
@@ -25,19 +26,19 @@ const Hero = () => {
 
   return (
     <div className="h-screen flex flex-col justify-center items-center px-4 md:px-8 text-center gap-6 md:gap-7 lg:gap-10">
-      <Chingu className='w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24'/>
-      <h1 className="text-[2.125rem] lg:text-[2.75rem] font-semibold">
+      <Chingu className='hidden sm:block w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24'/>
+      <h1 className="text-2xl m:text-[2.125rem] lg:text-[2.75rem] font-semibold">
         Discover the Global <span className="text-[#4D77FF]">Chingu </span>
         Community
       </h1>
       
-      <h3 className="w-2/3 lg:w-1/2 text-xl lg:text-[1.375rem] font-medium text-secondary-text">
+      <h3 className="w-2/3 lg:w-1/2 text-base sm:text-xl lg:text-[1.375rem] font-medium text-secondary-text">
         Learn more about where our members are located and the demographics of
         our members.
       </h3>
   
       
-      <div className="flex gap-5 mb-25">
+      <div className="flex gap-3 sm:gap-5 mb-25">
         <Link href="/map">
           <Button>Map View</Button>
         </Link>
@@ -51,7 +52,8 @@ const Hero = () => {
         </Button>
       </div> */}
 
-      <Stats stats={stats} />
+        <Stats stats={stats} />
+      
     </div>
   );
 };

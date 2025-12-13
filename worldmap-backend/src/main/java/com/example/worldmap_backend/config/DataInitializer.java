@@ -22,7 +22,7 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Only initializes if database is empty aka dummy data
+        // Only initializes if database is empty aka dummy data/local development
         if (memberRepository.count() == 0) {
             log.info("Initializing database with sample member data...");
 

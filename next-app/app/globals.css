@@ -19,7 +19,7 @@ body {
 
   /* background colors */
   --color-background: var(--background);
-  --color-footer-bg: var(--footer-bg);
+  --color-secondary-bg: var(--secondary-bg);
 
   /* text colors */
   --color-main-text: var(--main-text);
@@ -31,7 +31,7 @@ body {
 @layer base {
   :root {
     --background: #F1F5F9;
-    --footer-bg: #CBD5E1;
+    --secondary-bg: #CBD5E1;
     --main-text: #1E293B;
     --secondary-text: #334155;
     --footer-border: #FFF;
@@ -39,7 +39,7 @@ body {
 
   .dark {
     --background: #0F172A;
-    --footer-bg: #1E293B;
+    --secondary-bg: #1E293B;
     --main-text: #FFF;
     --secondary-text: #8D91A6;
     --footer-border: #FFFFFF99;
@@ -47,7 +47,7 @@ body {
 }
 
 footer {
-  @apply bg-footer-bg;
+  @apply bg-secondary-bg;
 }
 
 
