@@ -18,7 +18,9 @@ const Footer = () => {
             <div className='flex items-center justify-center gap-2 mb-10'>
               <Chingu width={70} height={70} />
               <div id="team-heading" className="text-xl align-center md:text-2xl lg:text-3xl font-semibold tracking-widest">
+                <span className=''>
                   CHINGU DEMOGRAPHICS
+                </span>
               </div>
             </div>
             

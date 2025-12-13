@@ -11,10 +11,13 @@ body {
 }
 
 @theme {
+  /* Stat colors */
   --color-red: #b42263;
   --color-green: #0cdf89;
   --color-blue: #26A3DF;
   --color-purple: #87499C;
+
+  /* Main brand color */
   --color-blue-brand: #4d77ff;
 
   /* background colors */
@@ -25,6 +28,7 @@ body {
   --color-main-text: var(--main-text);
   --color-secondary-text: var(--secondary-text);
 
+  /* footer border */
   --color-footer-border: var(--footer-border);
 }
 
