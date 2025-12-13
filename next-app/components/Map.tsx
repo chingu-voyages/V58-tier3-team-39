@@ -6,7 +6,11 @@ import 'leaflet/dist/leaflet.css';
 import type { CountryStats } from '../lib/memberStats';
 
 // Fix for default marker icons in Next.js
-delete (L.Icon.Default.prototype as any)._getIconUrl;
+delete (
+  L.Icon.Default.prototype as {
+    _getIconUrl?: () => string;
+  }
+)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
     'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
@@ -27,15 +31,10 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log('🗺️ Map component useEffect triggered');
-    console.log('🗺️ Received countryStats:', countryStats.length, 'countries');
-    console.log('🗺️ Sample stats:', countryStats.slice(0, 2));
-    
     if (!mapContainerRef.current) return;
 
     // Initialize map
     if (!mapRef.current) {
-      console.log('🗺️ Initializing map for the first time');
       mapRef.current = L.map(mapContainerRef.current, {
         center: [20, 0],
         zoom: 2,
@@ -58,15 +57,10 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
 
     // Add markers for each country
     let totalMembers = 0;
-    let markersAdded = 0;
     countryStats.forEach((stat) => {
-      if (!stat.coordinates) {
-        console.log('⚠️ Skipping country (no coordinates):', stat.countryName);
-        return;
-      }
+      if (!stat.coordinates) return;
 
       totalMembers += stat.count;
-      markersAdded++;
 
       // Create custom marker with number
       const markerHtml = `
@@ -133,8 +127,6 @@ export default function Map({ countryStats, onMemberCountChange }: MapProps) {
 
       markersRef.current.push(marker);
     });
-
-    console.log('✅ Map markers added:', markersAdded, 'Total members:', totalMembers);
 
     // Notify parent of member count changes
     if (onMemberCountChange) {

@@ -12,16 +12,30 @@ const Hero = () => {
   const [summaryStats, setSummaryStats] = useState<any>(null);
 
   useEffect(() => {
-    getSummaryStats()
-      .then(setSummaryStats)
-      .catch(console.error);
+    getSummaryStats().then(setSummaryStats).catch(console.error);
   }, []);
 
   const stats = [
-    { value: `${summaryStats?.totalMembers || 250}+`, label: 'Total Members', color: 'text-red' },
-    { value: `${summaryStats?.totalCountries || 20}+`, label: 'Countries', color: 'text-green' },
-    { value: `${summaryStats?.activeTeams || 30}`, label: 'Active Teams', color: 'text-blue' },
-    { value: `${summaryStats?.tierLevels || 3}`, label: 'Tier Levels', color: 'text-purple' },
+    {
+      value: `${summaryStats?.totalMembers || 250}+`,
+      label: 'Total Members',
+      color: 'text-red',
+    },
+    {
+      value: `${summaryStats?.totalCountries || 20}+`,
+      label: 'Countries',
+      color: 'text-green',
+    },
+    {
+      value: `${summaryStats?.activeTeams || 30}`,
+      label: 'Active Teams',
+      color: 'text-blue',
+    },
+    {
+      value: `${summaryStats?.tierLevels || 3}`,
+      label: 'Tier Levels',
+      color: 'text-purple',
+    },
   ];
 
   return (
@@ -47,7 +61,7 @@ const Hero = () => {
         </Link>
       </div>
       {/* <div className="bg-white w-[600px] h-[300px] p-3">
-        <Button onClick={() => console.log('clicked')} variant="secondary">
+        <Button onClick={() => {}} variant="secondary">
           Dashboard
         </Button>
       </div> */}
