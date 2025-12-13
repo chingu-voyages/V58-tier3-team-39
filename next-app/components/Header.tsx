@@ -2,14 +2,13 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, Moon, X } from 'lucide-react';
+import { Menu, X, House, Map, List, LayoutDashboard } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 import { ThemeToggle } from './ThemeToggle';
 import Chingu from './icons/Chingu';
-import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation';
 import Button from './ui/Button';
 import Google from './icons/Google';
-
 
 interface HeaderProps {
   session: {
@@ -21,21 +20,22 @@ interface HeaderProps {
 
 const Header = ({ session }: HeaderProps) => {
   const [isActive, setIsActive] = useState(false);
-  const pathname = usePathname()
+  const pathname = usePathname();
 
-
-const linkTextStyle = (href: string) => 
-  pathname === href ?
-    'text-blue-brand' : 
-    'text-secondary-text hover:text-blue-brand/50'
+  const linkTextStyle = (href: string) =>
+    pathname === href
+      ? 'text-blue-brand'
+      : 'text-secondary-text hover:text-blue-brand/50';
 
   return (
     <>
       <header className="flex mx-auto h-14 md:h-20 w-full bg-background items-center fixed top-0 z-20 font-semibold px-4 md:px-8 gap-10">
         <Link href="/" className="font-bold mr-6">
-          <div className='flex gap-2 items-center'>
-            <Chingu className='h-11 w-11'/>
-            <div className={`flex flex-col leading-5 tracking-widest text-sm md:text-base lg:text-lg ${pathname !== '/' ? 'hover:text-blue-brand/50' : ''}`}>
+          <div className="flex gap-2 items-center">
+            <Chingu className="h-11 w-11" />
+            <div
+              className={`flex flex-col leading-5 tracking-widest text-sm md:text-base lg:text-lg ${pathname !== '/' ? 'hover:text-blue-brand/50' : ''}`}
+            >
               <span>CHINGU</span>
               <span>DEMOGRAPHICS</span>
             </div>
@@ -43,20 +43,30 @@ const linkTextStyle = (href: string) =>
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 flex-1">
-          <Link href="/map" className={linkTextStyle('/map')}>Map</Link>
-          <Link href="/list" className={linkTextStyle('/list')}>List</Link>
-          <Link href="/dashboard" className={linkTextStyle('/dashboard')}>Dashboard</Link>
-          
+          <Link href="/map" className={linkTextStyle('/map')}>
+            Map
+          </Link>
+          <Link href="/list" className={linkTextStyle('/list')}>
+            List
+          </Link>
+          <Link href="/dashboard" className={linkTextStyle('/dashboard')}>
+            Dashboard
+          </Link>
+
           <div className="ml-auto flex items-center gap-6">
             <ThemeToggle />
             {session?.user?.name && <span>Welcome {session.user.name}</span>}
             {session ? (
-              <Button variant="secondary" className="flex gap-1 px-4! py-2! text-sm!" onClick={() => signOut()}>
-                <Google/> Sign Out
+              <Button
+                variant="secondary"
+                className="flex gap-1 px-4! py-2! text-sm!"
+                onClick={() => signOut()}
+              >
+                <Google /> Sign out
               </Button>
             ) : (
               <Link href="/api/auth/signin" className="cursor-pointer">
-                sign in
+                Sign in
               </Link>
             )}
           </div>
@@ -80,7 +90,7 @@ const linkTextStyle = (href: string) =>
           />
 
           <nav
-            className={`fixed top-0 right-0 h-full w-2/3 bg-white text-[#636363] z-30 shadow-xl p-6 pt-14 flex flex-col gap-8 md:hidden transform transition-transform duration-300 ${isActive ? 'translate-x-0' : 'translate-x-full'}`}
+            className={`fixed top-0 right-0 h-full w-2/3 bg-secondary-bg z-30 rounded-tl-2xl shadow-xl p-6 pt-14 flex flex-col gap-8 md:hidden transform transition-transform duration-300 ${isActive ? 'translate-x-0' : 'translate-x-full'}`}
           >
             <button
               onClick={() => setIsActive(false)}
@@ -92,35 +102,39 @@ const linkTextStyle = (href: string) =>
             <Link
               href="/"
               onClick={() => setIsActive(false)}
-              className="text-xl font-semibold"
+              className="text-xl font-semibold flex gap-2 items-center"
             >
-              HOME
+              <House />
+              Homepage
             </Link>
             <Link
               href="/map"
               onClick={() => setIsActive(false)}
-              className="text-xl font-semibold"
+              className="text-xl font-semibold flex gap-2 items-center"
             >
-              MAP
+              <Map />
+              Map View
             </Link>
             <Link
               href="/list"
               onClick={() => setIsActive(false)}
-              className="text-xl font-semibold"
+              className="text-xl font-semibold flex gap-2 items-center"
             >
-              LIST
+              <List />
+              List View
             </Link>
             <Link
               href="/dashboard"
               onClick={() => setIsActive(false)}
-              className="text-xl font-semibold"
+              className="text-xl font-semibold flex gap-2 items-center"
             >
-              DASHBOARD
+              <LayoutDashboard />
+              Dashboard
             </Link>
 
-            <button className="w-10 h-10 flex items-center justify-center rounded-full bg-[#BFCDD2] mt-6">
-              <Moon className="w-6 h-6" />
-            </button>
+            <div className="w-10 h-10 flex items-center justify-center rounded-full  mt-6">
+              <ThemeToggle />
+            </div>
 
             {session?.user?.name && (
               <span className="text-xl font-semibold mt-4">
@@ -136,7 +150,7 @@ const linkTextStyle = (href: string) =>
                 }}
                 className="text-xl font-semibold"
               >
-                SIGN OUT
+                Sign out
               </button>
             ) : (
               <Link
@@ -144,7 +158,7 @@ const linkTextStyle = (href: string) =>
                 onClick={() => setIsActive(false)}
                 className="text-xl font-semibold"
               >
-                SIGN IN
+                Sign in
               </Link>
             )}
           </nav>

@@ -70,7 +70,7 @@ const PieChartComponent = ({
   isAnimationActive = true,
 }: PieChartComponentProps) => {
   return (
-    <div className="bg-white p-5 rounded-2xl flex flex-col items-center">
+    <div className="p-5 rounded-2xl flex flex-col items-center border border-gray-200 shadow-lg">
       {title && (
         <h3 className="font-semibold text-xl md:text-2xl text-center">
           {title}
@@ -78,11 +78,7 @@ const PieChartComponent = ({
       )}
 
       {/* Chart Wrapper */}
-      <div
-        className="w-full 
-                       min-h-[260px] sm:h-[300px] md:h-[360px] 
-                      lg:h-[420px] xl:h-[480px] mt-4 pointer-events-none"
-      >
+      <div className="w-full min-h-[260px] sm:h-[300px] md:h-[360px] lg:h-[420px] xl:h-[480px] mt-4 pointer-events-none">
         <ResponsiveContainer width="100%" height="100%">
           <RePieChart>
             <Pie
@@ -112,7 +108,7 @@ const PieChartComponent = ({
               className="inline-block w-3 h-3 rounded-sm"
               style={{ backgroundColor: COLORS[index % COLORS.length] }}
             ></span>
-            <span className="text-sm text-gray-600">{item.name}</span>
+            <span className="text-sm">{item.name}</span>
           </div>
         ))}
       </div>

@@ -10,7 +10,7 @@ export function Pagination({
   onChangePage: (page: number) => void;
 }) {
   return (
-    <div className="flex gap-4 justify-center items-center mt-4 text-[#636363]">
+    <div className="flex gap-4 justify-center items-center mt-4">
       <button
         disabled={currentPage === 1}
         onClick={() => onChangePage(currentPage - 1)}

@@ -71,7 +71,7 @@ export default function MapPage() {
           />
         </div>
 
-        <div className="mt-4 text-gray-600 text-sm">
+        <div className="mt-4 text-sm">
           Showing {memberCount} members across {countryCount} countries
         </div>
 

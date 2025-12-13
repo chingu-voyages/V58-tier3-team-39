@@ -59,10 +59,10 @@ export default function ChatBot() {
   }
 
   return (
-    <div className="w-full max-w-2xl mx-auto mt-8 p-6 bg-white border rounded-lg shadow-sm">
+    <div className="w-full max-w-2xl mx-auto mt-8 p-6 border rounded-lg shadow-sm">
       <h2 className="text-2xl font-bold mb-4">Chat with AI</h2>
 
-      <div className="mb-4 h-96 overflow-y-auto bg-white border rounded p-4">
+      <div className="mb-4 h-96 overflow-y-auto border rounded p-4">
         {messages.length === 0 ? (
           <div className="text-sm text-gray-400 text-center mt-8">
             No messages yet. Start a conversation!
