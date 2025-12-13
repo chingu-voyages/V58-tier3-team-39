@@ -53,7 +53,7 @@ export default function MapPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-white pt-14 md:pt-20">
+    <div className="w-full min-h-screen pt-14 md:pt-20">
       <div className="w-full p-6">
         <Filter
           onFilterChange={handleFilterChange}

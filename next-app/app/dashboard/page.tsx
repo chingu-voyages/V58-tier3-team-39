@@ -67,8 +67,8 @@ const Dashboard = () => {
   return (
     <main
       className="
-  w-full min-h-screen px-4 md:px-8 pt-20 pb-4 md:pt-30 md:pb-8 
-  overflow-x-auto bg-[#F1F5F9]
+  w-full min-h-screen px-4 md:px-8 py-20 md:py-30 
+  overflow-x-auto
 
   md:gap-4
 

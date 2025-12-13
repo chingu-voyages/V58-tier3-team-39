@@ -29,7 +29,7 @@ const Demographics = () => {
   if (!stats) return <div className="p-10 text-2xl text-gray-500">No data available</div>;
 
   return (
-    <main className="space-y-12 p-10">
+    <main className="p-10">
       <PieChartComponent title="Voyage Role" data={stats.roleChart} />
       <DonutChartComponent
         title="Gender Distribution"
