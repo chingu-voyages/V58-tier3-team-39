@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, Moon, X } from 'lucide-react';
+import { Menu, X, House, Map, List, LayoutDashboard } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 import { ThemeToggle } from './ThemeToggle';
 import Chingu from './icons/Chingu';
@@ -62,11 +62,11 @@ const Header = ({ session }: HeaderProps) => {
                 className="flex gap-1 px-4! py-2! text-sm!"
                 onClick={() => signOut()}
               >
-                <Google /> Sign Out
+                <Google /> Sign out
               </Button>
             ) : (
               <Link href="/api/auth/signin" className="cursor-pointer">
-                sign in
+                Sign in
               </Link>
             )}
           </div>
@@ -90,7 +90,7 @@ const Header = ({ session }: HeaderProps) => {
           />
 
           <nav
-            className={`fixed top-0 right-0 h-full w-2/3 bg-secondary-bg z-30 shadow-xl p-6 pt-14 flex flex-col gap-8 md:hidden transform transition-transform duration-300 ${isActive ? 'translate-x-0' : 'translate-x-full'}`}
+            className={`fixed top-0 right-0 h-full w-2/3 bg-secondary-bg z-30 rounded-tl-2xl shadow-xl p-6 pt-14 flex flex-col gap-8 md:hidden transform transition-transform duration-300 ${isActive ? 'translate-x-0' : 'translate-x-full'}`}
           >
             <button
               onClick={() => setIsActive(false)}
@@ -102,33 +102,37 @@ const Header = ({ session }: HeaderProps) => {
             <Link
               href="/"
               onClick={() => setIsActive(false)}
-              className="text-xl font-semibold"
+              className="text-xl font-semibold flex gap-2 items-center"
             >
-              HOME
+              <House />
+              Homepage
             </Link>
             <Link
               href="/map"
               onClick={() => setIsActive(false)}
-              className="text-xl font-semibold"
+              className="text-xl font-semibold flex gap-2 items-center"
             >
-              MAP
+              <Map />
+              Map View
             </Link>
             <Link
               href="/list"
               onClick={() => setIsActive(false)}
-              className="text-xl font-semibold"
+              className="text-xl font-semibold flex gap-2 items-center"
             >
-              LIST
+              <List />
+              List View
             </Link>
             <Link
               href="/dashboard"
               onClick={() => setIsActive(false)}
-              className="text-xl font-semibold"
+              className="text-xl font-semibold flex gap-2 items-center"
             >
-              DASHBOARD
+              <LayoutDashboard />
+              Dashboard
             </Link>
 
-            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#BFCDD2] mt-6">
+            <div className="w-10 h-10 flex items-center justify-center rounded-full  mt-6">
               <ThemeToggle />
             </div>
 
@@ -146,7 +150,7 @@ const Header = ({ session }: HeaderProps) => {
                 }}
                 className="text-xl font-semibold"
               >
-                SIGN OUT
+                Sign out
               </button>
             ) : (
               <Link
@@ -154,7 +158,7 @@ const Header = ({ session }: HeaderProps) => {
                 onClick={() => setIsActive(false)}
                 className="text-xl font-semibold"
               >
-                SIGN IN
+                Sign in
               </Link>
             )}
           </nav>
