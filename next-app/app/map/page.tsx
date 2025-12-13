@@ -6,6 +6,7 @@ import Filter, { type FilterState } from '../../components/Filter';
 import { getCountryStats } from '../services/statsService';
 import { getMembers } from '../services/memberService';
 import ChatBot from '../../components/ChatBot';
+import { Member } from '@/types/member';
 
 const Map = dynamic(() => import('../../components/Map'), {
   ssr: false,
@@ -27,7 +28,7 @@ export default function MapPage() {
   const [memberCount, setMemberCount] = useState(0);
   const [countryCount, setCountryCount] = useState(0);
   const [countryStats, setCountryStats] = useState<any[]>([]);
-  const [members, setMembers] = useState<any[]>([]);
+  const [members, setMembers] = useState<Member[]>([]);
 
   // Scroll to top when page loads
   useEffect(() => {
@@ -35,12 +36,10 @@ export default function MapPage() {
   }, []);
 
   useEffect(() => {
-    getCountryStats(filters)
-      .then(setCountryStats)
-      .catch(console.error);
-    
+    getCountryStats(filters).then(setCountryStats).catch(console.error);
+
     getMembers(filters)
-      .then(setMembers)
+      .then((data) => setMembers(data as Member[]))
       .catch(console.error);
   }, [filters]);
 
@@ -56,13 +55,16 @@ export default function MapPage() {
   return (
     <div className="w-full min-h-screen bg-white pt-14 md:pt-20">
       <div className="w-full p-6">
-        <Filter 
-          onFilterChange={handleFilterChange} 
-          members={members} 
+        <Filter
+          onFilterChange={handleFilterChange}
+          members={members}
           countryStats={countryStats}
         />
 
-        <div className="mt-4 rounded-lg overflow-hidden" style={{ height: '600px', backgroundColor: '#E6F3FF' }}>
+        <div
+          className="mt-4 rounded-lg overflow-hidden"
+          style={{ height: '600px', backgroundColor: '#E6F3FF' }}
+        >
           <Map
             countryStats={countryStats}
             onMemberCountChange={handleMemberCountChange}
@@ -78,4 +80,3 @@ export default function MapPage() {
     </div>
   );
 }
-

@@ -1,3 +1,4 @@
+import { Member } from '@/types/member';
 import type { FilterState } from '../components/Filter';
 import { getCountryCoordinates } from './countryCoordinates';
 
@@ -8,7 +9,7 @@ export interface CountryStats {
   count: number;
   topRole: string;
   commonGender: string;
-  members: any[];
+  members: Member[];
 }
 
 export interface MemberData {
@@ -20,18 +21,18 @@ const normalize = (value: unknown) =>
 
 const toDisplayLabel = (value: string) => {
   const normalized = value.toLowerCase();
-  
+
   // Special cases for acronyms
   if (normalized === 'ui/ux designer') {
     return 'UI/UX Designer';
   }
-  
+
   return normalized
     .split(/([\s/-])/)
     .map((segment) =>
       segment.match(/[\s/-]/)
         ? segment
-        : segment.charAt(0).toUpperCase() + segment.slice(1)
+        : segment.charAt(0).toUpperCase() + segment.slice(1),
     )
     .join('');
 };
@@ -57,7 +58,7 @@ const mapRoleTypeCategory = (value?: string) => {
 const matchesSelection = (
   filterValue: string,
   candidate: string | undefined,
-  defaultLabel: string
+  defaultLabel: string,
 ) => {
   if (!filterValue || filterValue === defaultLabel) {
     return true;
@@ -98,7 +99,7 @@ const normalizeTierValue = (value?: string) => {
 
 export function processMemberData(
   members: MemberData[],
-  filters?: FilterState
+  filters?: FilterState,
 ): CountryStats[] {
   let filteredMembers = members;
 
@@ -217,7 +218,10 @@ export function processMemberData(
     membersInCountry.forEach((member) => {
       const gender = member.Gender || member.gender || 'Unknown';
       const displayGender = gender ? toDisplayLabel(gender) : 'Unknown';
-      genderCounts.set(displayGender, (genderCounts.get(displayGender) || 0) + 1);
+      genderCounts.set(
+        displayGender,
+        (genderCounts.get(displayGender) || 0) + 1,
+      );
     });
     const commonGender =
       Array.from(genderCounts.entries()).sort((a, b) => b[1] - a[1])[0]?.[0] ||
@@ -236,4 +240,3 @@ export function processMemberData(
 
   return countryStats.sort((a, b) => b.count - a.count);
 }
-
