@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Chingu from './icons/Chingu';
-import Button from './ui/Button';
+import Button1 from './ui/Button1';
 
 const Hero = () => {
   const stats = [
@@ -25,10 +25,10 @@ const Hero = () => {
       </h3>
       <div className="flex gap-5">
         <Link href="/map">
-          <Button>Map View</Button>
+          <Button1>Map View</Button1>
         </Link>
         <Link href="/list">
-          <Button variant="secondary">List View</Button>
+          <Button1 variant="secondary">List View</Button1>
         </Link>
       </div>
       {/* <div className="bg-white w-[600px] h-[300px] p-3">
