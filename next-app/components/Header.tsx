@@ -128,9 +128,9 @@ const Header = ({ session }: HeaderProps) => {
               DASHBOARD
             </Link>
 
-            <button className="w-10 h-10 flex items-center justify-center rounded-full bg-[#BFCDD2] mt-6">
-              <Moon className="w-6 h-6" />
-            </button>
+            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#BFCDD2] mt-6">
+              <ThemeToggle />
+            </div>
 
             {session?.user?.name && (
               <span className="text-xl font-semibold mt-4">
