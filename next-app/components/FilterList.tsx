@@ -96,12 +96,12 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
     <div className="w-full mb-4">
       <div
         className={`rounded-2xl border border-[#D0D5DD] ${
-          showFilters ? 'bg-[#FAFAFA] p-6 md:p-8' : 'bg-[#FAFAFA] p-4'
+          showFilters ? 'p-6 md:p-8' : 'p-4'
         }`}
       >
         <div className="flex items-center justify-between">
           {showFilters ? (
-            <div className="flex items-center gap-3 text-[#111322]">
+            <div className="flex items-center gap-3">
               <Search className="w-5 h-5" />
               <span className="text-base font-medium">
                 Enter country, role, tier, or gender
@@ -109,10 +109,8 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
             </div>
           ) : (
             <div className="flex items-center gap-3">
-              <FilterIcon className="w-5 h-5 text-[#111322]" />
-              <span className="text-base font-semibold text-[#111322]">
-                Filters
-              </span>
+              <FilterIcon className="w-5 h-5" />
+              <span className="text-base font-semibold">Filters</span>
             </div>
           )}
           <button
@@ -127,7 +125,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
           <div className="mt-6 space-y-6">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
               <div>
-                <label className="mb-1 block text-sm font-semibold text-[#111322]">
+                <label className="mb-1 block text-sm font-semibold">
                   Country
                 </label>
                 <select
@@ -135,7 +133,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                   onChange={(e) =>
                     handleFilterChange('country', e.target.value)
                   }
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {countries.map((country) => (
                     <option key={country} value={country}>
@@ -145,13 +143,13 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                 </select>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold text-[#111322]">
+                <label className="mb-1 block text-sm font-semibold">
                   Gender
                 </label>
                 <select
                   value={filters.gender}
                   onChange={(e) => handleFilterChange('gender', e.target.value)}
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {genders.map((gender) => (
                     <option key={gender} value={gender}>
@@ -161,7 +159,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                 </select>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold text-[#111322]">
+                <label className="mb-1 block text-sm font-semibold">
                   Year Joined
                 </label>
                 <select
@@ -169,7 +167,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                   onChange={(e) =>
                     handleFilterChange('yearJoined', e.target.value)
                   }
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {years.map((year) => (
                     <option key={year} value={year}>
@@ -179,7 +177,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                 </select>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold text-[#111322]">
+                <label className="mb-1 block text-sm font-semibold">
                   Role Type
                 </label>
                 <select
@@ -187,7 +185,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                   onChange={(e) =>
                     handleFilterChange('roleType', e.target.value)
                   }
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {ROLE_TYPE_OPTIONS.map((type) => (
                     <option key={type} value={type}>
@@ -197,15 +195,13 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                 </select>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold text-[#111322]">
-                  Role
-                </label>
+                <label className="mb-1 block text-sm font-semibold">Role</label>
                 <select
                   value={filters.voyageRole}
                   onChange={(e) =>
                     handleFilterChange('voyageRole', e.target.value)
                   }
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {['All Roles', ...PREDEFINED_ROLES].map((role) => (
                     <option key={role} value={role}>
@@ -215,7 +211,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                 </select>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold text-[#111322]">
+                <label className="mb-1 block text-sm font-semibold">
                   Solo Project Tier
                 </label>
                 <select
@@ -223,7 +219,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                   onChange={(e) =>
                     handleFilterChange('soloProjectTier', e.target.value)
                   }
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {TIER_OPTIONS.map((tier) => (
                     <option key={tier} value={tier}>
@@ -233,7 +229,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                 </select>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold text-[#111322]">
+                <label className="mb-1 block text-sm font-semibold">
                   Voyage Tier
                 </label>
                 <select
@@ -241,7 +237,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                   onChange={(e) =>
                     handleFilterChange('voyageTier', e.target.value)
                   }
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {TIER_OPTIONS.map((tier) => (
                     <option key={tier} value={tier}>
@@ -251,13 +247,13 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
                 </select>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold text-[#111322]">
+                <label className="mb-1 block text-sm font-semibold">
                   Voyage
                 </label>
                 <select
                   value={filters.voyage}
                   onChange={(e) => handleFilterChange('voyage', e.target.value)}
-                  className="w-full rounded-lg border border-[#D0D5DD] bg-white px-4 py-2 text-sm text-[#111322] focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
                 >
                   {VOYAGE_OPTIONS.map((voyage) => (
                     <option key={voyage} value={voyage}>
@@ -277,7 +273,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
               </button>
               <button
                 onClick={handleClearAll}
-                className="w-full rounded-lg bg-white border border-[#4D77FF] px-6 py-2 text-base font-semibold text-[#4D77FF] hover:cursor-pointer md:w-auto"
+                className="w-full rounded-lg border border-[#4D77FF] px-6 py-2 text-base font-semibold text-[#4D77FF] hover:cursor-pointer md:w-auto"
               >
                 Clear All
               </button>

@@ -47,12 +47,12 @@ export default function MemberList({
     <>
       <div className="border border-gray-200 rounded-2xl shadow-lg py-1 w-full overflow-x-auto">
         <table className="border-collapse table-fixed ">
-          <thead className="bg-gray-50 min-w-[200px] border-b border-gray-200">
+          <thead className=" min-w-[200px] border-b border-gray-200">
             <tr>
               {headers.map((header, i) => (
                 <th
                   key={i}
-                  className="text-left font-normal text-gray-600 px-4 py-2 whitespace-nowrap truncate overflow-clip"
+                  className="text-left font-normal  px-4 py-2 whitespace-nowrap truncate overflow-clip"
                 >
                   {header}
                 </th>
@@ -67,28 +67,28 @@ export default function MemberList({
                   i < members.length - 1 ? 'border-b border-gray-200' : ''
                 }
               >
-                <td className="min-w-[200px] px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                <td className="min-w-[200px] px-4 py-2 whitespace-nowrap truncate overflow-clip">
                   {badge(m.roleType)}
                 </td>
-                <td className="min-w-[200px] px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                <td className="min-w-[200px] px-4 py-2 whitespace-nowrap truncate overflow-clip">
                   {m.gender || 'N/A'}
                 </td>
-                <td className="min-w-[200px] px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                <td className="min-w-[200px] px-4 py-2 whitespace-nowrap truncate overflow-clip">
                   {m.countryCode || 'N/A'}
                 </td>
-                <td className="min-w-[200px] px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                <td className="min-w-[200px] px-4 py-2 whitespace-nowrap truncate overflow-clip">
                   {m.timestamp ? new Date(m.timestamp).getFullYear() : 'N/A'}
                 </td>
-                <td className="min-w-[200px] px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                <td className="min-w-[200px] px-4 py-2 whitespace-nowrap truncate overflow-clip">
                   {m.voyage || 'N/A'}
                 </td>
-                <td className="min-w-[200px] px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                <td className="min-w-[200px] px-4 py-2 whitespace-nowrap truncate overflow-clip">
                   {m.voyageRole || 'N/A'}
                 </td>
-                <td className="min-w-[200px] px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                <td className="min-w-[200px] px-4 py-2 whitespace-nowrap truncate overflow-clip">
                   {m.soloProjectTier || 'N/A'}
                 </td>
-                <td className="min-w-[200px] px-4 py-2 text-gray-600 whitespace-nowrap truncate overflow-clip">
+                <td className="min-w-[200px] px-4 py-2 whitespace-nowrap truncate overflow-clip">
                   {badge(m.voyageTier)}
                 </td>
               </tr>
