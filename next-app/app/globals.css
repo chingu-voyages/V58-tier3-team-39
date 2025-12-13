@@ -7,15 +7,14 @@ body {
   font-family: var(--font-poppins), sans-serif;
   @apply bg-background;
   @apply text-main-text;
-  
 }
 
 @theme {
   /* Stat colors */
   --color-red: #b42263;
   --color-green: #0cdf89;
-  --color-blue: #26A3DF;
-  --color-purple: #87499C;
+  --color-blue: #26a3df;
+  --color-purple: #87499c;
 
   /* Main brand color */
   --color-blue-brand: #4d77ff;
@@ -34,25 +33,22 @@ body {
 
 @layer base {
   :root {
-    --background: #F1F5F9;
-    --secondary-bg: #CBD5E1;
-    --main-text: #1E293B;
+    --background: #f1f5f9;
+    --secondary-bg: #cbd5e1;
+    --main-text: #1e293b;
     --secondary-text: #334155;
-    --footer-border: #FFF;
+    --footer-border: #fff;
   }
 
   .dark {
-    --background: #0F172A;
-    --secondary-bg: #1E293B;
-    --main-text: #FFF;
-    --secondary-text: #8D91A6;
-    --footer-border: #FFFFFF99;
+    --background: #0f172a;
+    --secondary-bg: #1e293b;
+    --main-text: #fff;
+    --secondary-text: #8d91a6;
+    --footer-border: #ffffff99;
   }
 }
 
 footer {
   @apply bg-secondary-bg;
 }
-
-
-
