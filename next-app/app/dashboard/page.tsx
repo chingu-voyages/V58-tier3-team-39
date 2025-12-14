@@ -8,7 +8,7 @@ import {
 import DonutChartComponent from '@/components/DonutChart';
 import PieChartComponent from '@/components/PieChart';
 import StatCard from '@/components/StatCard';
-import { Briefcase, MapPin, User, Users } from 'lucide-react';
+import { Briefcase, CircleStar, CircleUser, MapPin } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const Dashboard = () => {
@@ -21,25 +21,25 @@ const Dashboard = () => {
   const statCards = [
     {
       title: 'Chingus',
-      icon: <Users />,
+      icon: <CircleUser className="h-9 w-9 text-blue-brand" />,
       item: 'Total Members',
       value: summaryStats?.totalMembers ?? 0,
     },
     {
       title: 'Common Role',
-      icon: <Briefcase />,
+      icon: <Briefcase className="h-9 w-9 text-blue-brand" />,
       item: stats?.commonRole?.name ?? 'N/A',
       value: stats?.commonRole?.value ?? 0,
     },
     {
       title: 'Common Location',
-      icon: <MapPin />,
+      icon: <MapPin className="h-9 w-9 text-blue-brand" />,
       item: stats?.commonLocation?.name ?? 'N/A',
       value: stats?.commonLocation?.value ?? 0,
     },
     {
       title: 'Common Tier',
-      icon: <User />,
+      icon: <CircleStar className="h-9 w-9 text-blue-brand"/>,
       item: stats?.commonTier?.name ?? 'N/A',
       value: stats?.commonTier?.value ?? 0,
     },

@@ -38,7 +38,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="pt-32 flex flex-col justify-center items-center px-4 md:px-8 text-center gap-6 md:gap-7 lg:gap-10">
+    <div className="pt-64 flex flex-col justify-center items-center px-4 md:px-8 text-center gap-6 md:gap-7 lg:gap-10">
       <Chingu className="hidden sm:block w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" />
       <h1 className="text-2xl sm:text-[1.75rem] md:text-[2.125rem] lg:text-[2.75rem] font-semibold">
         Discover the Global <span className="text-[#4D77FF]">Chingu </span>
@@ -50,7 +50,7 @@ const Hero = () => {
         our members.
       </h3>
 
-      <div className="flex gap-3 sm:gap-5 mb-20">
+      <div className="flex gap-3 sm:gap-5 mb-22">
         <Link href="/map">
           <Button1>Map View</Button1>
         </Link>

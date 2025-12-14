@@ -6,7 +6,7 @@ export default async function ListPage() {
   const members = await getMembers() as Member[];
 
   return (
-    <div className="w-full p-6 mt-14 md:mt-20 overflow-x-auto">
+    <div className="w-full min-h-screen p-6 mt-14 md:mt-20 overflow-x-auto">
       <MembersContainer members={members} />
     </div>
   );

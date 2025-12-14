@@ -14,7 +14,7 @@ export function Pagination({
       <button
         disabled={currentPage === 1}
         onClick={() => onChangePage(currentPage - 1)}
-        className="cursor-pointer px-3 py-1 text-sm bg-white/20 rounded disabled:opacity-0 disabled:cursor-auto"
+        className="cursor-pointer px-3 py-1 text-sm text-white bg-blue-brand rounded disabled:opacity-0 disabled:cursor-auto"
       >
         Prev
       </button>
@@ -26,7 +26,7 @@ export function Pagination({
       <button
         disabled={currentPage === totalPages}
         onClick={() => onChangePage(currentPage + 1)}
-        className="cursor-pointer px-3 py-1 text-sm bg-white/20 rounded disabled:opacity-0 disabled:cursor-auto"
+        className="cursor-pointer px-3 py-1 text-sm text-white bg-blue-brand  rounded disabled:opacity-0 disabled:cursor-auto"
       >
         Next
       </button>

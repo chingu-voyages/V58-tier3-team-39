@@ -27,8 +27,10 @@ body {
   --color-main-text: var(--main-text);
   --color-secondary-text: var(--secondary-text);
 
-  /* footer border */
+  /* border */
   --color-footer-border: var(--footer-border);
+  --color-list-border: var(--list-border);
+  --color-demo-border: var(--demo-border);
 }
 
 @layer base {
@@ -38,6 +40,8 @@ body {
     --main-text: #1e293b;
     --secondary-text: #334155;
     --footer-border: #fff;
+    --list-border: #D0D5DD;
+    --demo-border: #E5E7EB;
   }
 
   .dark {
@@ -46,6 +50,8 @@ body {
     --main-text: #fff;
     --secondary-text: #8d91a6;
     --footer-border: #ffffff99;
+    --list-border: #D0D5DD80;
+    --demo-border: #1e293b;
   }
 }
 

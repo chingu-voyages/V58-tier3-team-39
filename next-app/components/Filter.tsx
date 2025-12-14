@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Search, Filter as FilterIcon } from 'lucide-react';
+import { Filter as FilterIcon, ChevronDown } from 'lucide-react';
 
 export interface FilterState {
   search: string;
@@ -162,14 +162,14 @@ export default function Filter({
   return (
     <div className="w-full mb-4">
       <div
-        className={`rounded-2xl border border-[#D0D5DD] ${
+        className={`rounded-2xl border border-list-border ${
           showFilters ? 'p-6 md:p-8' : 'p-4'
         }`}
       >
         <div className="flex items-center justify-between">
           {showFilters ? (
             <div className="flex items-center gap-3">
-              <Search className="w-5 h-5" />
+              <FilterIcon className="w-5 h-5" />
               <span className="text-base font-medium">
                 Enter country, role, tier, or gender
               </span>
@@ -192,153 +192,193 @@ export default function Filter({
           <div className="mt-6 space-y-6">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
               <div>
-                <label className="mb-1 block text-sm font-semibold">
+                <label className="mb-1 block text-sm font-semibold text-secondary-text">
                   Country
                 </label>
-                <select
-                  value={filters.country}
-                  onChange={(e) =>
-                    handleFilterChange('country', e.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
-                >
-                  {countries.map((country) => (
-                    <option key={country} value={country}>
-                      {country}
-                    </option>
-                  ))}
-                </select>
+                <div className='relative'>
+                  <select
+                    value={filters.country}
+                    onChange={(e) =>
+                      handleFilterChange('country', e.target.value)
+                    }
+                    className="w-full appearance-none rounded-lg border border-list-border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  >
+                    {countries.map((country) => (
+                      <option key={country} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+                    <ChevronDown className="h-4 w-4"/>
+                  </span>
+                </div>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold">
+                <label className="mb-1 block text-sm font-semibold text-secondary-text">
                   Gender
                 </label>
-                <select
-                  value={filters.gender}
-                  onChange={(e) => handleFilterChange('gender', e.target.value)}
-                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
-                >
-                  {genders.map((gender) => (
-                    <option key={gender} value={gender}>
-                      {gender}
-                    </option>
-                  ))}
-                </select>
+                <div className='relative'>
+                  <select
+                    value={filters.gender}
+                    onChange={(e) => handleFilterChange('gender', e.target.value)}
+                    className="w-full appearance-none rounded-lg border border-list-border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  >
+                    {genders.map((gender) => (
+                      <option key={gender} value={gender}>
+                        {gender}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+                    <ChevronDown className="h-4 w-4"/>
+                  </span>
+                </div>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold">
+                <label className="mb-1 block text-sm font-semibold text-secondary-text">
                   Year Joined
                 </label>
-                <select
-                  value={filters.yearJoined}
-                  onChange={(e) =>
-                    handleFilterChange('yearJoined', e.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D0D5DD]px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
-                >
-                  {years.map((year) => (
-                    <option key={year} value={year}>
-                      {year}
-                    </option>
-                  ))}
-                </select>
+                <div className='relative'>
+                  <select
+                    value={filters.yearJoined}
+                    onChange={(e) =>
+                      handleFilterChange('yearJoined', e.target.value)
+                    }
+                    className="w-full appearance-none rounded-lg border border-list-border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  >
+                    {years.map((year) => (
+                      <option key={year} value={year}>
+                        {year}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+                    <ChevronDown className="h-4 w-4"/>
+                  </span>
+                </div>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold">
+                <label className="mb-1 block text-sm font-semibold text-secondary-text">
                   Role Type
                 </label>
-                <select
-                  value={filters.roleType}
-                  onChange={(e) =>
-                    handleFilterChange('roleType', e.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
-                >
-                  {ROLE_TYPE_OPTIONS.map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
-                </select>
+                <div className='relative'>
+                  <select
+                    value={filters.roleType}
+                    onChange={(e) =>
+                      handleFilterChange('roleType', e.target.value)
+                    }
+                    className="w-full appearance-none rounded-lg border border-list-border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  >
+                    {ROLE_TYPE_OPTIONS.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+                    <ChevronDown className="h-4 w-4"/>
+                  </span>
+                </div>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold">Role</label>
-                <select
-                  value={filters.role}
-                  onChange={(e) => handleFilterChange('role', e.target.value)}
-                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
-                >
-                  {['All Roles', ...PREDEFINED_ROLES].map((role) => (
-                    <option key={role} value={role}>
-                      {role}
-                    </option>
-                  ))}
-                </select>
+                <label className="mb-1 block text-sm font-semibold text-secondary-text">Role</label>
+                <div className='relative'>
+                  <select
+                    value={filters.role}
+                    onChange={(e) => handleFilterChange('role', e.target.value)}
+                    className="w-full appearance-none rounded-lg border border-list-border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  >
+                    {['All Roles', ...PREDEFINED_ROLES].map((role) => (
+                      <option key={role} value={role}>
+                        {role}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+                    <ChevronDown className="h-4 w-4"/>
+                  </span>
+                </div>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold">
+                <label className="mb-1 block text-sm font-semibold text-secondary-text">
                   Solo Project Tier
                 </label>
-                <select
-                  value={filters.soloProjectTier}
-                  onChange={(e) =>
-                    handleFilterChange('soloProjectTier', e.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
-                >
-                  {TIER_OPTIONS.map((tier) => (
-                    <option key={tier} value={tier}>
-                      {tier}
-                    </option>
-                  ))}
-                </select>
+                <div className='relative'>
+                  <select
+                    value={filters.soloProjectTier}
+                    onChange={(e) =>
+                      handleFilterChange('soloProjectTier', e.target.value)
+                    }
+                    className="w-full appearance-none rounded-lg border border-list-border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  >
+                    {TIER_OPTIONS.map((tier) => (
+                      <option key={tier} value={tier}>
+                        {tier}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+                    <ChevronDown className="h-4 w-4"/>
+                  </span>
+                </div>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold">
+                <label className="mb-1 block text-sm font-semibold text-secondary-text">
                   Voyage Tier
                 </label>
-                <select
-                  value={filters.voyageTier}
-                  onChange={(e) =>
-                    handleFilterChange('voyageTier', e.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
-                >
-                  {TIER_OPTIONS.map((tier) => (
-                    <option key={tier} value={tier}>
-                      {tier}
-                    </option>
-                  ))}
-                </select>
+                <div className='relative'>
+                  <select
+                    value={filters.voyageTier}
+                    onChange={(e) =>
+                      handleFilterChange('voyageTier', e.target.value)
+                    }
+                    className="w-full appearance-none rounded-lg border border-list-border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  >
+                    {TIER_OPTIONS.map((tier) => (
+                      <option key={tier} value={tier}>
+                        {tier}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+                    <ChevronDown className="h-4 w-4"/>
+                  </span>
+                </div>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-semibold">
+                <label className="mb-1 block text-sm font-semibold text-secondary-text">
                   Voyage
                 </label>
-                <select
-                  value={filters.voyage}
-                  onChange={(e) => handleFilterChange('voyage', e.target.value)}
-                  className="w-full rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
-                >
-                  {VOYAGE_OPTIONS.map((voyage) => (
-                    <option key={voyage} value={voyage}>
-                      {voyage}
-                    </option>
-                  ))}
-                </select>
+                <div className='relative'>
+                  <select
+                    value={filters.voyage}
+                    onChange={(e) => handleFilterChange('voyage', e.target.value)}
+                    className="w-full appearance-none rounded-lg border border-list-border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4D77FF]"
+                  >
+                    {VOYAGE_OPTIONS.map((voyage) => (
+                      <option key={voyage} value={voyage}>
+                        {voyage}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+                    <ChevronDown className="h-4 w-4"/>
+                  </span>
+                </div>
               </div>
             </div>
 
             <div className="flex flex-col gap-3 md:flex-row md:items-center">
               <button
                 onClick={handleApplyFilters}
-                className="w-full rounded-lg bg-[#4D77FF] px-6 py-2 text-base font-semibold text-white hover:cursor-pointer md:w-auto"
+                className="w-full rounded-lg bg-[#4D77FF] hover:bg-[#456be5] px-6 py-2 text-base font-semibold text-white hover:cursor-pointer md:w-auto"
               >
                 Apply Filters
               </button>
               <button
                 onClick={handleClearAll}
-                className="w-full rounded-lg border border-[#4D77FF] px-6 py-2 text-base font-semibold text-[#4D77FF] hover:cursor-pointer md:w-auto"
+                className="w-full rounded-lg border border-[#4D77FF] hover:bg-blue-brand/20 px-6 py-2 text-base font-semibold text-[#4D77FF] hover:cursor-pointer md:w-auto"
               >
                 Clear All
               </button>

@@ -33,6 +33,7 @@ export default async function RootLayout({
           {children}
           <Footer/>
         </SessionProvider>
+        
       </body>
     </html>
   );
