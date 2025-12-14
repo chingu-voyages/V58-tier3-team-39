@@ -1,6 +1,6 @@
 # Chingu Member Demographics
 
-![Chingu Member Demograhpics Preview](chingu-member-demographics-preview.png)
+![Chingu Member Demograhpics Preview](/next-app/public/images/preview.png)
 
 ## Table of Contents
 
