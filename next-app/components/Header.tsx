@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, House, Map, List, LayoutDashboard } from 'lucide-react';
-import { signOut } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import { ThemeToggle } from './ThemeToggle';
 import Chingu from './icons/Chingu';
 import { usePathname } from 'next/navigation';
@@ -62,12 +62,18 @@ const Header = ({ session }: HeaderProps) => {
                 className="flex gap-1 px-4! py-2! text-sm!"
                 onClick={() => signOut()}
               >
-                <Google /> Sign out
+                <Google /> 
+                Sign out
               </Button1>
             ) : (
-              <Link href="/api/auth/signin" className="cursor-pointer">
+              <Button1
+                variant="secondary"
+                className="flex gap-1 px-4! py-2! text-sm!"
+                onClick={() => signIn('google')}
+              >
+                <Google />
                 Sign in
-              </Link>
+              </Button1>
             )}
           </div>
         </nav>
