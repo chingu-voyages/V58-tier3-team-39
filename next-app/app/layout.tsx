@@ -5,6 +5,7 @@ import { auth } from '@/lib/auth-helpers';
 import './globals.css';
 
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default async function RootLayout({
         <SessionProvider session={session}>
           <Header session={session} />
           {children}
+          <Footer/>
         </SessionProvider>
       </body>
     </html>

@@ -7,7 +7,7 @@ import useEmblaCarousel, {
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -185,7 +185,7 @@ function CarouselPrevious({
       variant={variant}
       size={size}
       className={cn(
-        'absolute text-[#4D77FF] size-8 md:size-14',
+        'absolute text-blue-brand size-8 md:size-14 cursor-pointer',
         orientation === 'horizontal'
           ? 'top-1/2 -left-16 -translate-y-1/2'
           : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -215,7 +215,7 @@ function CarouselNext({
       variant={variant}
       size={size}
       className={cn(
-        'absolute text-[#4D77FF] size-8 md:size-14',
+        'absolute text-blue-brand size-8 md:size-14 cursor-pointer',
         orientation === 'horizontal'
           ? 'top-1/2 -right-16 -translate-y-1/2'
           : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
