@@ -45,9 +45,9 @@ export default function MemberList({
 
   return (
     <>
-      <div className="border border-gray-200 rounded-2xl shadow-lg py-1 w-full overflow-x-auto">
+      <div className="border border-list-border rounded-2xl shadow-lg w-full overflow-x-auto">
         <table className="border-collapse table-fixed ">
-          <thead className=" min-w-[200px] border-b border-gray-200">
+          <thead className=" min-w-[200px] border-b border-list-border bg-secondary-bg">
             <tr>
               {headers.map((header, i) => (
                 <th
@@ -64,7 +64,7 @@ export default function MemberList({
               <tr
                 key={i}
                 className={
-                  i < members.length - 1 ? 'border-b border-gray-200' : ''
+                  i < members.length - 1 ? 'border-b border-list-border' : ''
                 }
               >
                 <td className="min-w-[200px] px-4 py-2 whitespace-nowrap truncate overflow-clip">

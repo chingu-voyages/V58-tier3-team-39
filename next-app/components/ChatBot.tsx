@@ -59,12 +59,11 @@ export default function ChatBot() {
   }
 
   return (
-    <div className="w-full max-w-2xl mx-auto mt-8 p-6 border rounded-lg shadow-sm">
-      <h2 className="text-2xl font-bold mb-4">Chat with AI</h2>
-
-      <div className="mb-4 h-96 overflow-y-auto border rounded p-4">
+    <div className="w-full max-w-2xl mx-auto my-18 p-6 border border-demo-border rounded-lg shadow-sm">
+      <h2 className="text-2xl font-bold mb-4">Chat with <span className='text-blue-brand'>Chingu </span>AI</h2>
+      <div className="mb-4 h-96 overflow-y-auto border border-demo-border rounded p-4 active:bg-blue-brand/20">
         {messages.length === 0 ? (
-          <div className="text-sm text-gray-400 text-center mt-8">
+          <div className="text-sm text-center mt-8">
             No messages yet. Start a conversation!
           </div>
         ) : (
@@ -109,21 +108,21 @@ export default function ChatBot() {
         onKeyDown={(e) => {
           if (e.key === 'Enter' && !loading) handleSend();
         }}
-        className="w-full mb-3 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="w-full mb-3 px-4 py-2 border border-demo-border rounded focus:outline-none focus:ring-2 focus:ring-blue-brand focus:bg-blue-brand/20"
       />
 
       <div className="flex gap-3">
         <button
           onClick={handleSend}
           disabled={loading}
-          className="flex-1 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-1 bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-[#456be5] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           {loading ? 'Sending...' : 'Send'}
         </button>
         <button
           onClick={handleClear}
           disabled={loading}
-          className="flex-1 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 disabled:opacity-50"
+          className="flex-1 text-blue-brand font-semibold px-4 py-2 border border-blue-brand rounded hover:bg-blue-brand/20 disabled:opacity-50 cursor-pointer"
         >
           Clear
         </button>

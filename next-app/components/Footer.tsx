@@ -15,8 +15,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-8">
           {/* Team: full-width section */}
           <section aria-labelledby="team-heading">
-            <div className='flex items-center justify-center gap-2 mb-10'>
-              <Chingu width={70} height={70} />
+            <div className='flex items-center justify-center gap-3 mb-10'>
+              <Chingu className="w-12 h-12 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-18 lg:h-18" />
               <div id="team-heading" className="text-xl align-center md:text-2xl lg:text-3xl font-semibold tracking-widest">
                 <span className=''>
                   CHINGU DEMOGRAPHICS
@@ -235,7 +235,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                   >
                     <GitHub className="w-11 h-11 lg:w-12 lg:h-12" />
-                    <span className="text-lg lg:text-xl text-secondary-text">
+                    <span className="text-base sm:text-lg lg:text-xl text-secondary-text">
                       Github Repository - November 2025
                     </span>
                   </a>

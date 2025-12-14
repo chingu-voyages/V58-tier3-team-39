@@ -11,9 +11,6 @@ export default async function Home() {
       <Hero />
       {/* <Demographics /> */}
       <MemberDemographics />
-      <div className="w-full h-[40vh]">
-        <Footer />
-      </div>
     </main>
   );
 }

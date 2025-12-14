@@ -132,7 +132,7 @@ const Header = ({ session }: HeaderProps) => {
               Dashboard
             </Link>
 
-            <div className="w-10 h-10 flex items-center justify-center rounded-full  mt-6">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full  mt-6">
               <ThemeToggle />
             </div>
 
@@ -148,9 +148,9 @@ const Header = ({ session }: HeaderProps) => {
                   signOut();
                   setIsActive(false);
                 }}
-                className="text-xl font-semibold"
+                className="flex justify-center  items-center gap-2 text-xl font-semibold"
               >
-                Sign out
+                <Google /> Sign out
               </button>
             ) : (
               <Link

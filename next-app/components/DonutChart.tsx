@@ -77,7 +77,7 @@ const renderLabel = ({
 
 export default function DonutChartComponent({ title, data }: DonutChartProps) {
   return (
-    <div className="p-5 rounded-2xl flex flex-col items-center border border-gray-200 shadow-sm">
+    <div className="p-5 rounded-2xl flex flex-col items-center border border-demo-border shadow-sm">
       {title && <h2 className="font-semibold text-xl md:text-2xl">{title}</h2>}
       <div className="w-full min-h-[260px] sm:h-[300px] md:h-[360px] lg:h-[420px] xl:h-[480px] mt-4 pointer-events-none">
         <ResponsiveContainer width="100%" height="100%">

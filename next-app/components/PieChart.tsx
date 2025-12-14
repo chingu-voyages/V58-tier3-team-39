@@ -70,7 +70,7 @@ const PieChartComponent = ({
   isAnimationActive = true,
 }: PieChartComponentProps) => {
   return (
-    <div className="p-5 rounded-2xl flex flex-col items-center border border-gray-200 shadow-lg">
+    <div className="p-5 rounded-2xl flex flex-col items-center border border-demo-border shadow-lg">
       {title && (
         <h3 className="font-semibold text-xl md:text-2xl text-center">
           {title}
