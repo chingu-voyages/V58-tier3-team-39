@@ -7,7 +7,7 @@ import { signOut } from 'next-auth/react';
 import { ThemeToggle } from './ThemeToggle';
 import Chingu from './icons/Chingu';
 import { usePathname } from 'next/navigation';
-import Button from './ui/Button';
+import Button1 from './ui/Button1';
 import Google from './icons/Google';
 
 interface HeaderProps {
@@ -57,13 +57,13 @@ const Header = ({ session }: HeaderProps) => {
             <ThemeToggle />
             {session?.user?.name && <span>Welcome {session.user.name}</span>}
             {session ? (
-              <Button
+              <Button1
                 variant="secondary"
                 className="flex gap-1 px-4! py-2! text-sm!"
                 onClick={() => signOut()}
               >
                 <Google /> Sign out
-              </Button>
+              </Button1>
             ) : (
               <Link href="/api/auth/signin" className="cursor-pointer">
                 Sign in

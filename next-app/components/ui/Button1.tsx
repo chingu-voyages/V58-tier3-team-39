@@ -4,6 +4,7 @@ type Button1Props = {
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   children: React.ReactNode;
   disabled?: boolean;
+  className?: string;
 };
 
 const Button1 = ({
@@ -11,6 +12,7 @@ const Button1 = ({
   onClick,
   children,
   disabled = false,
+  className = '',
   ...props
 }: Button1Props) => {
   const base =
@@ -30,7 +32,7 @@ const Button1 = ({
       {...props}
       onClick={onClick}
       disabled={disabled}
-      className={`${base} ${variants[variant]} ${disabledClass}`}
+      className={`${base} ${variants[variant]} ${disabledClass} ${className}`}
     >
       {children}
     </button>

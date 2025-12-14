@@ -27,7 +27,7 @@ const MemberDemographics = () => {
 
   return (
     <section className="w-full py-16 px-4 md:px-8 mt-10">
-      <h2 className="text-center text-xl sm:text-2xl lg:text-3xl font-normal mb-8 sm:mb-9 lg:mb-11 uppercase tracking-wide sm:tracking-widest">
+      <h2 className="text-center text-xl sm:text-2xl lg:text-3xl font-normal mb-8 sm:mb-9 lg:mb-11 uppercase tracking-widest">
         EXPLORE MEMBER DEMOGRAPHICS
       </h2>
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">

@@ -13,7 +13,7 @@ import {
 
 export default function CarouselPlugin() {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true }),
+    Autoplay({ delay: 5000, stopOnInteraction: true }),
   );
 
   const carouselSlides = [
@@ -42,7 +42,7 @@ export default function CarouselPlugin() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full max-w-xs sm:max-w-sm md:max-w-2xl h-full"
+      className="w-full sm:max-w-sm md:max-w-3xl h-full"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
@@ -50,10 +50,10 @@ export default function CarouselPlugin() {
         {carouselSlides.map((slide, index) => (
           <CarouselItem key={index}>
             <div className="p-6 flex flex-col items-center justify-center min-h-[300px] text-center">
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 text-gray-800">
+              <h3 className="text-xl md:text-2xl lg:text-3xl mb-10 tracking-widest uppercase">
                 {slide.title}
               </h3>
-              <p className="text-base md:text-lg lg:text-xl leading-relaxed max-w-md md:max-w-lg text-gray-600">
+              <p className="text-base md:text-lg lg:text-xl leading-relaxed max-w-md md:max-w-2xl text-secondary-text">
                 {slide.text}
               </p>
             </div>
