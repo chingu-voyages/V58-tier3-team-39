@@ -115,7 +115,7 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
           )}
           <button
             onClick={() => setShowFilters((prev) => !prev)}
-            className="text-sm font-semibold text-[#4D77FF] hover:cursor-pointer"
+            className="text-sm font-semibold text-blue-brand hover:text-blue-brand/50 hover:cursor-pointer"
           >
             {showFilters ? 'Hide filters' : 'Show filters'}
           </button>
@@ -307,13 +307,13 @@ export function FilterList({ members, onChangeFilters }: FilterProps) {
             <div className="flex flex-col gap-3 md:flex-row md:items-center">
               <button
                 onClick={handleApplyFilters}
-                className="w-full rounded-lg bg-[#4D77FF] px-6 py-2 text-base font-semibold text-white hover:cursor-pointer md:w-auto"
+                className="w-full rounded-lg bg-blue-brand hover:bg-[#456be5] px-6 py-2 text-base font-semibold text-white cursor-pointer md:w-auto"
               >
                 Apply Filters
               </button>
               <button
                 onClick={handleClearAll}
-                className="w-full rounded-lg border border-[#4D77FF] px-6 py-2 text-base font-semibold text-[#4D77FF] hover:cursor-pointer md:w-auto"
+                className="w-full rounded-lg border border-blue-brand px-6 py-2 text-base font-semibold text-blue-brand hover:bg-blue-brand/20 cursor-pointer md:w-auto"
               >
                 Clear All
               </button>

@@ -64,7 +64,7 @@ const renderLabel = ({
     <text
       x={x}
       y={y}
-      fill="#333"
+      fill="var(--color-main-text)"
       fontSize={fontSize}
       fontWeight="600"
       textAnchor="middle"
