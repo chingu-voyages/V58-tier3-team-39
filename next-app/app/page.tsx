@@ -11,7 +11,7 @@ export default async function Home() {
     <main className="min-h-screen flex flex-col">
       <Hero />
       <MemberDemographics />
-      <section className="flex justify-center items-center p-24 min-h-200 bg-[url('/images/1.avif')] bg-cover bg-center bg-no-repeat">
+      <section className="flex justify-center items-center p-24 mb-8 min-h-200 bg-[url('/images/1.avif')] bg-cover bg-center bg-no-repeat">
         <Carousel />
       </section>
     
