@@ -26,8 +26,8 @@ export default function MemberList({
   ];
 
   const badgeStyles: Record<string, string> = {
-    Web: 'bg-green-100 text-green-700',
-    Python: 'bg-gray-200 text-gray-700',
+    Web: 'bg-cyan-100 text-cyan-700',
+    Python: 'bg-green-100 text-green-700',
     'Tier 1': 'bg-gray-200 text-gray-700',
     'Tier 2': 'bg-green-100 text-green-700',
     'Tier 3': 'bg-pink-100 text-pink-700',
