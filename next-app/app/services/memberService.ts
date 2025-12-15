@@ -1,11 +1,10 @@
 import data from '../data/chingu_info.json';
-import { mapRawMember } from '../../lib/mapMember';
-import type { RawMember } from '../../lib/mapMember';
+import { normalizeMember } from '../../lib/normalize';
 import { apiService } from './apiService';
 
 // Get members from local JSON
 export function getMembersFromLocal() {
-  return (data as RawMember[]).map(mapRawMember);
+  return data.map(normalizeMember);
 }
 
 // Fetches members from backend API, but fallback to local JSON if backend is disabled or fetch fails
